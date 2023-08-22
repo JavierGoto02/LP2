@@ -3,7 +3,7 @@ package Ejercicio4;
 /**
  * Es clase hija de Empleado, posee los atributos horas y sueldo además de los heredados.
  * 
- * @author fabri
+ * @author Grupo 1 - LP2 - FPUNA
  */
 
 public class EmpleadosPorHoras extends Empleado {

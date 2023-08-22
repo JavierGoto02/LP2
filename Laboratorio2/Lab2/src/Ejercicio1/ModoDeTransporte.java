@@ -35,7 +35,7 @@ public abstract class ModoDeTransporte {
     protected UsoEnergetico usoEnergetico;
 
     /**
-     * Constructor del tipo de transporte.
+     * Constructor del modo de transporte para todas las clases que la heredan.
      * @param tipoTerreno El tipo de terreno por el cual funciona el modo de transporte.
      * @param capacidadPasajeros La capacidad de personas que tiene el modo de transporte.
      * @param usoEnergetico El tipo de energía que requiere el modo de transporte.

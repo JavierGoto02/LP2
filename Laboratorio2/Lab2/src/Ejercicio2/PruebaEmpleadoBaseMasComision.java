@@ -6,7 +6,7 @@ package Ejercicio2;
 
 /**
  *
- * @author hiros
+ * @author Grupo 1 - LP2 - FPUNA
  */
 public class PruebaEmpleadoBaseMasComision {
 

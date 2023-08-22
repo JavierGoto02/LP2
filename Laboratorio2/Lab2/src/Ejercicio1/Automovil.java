@@ -43,6 +43,36 @@ public final class Automovil extends Vehiculo implements FuncionamientoAutomovil
         modoTraccionSelecionado = modosDeTraccionDisponibles.get(0);
     }
 
+    /**
+     * @return true si el automovil tiene aire acondicionado, false si no.
+     */
+    public boolean getTieneAireAcondicionado() {
+        return tieneAireAcondicionado;
+    }
+
+    /**
+     * Establece si el vehículo tiene aire acondicionado.
+     * @param tieneAireAcondicionado El valor a establecer
+     */
+    public void setTieneAireAcondicionado(boolean tieneAireAcondicionado) {
+        this.tieneAireAcondicionado = tieneAireAcondicionado;
+    }
+
+    /**
+     * @return true si el automovil tiene sistema de entretenimiento, false si no.
+     */
+    public boolean getTieneSistemaDeEntretenimiento() {
+        return tieneSistemaDeEntretenimiento;
+    }
+
+    /**
+     * Establece si el vehículo tiene un sistema de entretenimiento.
+     * @param tieneSistemaDeEntretenimiento El valor a establecer
+     */
+    public void setTieneSistemaDeEntretenimiento(boolean tieneSistemaDeEntretenimiento) {
+        this.tieneSistemaDeEntretenimiento = tieneSistemaDeEntretenimiento;
+    }
+
     // Implementación de interfaz FuncionamientoAutomovil
     @Override
     public void arrancarMotor() {
@@ -95,12 +125,18 @@ public final class Automovil extends Vehiculo implements FuncionamientoAutomovil
     @Override
     public void ajustarTemperatura(int temperatura) {
         temperaturaAireAcondicionado = temperatura;
-        System.out.println("Se ajusto la temperatura a  " + temperatura + "grados Celsius." );
+        System.out.println("Se ajusto la temperatura a " + temperatura + " grados Celsius." );
     }
 
     @Override
     public void reproducirMusica(String nombreCancion) {
         cancionDeReproduccion = nombreCancion;
         System.out.println("Ahora reproduciendo: " + nombreCancion) ;
+    }
+
+    @Override
+    public String toString() {
+        return "Nombre: " + nombre + "\nDescripción: " + descripcion;
+
     }
 }

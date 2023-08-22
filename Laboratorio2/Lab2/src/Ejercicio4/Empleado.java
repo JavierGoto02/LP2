@@ -3,7 +3,7 @@ package Ejercicio4;
 /**
  * La clase base que contiene los datos principales de un empleado
  * 
- * @author fabri
+ * @author Grupo 1 - LP2 - FPUNA
  */
 public class Empleado {
     private String primerNombre;

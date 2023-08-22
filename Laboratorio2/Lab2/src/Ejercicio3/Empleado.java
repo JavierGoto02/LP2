@@ -2,7 +2,7 @@ package Ejercicio3;
 
 /**
  * Esta clase define objetos que contiene datos personales de un Empleado.
- * @author: Javier Goto
+ * @author: Grupo 1 - LP2 - FPUNA
  * @versión: 15/08/2023
 */
 

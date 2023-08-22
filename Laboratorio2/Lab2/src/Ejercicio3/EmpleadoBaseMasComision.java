@@ -3,7 +3,7 @@ package Ejercicio3;
 /**
  * Esta clase que extiende de la clase EmpleadoPorComision define objetos que contiene datos 
  personales de un EmpleadoPorComision agregandole el atributo de salario base.
- * @author: Javier Goto
+ * @author: Grupo 1 - LP2 - FPUNA
  * @versión: 15/08/2023
 */
 

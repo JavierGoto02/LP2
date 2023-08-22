@@ -3,7 +3,7 @@ package Ejercicio3;
 /**
  * Clase para pruebas a los metodos y atributos definidos en la clase EmpleadoBaseMasComision
  para verificar su correcto funcionamiento.
- * @author: Javier Goto
+ * @author: Grupo 1 - LP2 - FPUNA
  * @versión: 15/08/2023
 */
 

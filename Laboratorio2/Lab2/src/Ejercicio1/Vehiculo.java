@@ -33,6 +33,82 @@ public class Vehiculo extends ModoDeTransporte {
         tiempoCorriendo = 0;
     }
 
+    /**
+     * @return El nombre del automovil
+     */
+    public String getNombre() {
+        return nombre;
+    }
+
+    /**
+     * Establece el nombre del automovil.
+     * @param nombre El nombre a establecer.
+     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    /**
+     * @return La descripción del automovil.
+     */
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    /**
+     * Establece la descripción del automovil
+     * @param descripcion La descripción a establecer.
+     */
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    /**
+     * @return La velocidad topé del automovil.
+     */
+    public double getVelocidadTope() {
+        return velocidadTope;
+    }
+
+    /**
+     * Establece la velocidad topé del automovil
+     * @param velocidadTope La velocidad topé a establecer.
+     */
+    public void setVelocidadTope(double velocidadTope) {
+        this.velocidadTope = velocidadTope;
+    }
+
+    /**
+     * @return La aceleración del automovil.
+     */
+    public double getAceleracion() {
+        return aceleracion;
+    }
+
+    /**
+     * Establece la aceleración del automovil
+     * @param aceleracion La aceleración a establecer.
+     */
+    public void setAceleracion(double aceleracion) {
+        this.aceleracion = aceleracion;
+    }
+
+    /**
+     * @return La potencia de frenado del automovil (que tan rápido puede frenar).
+     */
+    public double getPotenciaFrenado() {
+        return potenciaFrenado;
+    }
+
+    /**
+     * Establece potencia de frenado del automovil
+     * @param potenciaFrenado La potencia de frenado a establecer.
+     */
+    public void setPotenciaFrenado(double potenciaFrenado) {
+        this.potenciaFrenado = potenciaFrenado;
+    }
+
+
     @Override
     void iniciar() {
         tiempoDeInicio = System.currentTimeMillis() / 1000;

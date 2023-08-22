@@ -3,7 +3,7 @@ package Ejercicio4;
 /**
  * Clase para probar el funcionamiento de la clase EmpleadosPorHoras
  * 
- * @author fabri
+ * @author Grupo 1 - LP2 - FPUNA
  */
 public class PruebaEmpleadosPorHoras {
     public static void main(String[] args) {
