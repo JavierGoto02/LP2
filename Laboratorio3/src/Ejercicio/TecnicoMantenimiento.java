@@ -17,7 +17,7 @@ public class TecnicoMantenimiento extends Empleado
     {
         super();
         setProfesion("Tecnico en mantenimiento");
-        areaEspecializacion = "Mecanica";
+        areaEspecializacion = "Mecanico";
         herramientas = new ArrayList<>();
     }
 
@@ -46,7 +46,7 @@ public class TecnicoMantenimiento extends Empleado
     }
 
     @Override
-    public void informe()
+    public void informeDeTrabajo()
     {
         System.out.println("El tecnico de mantenimiento en " + getAreaEspecializacion() + 
         " realizó " + getTrabajo() + " trabajo/s/.");

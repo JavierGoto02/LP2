@@ -184,7 +184,7 @@ public  abstract class Empleado
     //Metodos abstractos, se debe implementar en cada subclase.
     public abstract double salarioAnual();
     public abstract void trabajar();
-    public abstract void informe();
+    public abstract void informeDeTrabajo();
     
 
 

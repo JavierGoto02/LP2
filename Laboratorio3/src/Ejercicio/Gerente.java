@@ -80,7 +80,7 @@ public class Gerente extends Empleado
     }
 
     @Override
-    public void informe()
+    public void informeDeTrabajo()
     {
         if(subordinados.size() > 0)
         {
