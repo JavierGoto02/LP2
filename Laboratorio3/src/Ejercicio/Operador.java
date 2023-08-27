@@ -2,9 +2,9 @@ package Ejercicio;
 
 import java.util.ArrayList;
 
+
 /**
- *
- * @author Goti
+ * @author Grupo 1 - Laboratorio 3
  */
 public class Operador extends Informatico {
     public ArrayList<String> estadoSistemas;
@@ -14,7 +14,7 @@ public class Operador extends Informatico {
     Operador() {
         super();
         estadoSistemas = new ArrayList<>();
-        herramientasMonitoreo = "HWiNFO";
+        herramientaMonitoreo = "HWiNFO";
         atencionClientes = false;
     }
 

@@ -1,8 +1,8 @@
 package Ejercicio;
 
+
 /**
- *
- * @author Goti
+ * @author Grupo 1 - Laboratorio 3
  */
 public class Programador extends Informatico {
     private String idePrincipal;
@@ -59,6 +59,6 @@ public class Programador extends Informatico {
     public void informeDeTrabajo() {
         System.out.printf(
                 " El Programador %s utiliza el ide %s en entorno de %s, trabaja de forma %s y ha realizado %d trabajos en total",
-                getNombre(), getIdePrincipal(), (getTrabajaRemoto == false ? "Presencial" : "Remota"), getTrabajo());
+                getNombre(), getIdePrincipal(), (getTrabajaRemoto() == false ? "Presencial" : "Remota"), getTrabajo());
     }
 }
