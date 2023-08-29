@@ -16,6 +16,7 @@ public class Operador extends Informatico {
         estadoSistemas = new ArrayList<>();
         herramientaMonitoreo = "HWiNFO";
         atencionClientes = false;
+        setProfesion("Operador");
     }
 
     Operador(String nombre, String apellido, String cedula, String telefono,
@@ -25,6 +26,7 @@ public class Operador extends Informatico {
         estadoSistemas = new ArrayList<>();
         this.herramientaMonitoreo = herramientaMonitoreo;
         this.atencionClientes = atencionClientes;
+        setProfesion("Operador");
     }
 
     public ArrayList<String> getEstadoSistemas() {

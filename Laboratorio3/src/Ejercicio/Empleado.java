@@ -3,11 +3,13 @@ package Ejercicio;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+
 /**
  * @author Grupo 1 - Laboratorio 3
  */
 
-public abstract class Empleado {
+public abstract class Empleado
+{
     private String nombre;
     private String apellido;
     private String cedula;
@@ -130,7 +132,7 @@ public abstract class Empleado {
     }
 
     public String informeExtendido() {
-        return String.format("%s: %s\n%s: %s\n%s: %s\n%s: %s\n%s: %s\n%s: %s\n%s: %d\n&s: %.3f\n%s: %d",
+        return String.format("%s: %s\n%s: %s\n%s: %s\n%s: %s\n%s: %s\n%s: %s\n%s: %d\n%s: %.3f\n%s: %.3f\n\n",
                 "Nombre", getNombre(), "Apellido", getApellido(), "Profesion", getProfesion(), "Cedula",
                 getCedula(), "Telefono", getTelefono(), "Fecha de ingreso", getFechaIngreso(), "Edad", getEdad(),
                 "Salario mensual", getSalario(), "Salario anual", salarioAnual());
@@ -153,6 +155,8 @@ public abstract class Empleado {
     public void saludar() {
         System.out.println("El " + getProfesion() + " " + getNombre() + " dice: Buenos dias colegas!!");
     }
+
+  
 
     // Metodos abstractos, se debe implementar en cada subclase.
     public abstract double salarioAnual();

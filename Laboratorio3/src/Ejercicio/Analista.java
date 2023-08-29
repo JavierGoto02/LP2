@@ -1,9 +1,8 @@
 package Ejercicio;
 
 /**
- *
- * @author Goti
- */
+* @author Grupo 1 - Laboratorio 3
+*/
 public class Analista extends Informatico {
     private String tipoDeAnalisis;
     private String metodoDeAnalisis;
@@ -14,6 +13,7 @@ public class Analista extends Informatico {
         tipoDeAnalisis = "Análisis de requisitos";
         metodoDeAnalisis = "Casos de uso";
         herramientasDeAnalisis = "Excel";
+        setProfesion("Analista");
     }
 
     Analista(String nombre, String apellido, String cedula, String telefono,
@@ -23,6 +23,7 @@ public class Analista extends Informatico {
         this.tipoDeAnalisis = tipoDeAnalisis;
         this.metodoDeAnalisis = metodoDeAnalisis;
         this.herramientasDeAnalisis = herramientasDeAnalisis;
+        setProfesion("Analista");
     }
 
     public String getTipoDeAnalisis() {

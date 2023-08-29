@@ -3,8 +3,7 @@ package Ejercicio;
 import java.util.ArrayList;
 
 /**
- *
- * @author Goti
+ * @author Grupo 1 - Laboratorio 3
  */
 public class Informatico extends Empleado {
     private String area;
@@ -20,6 +19,7 @@ public class Informatico extends Empleado {
         tieneTitulo = false;
         aniosExperiencia = 3;
         proyectos = new ArrayList<>();
+        setProfesion("Informatico");
     }
 
     Informatico(String nombre, String apellido, String cedula, String telefono,
@@ -30,6 +30,7 @@ public class Informatico extends Empleado {
         this.lenguaje = lenguaje;
         this.tieneTitulo = tieneTitulo;
         this.aniosExperiencia = aniosExperiencia;
+        setProfesion("Informatico");
         if (aniosExperiencia < 0) {
             System.out.println(aniosExperiencia + " no son años válidos, inicializando en 3.");
             this.aniosExperiencia = 3;
