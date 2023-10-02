@@ -11,11 +11,11 @@ public class CalcularVentas
 
     private static final int ingresarProducto()
     {
-        System.out.print("Ingrese numero del producto (1 al 5): ");
+        System.out.print("Ingrese numero del producto (1 al 5) o -1 para finalizar: ");
         int numeroProducto = lector.nextInt();
-        while(numeroProducto < 1 || numeroProducto > 5)
+        while(numeroProducto != -1 &&(numeroProducto < 1 || numeroProducto > 5))
         {
-            System.out.print("Numero fuera de rango, ingrese de nuevo: ");
+            System.out.print("Numero fuera de rango, ingrese numero del producto (1 al 5) o -1 para finalizar: ");
             numeroProducto = lector.nextInt();
         }
         return numeroProducto;
@@ -27,7 +27,7 @@ public class CalcularVentas
         int cantidadProducto = lector.nextInt();
         while(cantidadProducto < 1)
         {
-            System.out.print("Numero fuera de rango, ingrese de nuevo: ");
+            System.out.print("Numero fuera de rango, ingrese la cantidad vendida: ");
             cantidadProducto = lector.nextInt();
         }
         return cantidadProducto;
@@ -36,9 +36,11 @@ public class CalcularVentas
     public static void main(String[] args) 
     {
         int producto1 = 0, producto2 = 0, producto3 = 0, producto4 = 0, producto5 = 0, total, centinela;
-        do 
+        while(true)
         {
             int numeroProducto = ingresarProducto();
+            if(numeroProducto == -1)
+                break;
             int cantidadVendida = ingresarCantidad();
             switch (numeroProducto) 
             {
@@ -62,10 +64,8 @@ public class CalcularVentas
                     producto5 += 30000 * cantidadVendida;
                     break;
             }
-            System.out.print("Ingrese -1 para salir, o otro numero para continuar: ");
-            centinela = lector.nextInt();
             System.out.println();
-        } while (centinela != -1);
+        }
 
         total = producto1 + producto2 + producto3 + producto4 + producto5;
         System.out.println("Total producto 1: " + producto1 + "Gs");
@@ -76,6 +76,4 @@ public class CalcularVentas
         System.out.println("Total: " + total + "Gs");
         
     }
-    
-
 }
