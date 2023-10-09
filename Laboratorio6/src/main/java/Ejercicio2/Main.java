@@ -17,7 +17,7 @@ public class Main
             int seccion = aerolinea.ingresarSeccion();
             if(seccion == -1)
             {
-                aerolinea.cerrarLector();
+                aerolinea.despegar();
                 break;  
             }
                 

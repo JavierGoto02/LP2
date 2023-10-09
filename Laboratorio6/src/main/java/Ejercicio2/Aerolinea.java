@@ -48,6 +48,7 @@ public class Aerolinea
     }
 
 
+    //Retorna la posicion de un asiento disponible en el intervalo del argumento, si no hay retorna -1
     private int asientoDisponible(int inicio, int fin)
     {
         for(int i = inicio; i <= fin; i++)
@@ -59,8 +60,9 @@ public class Aerolinea
     }
     
    
-    public void cerrarLector()
+    public void despegar()
     {
+        System.out.println("Iniciando el despegue!");
         lector.close();
     }
     
@@ -68,24 +70,33 @@ public class Aerolinea
     {
         int asientoAsignado = (seccion == 1 ? asientoDisponible(0, 4) : asientoDisponible(5, 9));
         String strSeccion = (seccion == 1? "primera clase" : "economica");
-        if(asientoAsignado != -1)
+        if(asientoAsignado != -1) //Hay asiento disponible.
         {
             asientos[asientoAsignado] = true;
             mostrarInformacion(nroPersona, asientoAsignado + 1, strSeccion);  
         }
-        else
+
+        else //No hay asiento disponible para la seccion elegida
         {
             System.out.println("La seccion " + strSeccion + " esta llena.");
             strSeccion = (seccion == 1? "economica" : "primera clase");
+
+            //Ofrecemos al usuario ser asignado a la otra seccion
             int eleccion = ingresarSeccionAlternativa(strSeccion);
-            if(eleccion == 1)
+            if(eleccion == 1) //Acepto ser asignado a la otra seccion
             {
                 asientoAsignado = (seccion == 1 ? asientoDisponible(5, 9) : asientoDisponible(0, 4));
-                asientos[asientoAsignado] = true;
-                mostrarInformacion(nroPersona, asientoAsignado + 1, strSeccion);
+                if(asientoAsignado != -1) //Si en la otra seccion hay lugar.
+                {
+                    asientos[asientoAsignado] = true;
+                    mostrarInformacion(nroPersona, asientoAsignado + 1, strSeccion);
+                }
+
+                else //Si no hay lugar quiere decir que ya no quedan secciones libres.
+                    System.out.printf("Ya no quedan secciones libres!!\n\n");
             }
-            else
-                System.out.println("El proximo vuelo sale en 3 horas");
+            else //Si no acepta, le avisamos que el proximo vuelo sale en 3 horas.
+                System.out.printf("El proximo vuelo sale en 3 horas\n\n");
         }  
     }
 
