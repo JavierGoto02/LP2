@@ -5,7 +5,7 @@ package Ejercicio1;
  * Extiende la clase FiguraBidimensional y proporciona funcionalidad específica para un círculo.
  * Un círculo se caracteriza por su radio.
  * 
- * @author Grupo 1 - Laboratorio 7
+ * @author Grupo 1 - Laboratorio 7 - Ejercicio 1
  */
 public class Circulo extends FiguraBidimensional
 {

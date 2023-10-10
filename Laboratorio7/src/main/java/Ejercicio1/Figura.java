@@ -5,7 +5,7 @@ package Ejercicio1;
  * Las clases concretas deben extender esta clase y proporcionar una implementación para el cálculo del área.
  * Cada figura tiene un nombre o etiqueta asociada.
  * 
- * @author Grupo 1 - Laboratorio 7
+ * @author Grupo 1 - Laboratorio 7 - Ejercicio 1
  */
 public abstract class Figura 
 {

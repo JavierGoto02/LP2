@@ -4,7 +4,7 @@ package Ejercicio1;
  * Esta clase representa un cubo en un espacio tridimensional.
  * Extiende la clase FiguraTridimensional y proporciona funcionalidad específica para un cubo.
  *
- * @author Grupo 1 - Laboratorio 7
+ * @author Grupo 1 - Laboratorio 7 - Ejercicio 1
  */
 public final class Cubo extends FiguraTridimensional {
 

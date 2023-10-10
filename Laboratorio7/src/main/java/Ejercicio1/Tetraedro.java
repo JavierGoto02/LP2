@@ -4,7 +4,7 @@ package Ejercicio1;
  * Esta clase representa un tetraedro en un espacio tridimensional.
  * Extiende la clase FiguraTridimensional y proporciona funcionalidad específica para un tetraedro.
  *
- * @author Grupo 1 - Laboratorio 7
+ * @author Grupo 1 - Laboratorio 7 - Ejercicio 1
  */
 public final class Tetraedro extends FiguraTridimensional {
 

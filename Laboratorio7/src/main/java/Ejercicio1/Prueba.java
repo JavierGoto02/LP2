@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Grupo 1 - Laboratorio 7
+ * @author Grupo 1 - Laboratorio 7 - Ejercicio 1
  */
 public class Prueba 
 {

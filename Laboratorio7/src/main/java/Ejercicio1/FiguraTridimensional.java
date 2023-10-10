@@ -5,7 +5,7 @@ package Ejercicio1;
  * Extiende la clase Figura y proporciona un método abstracto para calcular el volumen de la figura tridimensional.
  * Las clases concretas deben implementar este método.
  *
- * @author Grupo 1 - Laboratorio 7
+ * @author Grupo 1 - Laboratorio 7 - Ejercicio 1
  */
 public abstract class FiguraTridimensional extends Figura {
 

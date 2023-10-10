@@ -9,7 +9,7 @@ import java.util.Scanner;
  * Lab 7 - Ejercicio 3:
  * Programa de instrucción asistida por computadora (CAI) que ayuda a un
  * estudiante de escuela primaria a que aprenda a multiplicar.
- * @author LP2 - Grupo 1
+ * @author Grupo 1 - Laboratorio 7 - Ejercicio 3
  */
 public class InstruccionAsistida {
     /**

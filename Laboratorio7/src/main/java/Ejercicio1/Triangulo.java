@@ -4,7 +4,7 @@ package Ejercicio1;
  * Esta clase representa un triángulo en un espacio bidimensional.
  * Extiende la clase FiguraBidimensional y proporciona funcionalidad específica para un triángulo.
  *
- * @author Grupo 1 - Laboratorio 7
+ * @author Grupo 1 - Laboratorio 7 - Ejercicio 1
  */
 public final class Triangulo extends FiguraBidimensional {
 
