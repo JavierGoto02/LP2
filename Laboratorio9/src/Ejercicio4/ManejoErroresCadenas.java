@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 /**
  * Esta clase demuestra el manejo de errores para una cadena de caracteres.
- * @author Grupo 1 - Laboratorio 9 - Ejercicio 4
+ * @author Grupo 1
  */
 public class ManejoErroresCadenas {
 

@@ -5,7 +5,7 @@ import java.util.Scanner;
 /**
  * Para cumplir estrictamente con la recomendación, debes deshabilitar las aserciones en el código de producción. 
  * Puedes hacerlo agregando la opción -ea al ejecutar el programa de la siguiente manera: java -ea EjercicioAssert
- * @author Grupo 1 - Laboratorio 9 - Ejercicio 2
+ * @author Grupo 1 
  */
 public class EjercicioAssert 
 {

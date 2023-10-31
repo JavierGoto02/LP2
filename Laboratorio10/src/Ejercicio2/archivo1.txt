@@ -1,0 +1,3 @@
+Juan, Perez, 90
+Maria, Lopez, 85
+Pedro, Rodriguez, 78

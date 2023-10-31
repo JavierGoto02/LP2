@@ -1,7 +1,7 @@
 package Ejercicio4;
 /**
  * Excepción personalizada para manejar errores relacionados con la longitud de una cadena.
- * @author Grupo 1 - Laboratorio 9 - Ejercicio 4
+ * @author Grupo 1
  */
 public class LongitudCadenaException extends Exception {
 

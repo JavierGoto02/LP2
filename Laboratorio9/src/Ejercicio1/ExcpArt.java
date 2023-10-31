@@ -2,7 +2,7 @@ package Ejercicio1;
 
 /**
  *
- * @author Grupo 1 - Laboratorio 9 - Ejercicio 1
+ * @author Grupo 1 
  */
 
 /*
