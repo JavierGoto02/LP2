@@ -1,6 +1,6 @@
 package Ejercicio1;
 /**
- * @author Grupo 1 - Laboratorio 10 - Ejercicio 1
+ * @author Grupo 1 
  * La clase metodo1 extiende la clase Thread y sobrescribe el método run().
  * Proporciona una implementación simple que imprime un mensaje en la consola.
  */

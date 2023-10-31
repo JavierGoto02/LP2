@@ -1,6 +1,6 @@
 package Ejercicio1;
 /**
- * @author Grupo 1 - Laboratorio 10 - Ejercicio 1
+ * @author Grupo 1 
  * La clase metodo2 implementa la interfaz Runnable.
  * Proporciona una implementación simple del método run() que imprime un mensaje en la consola.
  */

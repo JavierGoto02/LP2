@@ -6,7 +6,7 @@ import java.util.Random;
 
 /**
  *
- * @author Grupo 1 - Laboratorio 10 - Ejercicio 3
+ * @author Grupo 1 
  */
 public class Carrera {
     /**
