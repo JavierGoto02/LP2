@@ -5,7 +5,7 @@ package Clases;
  * @author Grupo 1
  */
 
-public class Cuenta 
+public abstract class Cuenta 
 {
     private int ID;
     private String cliente;
