@@ -8,48 +8,24 @@ package Clases;
 public class Transferencia 
 {
     private int idTransferencia;
-    private int idFuente;
-    private int idDestino;
+    private Cuenta Fuente;
+    private Cuenta Destino;
     private int monto;
 
-    public Transferencia(int idTransferencia, int idFuente, int idDestino, int monto) {
-        this.idTransferencia = idTransferencia;
-        this.idFuente = idFuente;
-        this.idDestino = idDestino;
+    public Transferencia(Cuenta Fuente, Cuenta Destino, int monto) {
+        this.Fuente = Fuente;
+        this.Destino = Destino;
         this.monto = monto;
     }
-
-    public int getIdTransferencia() {
-        return idTransferencia;
+    
+    public String emitirComprobante()
+    {
+        return "**************COMPROBANTE TRANSFERENCIA**************\n" + "Fuente: " + Fuente.toShortString() + "\nDestino: " +  Destino.toShortString() + "\n";
     }
+    
+    
 
-    public void setIdTransferencia(int idTransferencia) {
-        this.idTransferencia = idTransferencia;
-    }
-
-    public int getIdFuente() {
-        return idFuente;
-    }
-
-    public void setIdFuente(int idFuente) {
-        this.idFuente = idFuente;
-    }
-
-    public int getIdDestino() {
-        return idDestino;
-    }
-
-    public void setIdDestino(int idDestino) {
-        this.idDestino = idDestino;
-    }
-
-    public int getMonto() {
-        return monto;
-    }
-
-    public void setMonto(int monto) {
-        this.monto = monto;
-    }
+ 
     
     
     

@@ -11,16 +11,18 @@ public class Cuenta
 {
     private int ID;
     private Cliente cliente;
-    private int saldo;
+    private Tarjeta tarjeta;
     private int pinTransaccion;
-    ArrayList<Comprobante> comprobantes; //Tiene el comprobante de todas las transacciones hechas por la cuenta
+    ArrayList<Transferencia> transferencias; 
+    ArrayList<Pago> pagos;
 
-    public Cuenta(int ID, Cliente cliente, int saldo, int pinTransaccion) {
+    public Cuenta(int ID, Cliente cliente, Tarjeta tarjeta, int pinTransaccion) {
         this.ID = ID;
         this.cliente = cliente;
-        this.saldo = saldo;
+        this.tarjeta = tarjeta;
         this.pinTransaccion = pinTransaccion;
-        comprobantes = new ArrayList<>();
+        transferencias = new ArrayList<>();
+        pagos = new ArrayList<>();
     }
     
     
@@ -42,18 +44,6 @@ public class Cuenta
         this.cliente = cliente;
     }
 
-    public int getSaldo() {
-        return saldo;
-    }
-
-    public void setSaldo(int saldo) {
-        this.saldo = saldo;
-    }
-    public void aumentarSaldo(int monto)
-    {
-        saldo += monto;
-    }
-
     public int getPinTransaccion() {
         return pinTransaccion;
     }
@@ -67,17 +57,25 @@ public class Cuenta
     //El sistema se encargará de obtener los datos del destinatario y validar datos
     public boolean realizarTransferencia(Cuenta destinatario, int monto)
     {
-        if(saldo >= monto)
+        if(tarjeta.getSaldo() >= monto)
         {
-            destinatario.aumentarSaldo(monto);
-            saldo -= monto;
+            destinatario.tarjeta.aumentarSaldo(monto);
+            tarjeta.decrementarSaldo(monto);
             //Generar los ids automaticamente
-            ComprobanteTransferencia comprobante = new ComprobanteTransferencia(345, 222, monto, this, destinatario);
-            comprobantes.add(comprobante);
+            Transferencia transferencia = new Transferencia(this, destinatario, monto);
+            transferencias.add(transferencia);
             return true; //Realizado con exito
         }
         
         return false; //Realizado sin exito
+    }
+    
+    public boolean realizarPago(int monto)
+    {
+        if(tarjeta.getSaldo() >= monto)
+        {
+            Pago pago = new Pago();
+        }
     }
     
     public String toShortString()

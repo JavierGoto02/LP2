@@ -9,48 +9,24 @@ public class Pago
 {
     
     private int idTransaccion;
+    private Cuenta pagador;
     private String descripcionServicio;
     private int monto;
     private String metodoPago;
 
-    public Pago(int idTransaccion, String descripcionServicio, int monto, String metodoPago) {
-        this.idTransaccion = idTransaccion;
+    public Pago(Cuenta pagador, String descripcionServicio, int monto, String metodoPago) {
+        this.pagador = pagador;
         this.descripcionServicio = descripcionServicio;
         this.monto = monto;
         this.metodoPago = metodoPago;
     }
-
-    public int getIdTransaccion() {
-        return idTransaccion;
+    
+    public String emitirComprobante()
+    {
+        return "**************COMPROBANTE PAGO**************\n" + "Transaccion Nro: " + idTransaccion + "\nPagador: " + pagador.toShortString() + 
+                "\nDescripcion Servicio: " + descripcionServicio + "\nMonto a pagar: " + monto + "Metodo de pago: " + metodoPago + "\n";
     }
-
-    public void setIdTransaccion(int idTransaccion) {
-        this.idTransaccion = idTransaccion;
-    }
-
-    public String getDescripcionServicio() {
-        return descripcionServicio;
-    }
-
-    public void setDescripcionServicio(String descripcionServicio) {
-        this.descripcionServicio = descripcionServicio;
-    }
-
-    public int getMonto() {
-        return monto;
-    }
-
-    public void setMonto(int monto) {
-        this.monto = monto;
-    }
-
-    public String getMetodoPago() {
-        return metodoPago;
-    }
-
-    public void setMetodoPago(String metodoPago) {
-        this.metodoPago = metodoPago;
-    }
+  
     
     
     
