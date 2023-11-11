@@ -21,7 +21,6 @@ public class Cuenta {
         this.cliente = cliente;
         this.tarjeta = tarjeta;
         this.pinTransaccion = pinTransaccion;
-        //Sus???
         transferencias = new ArrayList<>();
         pagos = new ArrayList<>();
         Sistema.agregarCuenta(this);

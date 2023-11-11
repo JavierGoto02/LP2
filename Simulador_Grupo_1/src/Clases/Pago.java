@@ -11,9 +11,9 @@ public class Pago {
     private Cuenta pagador;
     private String descripcionServicio;
     private int monto;
-    private String metodoPago;
+    private Tarjeta metodoPago;
 
-    public Pago(Cuenta pagador, String descripcionServicio, int monto, String metodoPago) {
+    public Pago(Cuenta pagador, String descripcionServicio, int monto, Tarjeta metodoPago) {
         idTransaccion = Sistema.generarIDTransaccion();
         this.pagador = pagador;
         this.descripcionServicio = descripcionServicio;
@@ -42,11 +42,11 @@ public class Pago {
         this.monto = monto;
     }
 
-    public String getMetodoPago() {
+    public Tarjeta getMetodoPago() {
         return metodoPago;
     }
 
-    public void setMetodoPago(String metodoPago) {
+    public void setMetodoPago(Tarjeta metodoPago) {
         this.metodoPago = metodoPago;
     }
 
