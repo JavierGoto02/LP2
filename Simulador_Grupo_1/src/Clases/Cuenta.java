@@ -49,7 +49,7 @@ public class Cuenta
     public void setSaldo(int saldo) {
         this.saldo = saldo;
     }
-    public void aunentarSaldo(int monto)
+    public void aumentarSaldo(int monto)
     {
         saldo += monto;
     }
@@ -69,11 +69,12 @@ public class Cuenta
     {
         if(saldo >= monto)
         {
-            destinatario.aunentarSaldo(monto);
+            destinatario.aumentarSaldo(monto);
             saldo -= monto;
             //Generar los ids automaticamente
             ComprobanteTransferencia comprobante = new ComprobanteTransferencia(345, 222, monto, this, destinatario);
             comprobantes.add(comprobante);
+            return true; //Realizado con exito
         }
         
         return false; //Realizado sin exito
@@ -83,6 +84,8 @@ public class Cuenta
     {
         return "Nro cuenta: " + ID + "\n" + "Propietario: " + cliente.toShortString();
     }
+    
+    
             
 
 }

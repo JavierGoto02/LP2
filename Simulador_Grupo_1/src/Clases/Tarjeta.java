@@ -63,5 +63,15 @@ public class Tarjeta
         this.idCuenta = idCuenta;
     }
     
+    public void aumentarSaldo(int monto)
+    {
+        saldo += monto;
+    }
+    
+    public void decrementarSaldo(int monto)
+    {
+        saldo -= monto;
+    }
+    
     
 }
