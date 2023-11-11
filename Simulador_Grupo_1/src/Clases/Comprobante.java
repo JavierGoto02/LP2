@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Clases;
 
 /**
@@ -12,6 +8,8 @@ public abstract class Comprobante
 {
     private int idComprobante;
     private int monto;
+    private Cuenta fuente;
+    private Cuenta destino;
 
     public Comprobante(int idComprobante, int monto) {
         this.idComprobante = idComprobante;
@@ -33,6 +31,15 @@ public abstract class Comprobante
     public void setMonto(int monto) {
         this.monto = monto;
     }
+
+//    @Override
+//    public String toString() 
+//    {
+//        
+//        
+//    }
+    
+    
     
     
 }

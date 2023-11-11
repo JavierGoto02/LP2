@@ -1,8 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Clases;
+
+import java.util.HashMap;
 
 /**
  *
@@ -12,6 +10,10 @@ public class Sistema
 {
     String dominio;
     String nombre;
+    
+    //Contiene todas las cuentas creadas en el sistema
+    HashMap<Integer, Cuenta> cuentaPorCodigo = new HashMap<>();
+    
 
     public Sistema(String dominio, String nombre) {
         this.dominio = dominio;
