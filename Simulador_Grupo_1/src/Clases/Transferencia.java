@@ -7,36 +7,41 @@ package Clases;
  */
 public class Transferencia {
     private int idTransferencia;
-    private int idFuente;
-    private int idDestino;
+    private Cuenta Fuente;
+    private Cuenta Destino;
     private int monto;
 
-    public Transferencia(int idTransferencia, int idFuente, int idDestino, int monto) {
+    public Transferencia(Cuenta Fuente, Cuenta Destino, int monto) {
         idTransferencia = Sistema.generarIDTransferencia();
-        this.idFuente = idFuente;
-        this.idDestino = idDestino;
+        this.Fuente = Fuente;
+        this.Destino = Destino;
         this.monto = monto;
         Sistema.agregarTransferencia(this);
+    }
+
+    public String emitirComprobante() {
+        return "**************COMPROBANTE TRANSFERENCIA**************\n" + "Fuente: " + Fuente.toShortString()
+                + "\nDestino: " + Destino.toShortString() + "\n";
     }
 
     public int getIdTransferencia() {
         return idTransferencia;
     }
 
-    public int getIdFuente() {
-        return idFuente;
+    public Cuenta getFuente() {
+        return Fuente;
     }
 
-    public void setIdFuente(int idFuente) {
-        this.idFuente = idFuente;
+    public void setFuente(Cuenta fuente) {
+        Fuente = fuente;
     }
 
-    public int getIdDestino() {
-        return idDestino;
+    public Cuenta getDestino() {
+        return Destino;
     }
 
-    public void setIdDestino(int idDestino) {
-        this.idDestino = idDestino;
+    public void setDestino(Cuenta destino) {
+        Destino = destino;
     }
 
     public int getMonto() {
