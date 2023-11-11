@@ -5,7 +5,7 @@ package Clases;
  *
  * @author Grupo 1
  */
-public class Transferencia {
+public class Transferencia implements Comprobante{
     private int idTransferencia;
     private Cuenta Fuente;
     private Cuenta Destino;
@@ -19,6 +19,7 @@ public class Transferencia {
         Sistema.agregarTransferencia(this);
     }
 
+    @Override
     public String emitirComprobante() {
         return "**************COMPROBANTE TRANSFERENCIA**************\n" + "Fuente: " + Fuente.toShortString()
                 + "\nDestino: " + Destino.toShortString() + "\n";

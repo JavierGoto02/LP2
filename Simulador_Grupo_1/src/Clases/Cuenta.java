@@ -13,16 +13,14 @@ public class Cuenta {
     private Cliente cliente;
     private Tarjeta tarjeta;
     private int pinTransaccion;
-    ArrayList<Transferencia> transferencias;
-    ArrayList<Pago> pagos;
+    ArrayList<Comprobante> comprobantes;
 
     public Cuenta(Cliente cliente, Tarjeta tarjeta, int pinTransaccion) {
         ID = Sistema.generarIDCuenta();
         this.cliente = cliente;
         this.tarjeta = tarjeta;
         this.pinTransaccion = pinTransaccion;
-        transferencias = new ArrayList<>();
-        pagos = new ArrayList<>();
+        comprobantes = new ArrayList<>();
         Sistema.agregarCuenta(this);
     }
 
@@ -47,23 +45,28 @@ public class Cuenta {
     }
 
     //El sistema se encargará de obtener los datos del destinatario y validar datos
-    public boolean realizarTransferencia(Cuenta destinatario, int monto) {
-        if (tarjeta.getSaldo() >= monto) {
-            destinatario.tarjeta.aumentarSaldo(monto);
-            tarjeta.decrementarSaldo(monto);
+    public boolean realizarTransferencia(Cuenta destinatario, int monto) 
+    {
+        if (tarjeta.consultarSaldo() >= monto) 
+        {
+            destinatario.tarjeta.abonarSaldo(monto);
+            tarjeta.realizarPago(monto);
             //Generar los ids automaticamente
             Transferencia transferencia = new Transferencia(this, destinatario, monto);
-            transferencias.add(transferencia);
+            comprobantes.add(transferencia);
             return true; //Realizado con exito
         }
 
         return false; //Realizado sin exito
     }
 
-    public boolean realizarPago(int monto) {
-        if (tarjeta.getSaldo() >= monto) {
-            Pago pago = new Pago(this, "Ande", monto, tarjeta);
-            pagos.add(pago);
+    public boolean realizarPagoServicio(int monto, String descripcionServicio) 
+    {
+        if (tarjeta.consultarSaldo() >= monto) 
+        {
+            tarjeta.realizarPago(monto);
+            Pago pago = new Pago(this, descripcionServicio, monto, tarjeta);
+            comprobantes.add(pago);
             return true;
         }
         return false;

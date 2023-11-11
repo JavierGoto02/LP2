@@ -11,7 +11,6 @@ public class Sistema {
     String dominio;
     String nombre;
 
-    //Contiene todas las cuentas creadas en el sistema
     private static HashMap<Integer, Cuenta> cuentaPorCodigo = new HashMap<>();
     private static HashMap<Integer, Cliente> clientePorCodigo = new HashMap<>();
     private static HashMap<Integer, Pago> transaccionPorCodigo = new HashMap<>();

@@ -5,13 +5,14 @@ package Clases;
  *
  * @author Grupo 1
  */
-public class Pago {
+public class Pago implements Comprobante{
 
     private int idTransaccion;
     private Cuenta pagador;
     private String descripcionServicio;
     private int monto;
     private Tarjeta metodoPago;
+
 
     public Pago(Cuenta pagador, String descripcionServicio, int monto, Tarjeta metodoPago) {
         idTransaccion = Sistema.generarIDTransaccion();
@@ -50,6 +51,7 @@ public class Pago {
         this.metodoPago = metodoPago;
     }
 
+    @Override
     public String emitirComprobante() {
         return "**************COMPROBANTE PAGO**************\n" + "Transaccion Nro: " + idTransaccion + "\nPagador: "
                 + pagador.toShortString() +

@@ -4,12 +4,12 @@ package Clases;
  *
  * @author Grupo 1
  */
-public class Individuo extends Cliente {
+public class Persona extends Cliente {
     private int CI;
     private String nombre;
     private String apellido;
 
-    public Individuo(int CI, String nombre, String apellido, int ID, int PIN, String direccion, String telefono) {
+    public Persona(int CI, String nombre, String apellido, int ID, int PIN, String direccion, String telefono) {
         super(direccion, telefono);
         this.CI = CI;
         this.nombre = nombre;
