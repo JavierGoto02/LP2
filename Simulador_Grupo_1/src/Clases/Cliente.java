@@ -5,7 +5,7 @@ package Clases;
  * @author Grupo 1
  */
 
-public class Cliente 
+public abstract class Cliente 
 {
     private int ID;
     private int PIN;
@@ -53,6 +53,20 @@ public class Cliente
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
+
+    @Override
+    public String toString() 
+    {
+        return "Identificador: " + ID + "\n" + "Direccion: " + direccion + "\n" + "Telefono: " + telefono + "\n";
+    }
+    
+    public String toShortString()
+    {
+        return "{ID=" + ID +", Telefono=" + telefono;
+    }
+    
+    
+   
     
     
 

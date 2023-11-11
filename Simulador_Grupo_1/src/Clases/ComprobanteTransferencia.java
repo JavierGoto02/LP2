@@ -10,11 +10,12 @@ public class ComprobanteTransferencia extends Comprobante
     
     private int idTransferencia;
 
-    public ComprobanteTransferencia(int idTransferencia, int idComprobante, int monto) {
-        super(idComprobante, monto);
+    public ComprobanteTransferencia(int idTransferencia, int idComprobante, int monto, Cuenta fuente, Cuenta destino) {
+        super(idComprobante, monto, fuente, destino);
         this.idTransferencia = idTransferencia;
     }
 
+   
     public int getIdTransferencia() {
         return idTransferencia;
     }

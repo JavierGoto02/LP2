@@ -41,6 +41,19 @@ public class Individuo extends Cliente
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
+
+    @Override
+    public String toString() 
+    {
+        return super.toString() + "Nombre: " + nombre + "\n" + "Apellido: " + apellido + "\n" + "CI: " + CI + "\n";
+    }
+    
+    public String toShortString()
+    {
+        return super.toShortString() + ", Nombre=" + nombre + ", Apellido=" + apellido + "}\n";
+    }
+    
+    
     
     
     

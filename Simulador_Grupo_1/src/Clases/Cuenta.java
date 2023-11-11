@@ -13,7 +13,7 @@ public class Cuenta
     private Cliente cliente;
     private int saldo;
     private int pinTransaccion;
-    ArrayList<Comprobante> comprobantes;
+    ArrayList<Comprobante> comprobantes; //Tiene el comprobante de todas las transacciones hechas por la cuenta
 
     public Cuenta(int ID, Cliente cliente, int saldo, int pinTransaccion) {
         this.ID = ID;
@@ -71,14 +71,18 @@ public class Cuenta
         {
             destinatario.aunentarSaldo(monto);
             saldo -= monto;
-            return true; //Realizado con exito
+            //Generar los ids automaticamente
+            ComprobanteTransferencia comprobante = new ComprobanteTransferencia(345, 222, monto, this, destinatario);
+            comprobantes.add(comprobante);
         }
         
         return false; //Realizado sin exito
     }
     
-//    public void getInformacion()
-//    {
-//        System.out.printf("Nombre: %s");
-//    }
+    public String toShortString()
+    {
+        return "Nro cuenta: " + ID + "\n" + "Propietario: " + cliente.toShortString();
+    }
+            
+
 }

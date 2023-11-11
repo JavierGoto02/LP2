@@ -36,6 +36,16 @@ public class Empresa extends Cliente
         this.ruc = ruc;
     }
     
+    @Override
+    public String toString() 
+    {
+        return super.toString() + "Razon Social: " + razonSocial + "\n" + "Ruc: " + ruc + "\n";
+    }
+    
+    public String toShortString()
+    {
+        return super.toShortString() + ", Ruc=" + ruc + "}\n";
+    }
     
     
 }

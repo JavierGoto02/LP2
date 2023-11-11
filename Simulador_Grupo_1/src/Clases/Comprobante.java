@@ -11,10 +11,14 @@ public abstract class Comprobante
     private Cuenta fuente;
     private Cuenta destino;
 
-    public Comprobante(int idComprobante, int monto) {
+    public Comprobante(int idComprobante, int monto, Cuenta fuente, Cuenta destino) {
         this.idComprobante = idComprobante;
         this.monto = monto;
+        this.fuente = fuente;
+        this.destino = destino;
     }
+
+    
 
     public int getIdComprobante() {
         return idComprobante;
@@ -32,12 +36,11 @@ public abstract class Comprobante
         this.monto = monto;
     }
 
-//    @Override
-//    public String toString() 
-//    {
-//        
-//        
-//    }
+    @Override
+    public String toString() 
+    {
+        return "Nro comprobante: " + idComprobante + "\nFuente: " + fuente.toShortString()+ "\nDestino:" + destino.toShortString()+ "\nMonto: " + monto + "\n";
+    }
     
     
     
