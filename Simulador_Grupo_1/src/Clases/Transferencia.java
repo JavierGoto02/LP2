@@ -5,26 +5,22 @@ package Clases;
  *
  * @author Grupo 1
  */
-public class Transferencia 
-{
+public class Transferencia {
     private int idTransferencia;
     private int idFuente;
     private int idDestino;
     private int monto;
 
     public Transferencia(int idTransferencia, int idFuente, int idDestino, int monto) {
-        this.idTransferencia = idTransferencia;
+        idTransferencia = Sistema.generarIDTransferencia();
         this.idFuente = idFuente;
         this.idDestino = idDestino;
         this.monto = monto;
+        Sistema.agregarTransferencia(this);
     }
 
     public int getIdTransferencia() {
         return idTransferencia;
-    }
-
-    public void setIdTransferencia(int idTransferencia) {
-        this.idTransferencia = idTransferencia;
     }
 
     public int getIdFuente() {
@@ -50,7 +46,5 @@ public class Transferencia
     public void setMonto(int monto) {
         this.monto = monto;
     }
-    
-    
-    
+
 }

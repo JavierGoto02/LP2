@@ -5,27 +5,23 @@ package Clases;
  *
  * @author Grupo 1
  */
-public class Pago 
-{
-    
+public class Pago {
+
     private int idTransaccion;
     private String descripcionServicio;
     private int monto;
     private String metodoPago;
 
-    public Pago(int idTransaccion, String descripcionServicio, int monto, String metodoPago) {
-        this.idTransaccion = idTransaccion;
+    public Pago(String descripcionServicio, int monto, String metodoPago) {
+        idTransaccion = Sistema.generarIDTransaccion();
         this.descripcionServicio = descripcionServicio;
         this.monto = monto;
         this.metodoPago = metodoPago;
+        Sistema.agregarTransaccion(this);
     }
 
     public int getIdTransaccion() {
         return idTransaccion;
-    }
-
-    public void setIdTransaccion(int idTransaccion) {
-        this.idTransaccion = idTransaccion;
     }
 
     public String getDescripcionServicio() {
@@ -51,7 +47,5 @@ public class Pago
     public void setMetodoPago(String metodoPago) {
         this.metodoPago = metodoPago;
     }
-    
-    
-    
+
 }

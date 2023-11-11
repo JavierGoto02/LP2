@@ -7,31 +7,25 @@ import java.util.ArrayList;
  * @author Grupo 1
  */
 
-public class Cuenta 
-{
+public class Cuenta {
+
     private int ID;
     private Cliente cliente;
     private int saldo;
     private int pinTransaccion;
     ArrayList<Comprobante> comprobantes; //Tiene el comprobante de todas las transacciones hechas por la cuenta
 
-    public Cuenta(int ID, Cliente cliente, int saldo, int pinTransaccion) {
-        this.ID = ID;
+    public Cuenta(Cliente cliente, int saldo, int pinTransaccion) {
+        ID = Sistema.generarIDCuenta();
         this.cliente = cliente;
         this.saldo = saldo;
         this.pinTransaccion = pinTransaccion;
         comprobantes = new ArrayList<>();
+        Sistema.agregarCuenta(this);
     }
-    
-    
-    
 
     public int getID() {
         return ID;
-    }
-
-    public void setID(int ID) {
-        this.ID = ID;
     }
 
     public Cliente getCliente() {
@@ -49,8 +43,8 @@ public class Cuenta
     public void setSaldo(int saldo) {
         this.saldo = saldo;
     }
-    public void aumentarSaldo(int monto)
-    {
+
+    public void aumentarSaldo(int monto) {
         saldo += monto;
     }
 
@@ -61,14 +55,10 @@ public class Cuenta
     public void setPinTransaccion(int pinTransaccion) {
         this.pinTransaccion = pinTransaccion;
     }
-    
-   
-    
+
     //El sistema se encargará de obtener los datos del destinatario y validar datos
-    public boolean realizarTransferencia(Cuenta destinatario, int monto)
-    {
-        if(saldo >= monto)
-        {
+    public boolean realizarTransferencia(Cuenta destinatario, int monto) {
+        if (saldo >= monto) {
             destinatario.aumentarSaldo(monto);
             saldo -= monto;
             //Generar los ids automaticamente
@@ -76,16 +66,12 @@ public class Cuenta
             comprobantes.add(comprobante);
             return true; //Realizado con exito
         }
-        
+
         return false; //Realizado sin exito
     }
-    
-    public String toShortString()
-    {
+
+    public String toShortString() {
         return "Nro cuenta: " + ID + "\n" + "Propietario: " + cliente.toShortString();
     }
-    
-    
-            
 
 }

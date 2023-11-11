@@ -7,8 +7,7 @@ import java.util.Date;
  *
  * @author Grupo 1
  */
-public class Tarjeta 
-{
+public class Tarjeta {
     private int nroTarjeta;
     private int saldo;
     private Date fechaVencimiento;
@@ -62,16 +61,13 @@ public class Tarjeta
     public void setIdCuenta(int idCuenta) {
         this.idCuenta = idCuenta;
     }
-    
-    public void aumentarSaldo(int monto)
-    {
+
+    public void aumentarSaldo(int monto) {
         saldo += monto;
     }
-    
-    public void decrementarSaldo(int monto)
-    {
+
+    public void decrementarSaldo(int monto) {
         saldo -= monto;
     }
-    
-    
+
 }

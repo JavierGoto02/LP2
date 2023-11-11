@@ -4,20 +4,18 @@ package Clases;
  *
  * @author Grupo 1
  */
-public class Individuo extends Cliente
-{
+public class Individuo extends Cliente {
     private int CI;
     private String nombre;
     private String apellido;
 
     public Individuo(int CI, String nombre, String apellido, int ID, int PIN, String direccion, String telefono) {
-        super(ID, PIN, direccion, telefono);
+        super(direccion, telefono);
         this.CI = CI;
         this.nombre = nombre;
         this.apellido = apellido;
     }
 
-    
     public int getCI() {
         return CI;
     }
@@ -43,18 +41,12 @@ public class Individuo extends Cliente
     }
 
     @Override
-    public String toString() 
-    {
+    public String toString() {
         return super.toString() + "Nombre: " + nombre + "\n" + "Apellido: " + apellido + "\n" + "CI: " + CI + "\n";
     }
-    
-    public String toShortString()
-    {
+
+    public String toShortString() {
         return super.toShortString() + ", Nombre=" + nombre + ", Apellido=" + apellido + "}\n";
     }
-    
-    
-    
-    
-    
+
 }
