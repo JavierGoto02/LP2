@@ -9,4 +9,5 @@ public interface Comprobante
     String emitirComprobante();
     boolean esTranferencia();
     int getIdentificador();
+    int getIDCuenta();
 }

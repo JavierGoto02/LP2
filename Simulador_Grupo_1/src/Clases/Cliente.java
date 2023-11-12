@@ -7,11 +7,11 @@ import java.util.ArrayList;
  * @author Grupo 1
  */
 
-public abstract class Cliente {
+public abstract class Cliente 
+{
     private int ID;
     private String direccion;
     private String telefono;
-    private ArrayList<Cuenta> cuentas;
 
     public Cliente(int Identificador, String direccion, String telefono) {
         ID = Identificador;
@@ -39,20 +39,13 @@ public abstract class Cliente {
         this.telefono = telefono;
     }
 
-    public void agregarCuenta(Cuenta cuenta)
-    {
-        cuentas.add(cuenta);
-    }
+    
 
     public ArrayList<Cuenta> getCuentas()
     {
-        return cuentas;
+        return Sistema.obtenerListaCuentas(ID);
     }
 
-    public void eliminarCuenta(Cuenta cuentaEliminar)
-    {
-        cuentas.remove(cuentaEliminar);
-    }
 
     @Override
     public String toString() {

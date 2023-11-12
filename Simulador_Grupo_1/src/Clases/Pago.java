@@ -8,18 +8,27 @@ package Clases;
 public class Pago implements Comprobante{
 
     private int idTransaccion;
-    private Cuenta pagador;
+    private int idPagador;
     private String descripcionServicio;
     private int monto;
     private Tarjeta metodoPago;
 
 
-    public Pago(Cuenta pagador, String descripcionServicio, int monto, Tarjeta metodoPago) {
-        this.pagador = pagador;
+    public Pago(int pagador, String descripcionServicio, int monto, Tarjeta metodoPago) {
+        this.idPagador = pagador;
         this.descripcionServicio = descripcionServicio;
         this.monto = monto;
         this.metodoPago = metodoPago;
     }
+
+    
+
+    @Override
+    public int getIDCuenta() {
+        return idPagador;
+    }
+
+
 
     @Override
     public boolean esTranferencia() {
@@ -60,7 +69,9 @@ public class Pago implements Comprobante{
     }
 
     @Override
-    public String emitirComprobante() {
+    public String emitirComprobante() 
+    {
+        Cuenta pagador = Sistema.obtenerObjetoCuenta(idPagador);
         return "**************COMPROBANTE PAGO**************\n" + "Transaccion Nro: " + idTransaccion + "\nPagador: "
                 + pagador.toShortString() +
                 "\nDescripcion Servicio: " + descripcionServicio + "\nMonto a pagar: " + monto + "Metodo de pago: "

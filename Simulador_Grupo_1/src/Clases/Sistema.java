@@ -1,6 +1,8 @@
 package Clases;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -14,6 +16,43 @@ public class Sistema
     private static HashMap<Integer, Cliente> clientePorCodigo = new HashMap<>();
     private static HashMap<Integer, Pago> transaccionPorCodigo = new HashMap<>();
     private static HashMap<Integer, Transferencia> transferenciaPorCodigo = new HashMap<>();
+
+
+
+    //Retorna una lista de comprobantes correspondiente a una cuenta en especifico
+    public static ArrayList<Comprobante> obtenerListaComprobantes(int idCuenta)
+    {
+        ArrayList<Comprobante> listaComprobantes = new ArrayList<>();
+        for(Map.Entry<Integer, Pago> entry : transaccionPorCodigo.entrySet())
+        {
+            if(entry.getValue().getIDCuenta() == idCuenta)
+                listaComprobantes.add(entry.getValue());
+        }
+
+        for(Map.Entry<Integer, Transferencia> entry : transferenciaPorCodigo.entrySet())
+        {
+            if(entry.getValue().getIDCuenta() == idCuenta)
+                listaComprobantes.add(entry.getValue());
+        }
+        return listaComprobantes;
+    }
+
+
+    //Retorna una lista de cuentas correspondiente a un cliente
+    public static ArrayList<Cuenta> obtenerListaCuentas(int idCliente)
+    {
+        ArrayList<Cuenta> listaCuentas = new ArrayList<>();
+
+        for(Map.Entry<Integer, Cuenta> entry : cuentaPorCodigo.entrySet())
+        {
+            if(entry.getValue().getIDPropietario() == idCliente)
+                listaCuentas.add(entry.getValue());
+    
+        }
+
+        return listaCuentas;
+
+    }
 
 
     // Métodos para obtener objetos por su código
@@ -127,11 +166,7 @@ public class Sistema
         // Crear un nuevo objeto Cuenta con la información proporcionada
         Cuenta nuevaCuenta = new Cuenta(IDpropietarioCuenta, tarjeta, pinTransaccion, identificadorCuenta);
 
-        // Obtener el propietario de la cuenta a partir de su identificador
-        Cliente propietarioCuenta = clientePorCodigo.get(IDpropietarioCuenta);
-
-        // Agregar la cuenta al propietario y al HashMap de cuentas por su identificador
-        propietarioCuenta.agregarCuenta(nuevaCuenta);
+        // Agregar al HashMap de cuentas por su identificador
         cuentaPorCodigo.put(identificadorCuenta, nuevaCuenta);
     }
 
@@ -143,7 +178,6 @@ public class Sistema
             System.out.println("El cliente debe abonar la deuda de la cuenta: " + cuentaEliminar.toShortString() + " para eliminar");
         else
         {
-            Cliente propietarioCuenta = clientePorCodigo.get(cuentaEliminar.getIDPropietario());
             // Iterar sobre los comprobantes de la cuenta
             for(Comprobante comprobantesCuenta : cuentaEliminar.getComprobantes())
             {
@@ -154,8 +188,6 @@ public class Sistema
                 else
                     transaccionPorCodigo.remove(comprobantesCuenta.getIdentificador());
             }
-
-            propietarioCuenta.eliminarCuenta(cuentaEliminar);
             cuentaPorCodigo.remove(cuentaEliminar.getID());
         }
         
@@ -198,12 +230,17 @@ public class Sistema
                 cuentaPorCodigo.remove(cuenta.getID());
 
                 // Llamar al método eliminar de la cuenta para realizar acciones específicas de eliminación
-                cuenta.eliminar();
             }
         }
 
         // Eliminar al cliente del HashMap de clientes por su identificador
         clientePorCodigo.remove(clienteEliminar.getID());
+    }
+
+
+    public static void realizarTransferencia()
+    {
+
     }
 
 }

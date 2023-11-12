@@ -14,7 +14,6 @@ public class Cuenta
     private int idPropietario;
     private Tarjeta tarjeta;
     private int pinTransaccion;
-    ArrayList<Comprobante> comprobantes;
 
     public Cuenta(int idpropietario, Tarjeta tarjeta, int pinTransaccion, int ID) 
     {
@@ -22,7 +21,6 @@ public class Cuenta
         this.idPropietario = idpropietario;
         this.tarjeta = tarjeta;
         this.pinTransaccion = pinTransaccion;
-        comprobantes = new ArrayList<>();
     }
 
     public int getID() {
@@ -40,7 +38,7 @@ public class Cuenta
 
     public ArrayList<Comprobante> getComprobantes()
     {
-        return comprobantes;
+        return Sistema.obtenerListaComprobantes(ID);
     }
 
     public int getPinTransaccion() {
@@ -58,9 +56,6 @@ public class Cuenta
         {
             destinatario.tarjeta.abonarSaldo(monto);
             tarjeta.realizarPago(monto);
-            //Generar los ids automaticamente
-            Transferencia transferencia = new Transferencia(this.ID, destinatario.ID, monto);
-            comprobantes.add(transferencia);
             return true; //Realizado con exito
         }
 
@@ -72,8 +67,6 @@ public class Cuenta
         if (tarjeta.consultarSaldo() >= monto) 
         {
             tarjeta.realizarPago(monto);
-            Pago pago = new Pago(this, descripcionServicio, monto, tarjeta);
-            comprobantes.add(pago);
             return true;
         }
         return false;
@@ -87,12 +80,6 @@ public class Cuenta
                 return true;
         }
         return false;
-    }
-
-    public void eliminar()
-    {
-        comprobantes = null;
-        tarjeta = null;
     }
 
 

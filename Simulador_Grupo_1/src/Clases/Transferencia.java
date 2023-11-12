@@ -36,7 +36,13 @@ public class Transferencia implements Comprobante{
     public int getIdentificador() {
         return idTransferencia;
     }
+    
 
+
+    @Override
+    public int getIDCuenta() {
+        return idFuente;
+    }
 
     public int getMonto() {
         return monto;
