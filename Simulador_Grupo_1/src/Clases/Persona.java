@@ -9,9 +9,11 @@ public class Persona extends Cliente {
     private String nombre;
     private String apellido;
 
-    public Persona(int CI, String nombre, String apellido, int ID, int PIN, String direccion, String telefono) {
-        super(direccion, telefono);
-        this.CI = CI;
+    
+
+    public Persona(int Identificador, String direccion, String telefono, int cI, String nombre, String apellido) {
+        super(Identificador, direccion, telefono);
+        CI = cI;
         this.nombre = nombre;
         this.apellido = apellido;
     }

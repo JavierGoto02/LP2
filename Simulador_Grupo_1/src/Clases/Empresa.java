@@ -9,8 +9,10 @@ public class Empresa extends Cliente {
     private String razonSocial;
     private String ruc;
 
-    public Empresa(String razonSocial, String ruc, int ID, int PIN, String direccion, String telefono) {
-        super(direccion, telefono);
+    
+
+    public Empresa(int Identificador, String direccion, String telefono, String razonSocial, String ruc) {
+        super(Identificador, direccion, telefono);
         this.razonSocial = razonSocial;
         this.ruc = ruc;
     }

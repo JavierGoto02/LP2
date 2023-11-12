@@ -37,6 +37,11 @@ public abstract class TarjetaCredito extends Tarjeta
         this.pagoMinimo = pagoMinimo;
     }
 
+    public int getSaldoPendiente()
+    {
+        return saldoPendiente;
+    }
+
     public float getInteres() {
         return interes;
     }

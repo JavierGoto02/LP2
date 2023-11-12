@@ -15,12 +15,20 @@ public class Pago implements Comprobante{
 
 
     public Pago(Cuenta pagador, String descripcionServicio, int monto, Tarjeta metodoPago) {
-        idTransaccion = Sistema.generarIDTransaccion();
         this.pagador = pagador;
         this.descripcionServicio = descripcionServicio;
         this.monto = monto;
         this.metodoPago = metodoPago;
-        Sistema.agregarTransaccion(this);
+    }
+
+    @Override
+    public boolean esTranferencia() {
+        return false;
+    }
+
+    @Override
+    public int getIdentificador() {
+        return idTransaccion;
     }
 
     public int getIdTransaccion() {

@@ -7,43 +7,36 @@ package Clases;
  */
 public class Transferencia implements Comprobante{
     private int idTransferencia;
-    private Cuenta Fuente;
-    private Cuenta Destino;
+    private int idFuente;
+    private int idDestino;
     private int monto;
 
-    public Transferencia(Cuenta Fuente, Cuenta Destino, int monto) {
-        idTransferencia = Sistema.generarIDTransferencia();
-        this.Fuente = Fuente;
-        this.Destino = Destino;
+    public Transferencia(int Fuente, int Destino, int monto) {
+        this.idFuente = Fuente;
+        this.idDestino = Destino;
         this.monto = monto;
-        Sistema.agregarTransferencia(this);
     }
 
     @Override
-    public String emitirComprobante() {
+    public String emitirComprobante() 
+    {
+        Cuenta Fuente = Sistema.obtenerObjetoCuenta(idFuente);
+        Cuenta Destino = Sistema.obtenerObjetoCuenta(idDestino);
         return "**************COMPROBANTE TRANSFERENCIA**************\n" + "Fuente: " + Fuente.toShortString()
                 + "\nDestino: " + Destino.toShortString() + "\n";
     }
 
-    public int getIdTransferencia() {
+    @Override
+    public boolean esTranferencia() {
+        return true;
+    }
+    
+
+    @Override
+    public int getIdentificador() {
         return idTransferencia;
     }
 
-    public Cuenta getFuente() {
-        return Fuente;
-    }
-
-    public void setFuente(Cuenta fuente) {
-        Fuente = fuente;
-    }
-
-    public Cuenta getDestino() {
-        return Destino;
-    }
-
-    public void setDestino(Cuenta destino) {
-        Destino = destino;
-    }
 
     public int getMonto() {
         return monto;

@@ -7,33 +7,40 @@ import java.util.ArrayList;
  * @author Grupo 1
  */
 
-public class Cuenta {
+public class Cuenta 
+{
 
     private int ID;
-    private Cliente cliente;
+    private int idPropietario;
     private Tarjeta tarjeta;
     private int pinTransaccion;
     ArrayList<Comprobante> comprobantes;
 
-    public Cuenta(Cliente cliente, Tarjeta tarjeta, int pinTransaccion) {
-        ID = Sistema.generarIDCuenta();
-        this.cliente = cliente;
+    public Cuenta(int idpropietario, Tarjeta tarjeta, int pinTransaccion, int ID) 
+    {
+        this.ID = ID;
+        this.idPropietario = idpropietario;
         this.tarjeta = tarjeta;
         this.pinTransaccion = pinTransaccion;
         comprobantes = new ArrayList<>();
-        Sistema.agregarCuenta(this);
     }
 
     public int getID() {
         return ID;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public int getIDPropietario() {
+        return idPropietario;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public Tarjeta getTarjeta()
+    {
+        return tarjeta;
+    }
+
+    public ArrayList<Comprobante> getComprobantes()
+    {
+        return comprobantes;
     }
 
     public int getPinTransaccion() {
@@ -52,7 +59,7 @@ public class Cuenta {
             destinatario.tarjeta.abonarSaldo(monto);
             tarjeta.realizarPago(monto);
             //Generar los ids automaticamente
-            Transferencia transferencia = new Transferencia(this, destinatario, monto);
+            Transferencia transferencia = new Transferencia(this.ID, destinatario.ID, monto);
             comprobantes.add(transferencia);
             return true; //Realizado con exito
         }
@@ -72,8 +79,27 @@ public class Cuenta {
         return false;
     }
 
-    public String toShortString() {
-        return "Nro cuenta: " + ID + "\n" + "Propietario: " + cliente.toShortString();
+    public boolean tieneDeuda()
+    {
+        if(tarjeta instanceof TarjetaCredito)
+        {
+            if(((TarjetaCredito)tarjeta).getSaldoPendiente() > 0)
+                return true;
+        }
+        return false;
+    }
+
+    public void eliminar()
+    {
+        comprobantes = null;
+        tarjeta = null;
+    }
+
+
+    public String toShortString() 
+    {
+        Cliente propietarioCuenta = Sistema.obtenerObjetoCliente(idPropietario);
+        return "Nro cuenta: " + ID + "\n" + "Propietario: " + propietarioCuenta.toShortString();
     }
 
 }

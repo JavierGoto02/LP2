@@ -7,36 +7,37 @@ import java.util.Set;
  *
  * @author Grupo 1
  */
-public class Sistema {
-    String dominio;
-    String nombre;
-
+public class Sistema 
+{
+    // HashMaps para almacenar objetos por su código
     private static HashMap<Integer, Cuenta> cuentaPorCodigo = new HashMap<>();
     private static HashMap<Integer, Cliente> clientePorCodigo = new HashMap<>();
     private static HashMap<Integer, Pago> transaccionPorCodigo = new HashMap<>();
     private static HashMap<Integer, Transferencia> transferenciaPorCodigo = new HashMap<>();
 
-    public Sistema(String dominio, String nombre) {
-        this.dominio = dominio;
-        this.nombre = nombre;
+
+    // Métodos para obtener objetos por su código
+    public static Cuenta obtenerObjetoCuenta(int idCuenta)
+    {
+        return cuentaPorCodigo.get(idCuenta);
     }
 
-    public String getDominio() {
-        return dominio;
+    public static Cliente obtenerObjetoCliente(int idCliente)
+    {
+        return clientePorCodigo.get(idCliente);
     }
 
-    public void setDominio(String dominio) {
-        this.dominio = dominio;
+    public static Transferencia obtenerObjetoTransferencia(int idTransferencia)
+    {
+        return transferenciaPorCodigo.get(idTransferencia);
     }
 
-    public String getNombre() {
-        return nombre;
+    public static Pago obtenerObjetoPago(int idPago)
+    {
+        return transaccionPorCodigo.get(idPago);
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
+    // Método para generar un nuevo ID evitando duplicados
     public static int generarID(Set<Integer> listaID) {
         int id = 1;
         while (listaID.contains(id)) {
@@ -45,35 +46,165 @@ public class Sistema {
         return id;
     }
 
+    // Métodos para generar nuevos IDs específicos para cada tipo de objeto
     public static int generarIDCuenta() {
         return generarID(cuentaPorCodigo.keySet());
-    }
-
-    public static void agregarCuenta(Cuenta cuenta) {
-        cuentaPorCodigo.put(cuenta.getID(), cuenta);
     }
 
     public static int generarIDCliente() {
         return generarID(clientePorCodigo.keySet());
     }
 
-    public static void agregarCliente(Cliente cliente) {
-        clientePorCodigo.put(cliente.getID(), cliente);
-    }
-
     public static int generarIDTransaccion() {
         return generarID(transaccionPorCodigo.keySet());
-    }
-
-    public static void agregarTransaccion(Pago transaccion) {
-        transaccionPorCodigo.put(transaccion.getIdTransaccion(), transaccion);
     }
 
     public static int generarIDTransferencia() {
         return generarID(transferenciaPorCodigo.keySet());
     }
 
-    public static void agregarTransferencia(Transferencia transferencia) {
-        transferenciaPorCodigo.put(transferencia.getIdTransferencia(), transferencia);
+    /**
+     * Crea un nuevo cliente persona y lo agrega al sistema.
+     *
+     * @param nombre     El nombre del cliente persona.
+     * @param apellido   El apellido del cliente persona.
+     * @param CI         El número de cédula de identidad del cliente persona.
+     * @param direccion  La dirección del cliente persona.
+     * @param telefono   El número de teléfono del cliente persona.
+     */
+    public static void crearClientePersona(String nombre, String apellido, int CI, String direccion, String telefono)
+    {
+        // Generar un nuevo identificador único para el cliente persona
+        int identificadorPersona = generarIDCliente();
+
+        // Crear un nuevo objeto Persona con la información proporcionada
+        Persona nuevaPersona = new Persona(identificadorPersona, direccion, telefono, CI, nombre, apellido);
+
+        // Agregar el cliente persona al HashMap de clientes por su identificador
+        clientePorCodigo.put(identificadorPersona, nuevaPersona);
     }
+
+
+
+
+    /**
+     * Crea un nuevo cliente empresa y lo agrega al sistema.
+     *
+     * @param razonSocial La razón social de la empresa.
+     * @param ruc         El Registro Único de Contribuyentes (RUC) de la empresa.
+     * @param direccion   La dirección de la empresa.
+     * @param telefono    El número de teléfono de la empresa.
+     */
+    public static void crearClienteEmpresa(String razonSocial, String ruc, String direccion, String telefono)
+    {
+        // Generar un nuevo identificador único para el cliente empresa
+        int identificadorEmpresa = generarIDCliente();
+
+        // Crear un nuevo objeto Empresa con la información proporcionada
+        Empresa nuevaEmpresa = new Empresa(identificadorEmpresa, direccion, telefono, razonSocial, ruc);
+
+        // Agregar el cliente empresa al HashMap de clientes por su identificador
+        clientePorCodigo.put(identificadorEmpresa, nuevaEmpresa);
+    }
+
+
+
+
+
+    /**
+     * Crea una nueva cuenta y la asocia a un cliente existente en el sistema.
+     * Este método asume que la tarjeta se solicitará por interfaz.
+     *
+     * @param IDpropietarioCuenta El identificador del propietario de la cuenta.
+     * @param tarjeta             La tarjeta asociada a la cuenta.
+     * @param pinTransaccion      El PIN de transacción de la cuenta.
+     */
+    public static void crearCuenta(int IDpropietarioCuenta, Tarjeta tarjeta, int pinTransaccion)
+    {
+        // Generar un nuevo identificador único para la cuenta
+        int identificadorCuenta = generarIDCuenta();
+
+        // Crear un nuevo objeto Cuenta con la información proporcionada
+        Cuenta nuevaCuenta = new Cuenta(IDpropietarioCuenta, tarjeta, pinTransaccion, identificadorCuenta);
+
+        // Obtener el propietario de la cuenta a partir de su identificador
+        Cliente propietarioCuenta = clientePorCodigo.get(IDpropietarioCuenta);
+
+        // Agregar la cuenta al propietario y al HashMap de cuentas por su identificador
+        propietarioCuenta.agregarCuenta(nuevaCuenta);
+        cuentaPorCodigo.put(identificadorCuenta, nuevaCuenta);
+    }
+
+
+    public static void eliminarCuenta(int idCuenta)
+    {
+        Cuenta cuentaEliminar = cuentaPorCodigo.get(idCuenta);
+        if(cuentaEliminar.tieneDeuda())
+            System.out.println("El cliente debe abonar la deuda de la cuenta: " + cuentaEliminar.toShortString() + " para eliminar");
+        else
+        {
+            Cliente propietarioCuenta = clientePorCodigo.get(cuentaEliminar.getIDPropietario());
+            // Iterar sobre los comprobantes de la cuenta
+            for(Comprobante comprobantesCuenta : cuentaEliminar.getComprobantes())
+            {
+                // Verificar si el comprobante es una transferencia y eliminarla del HashMap correspondiente
+                if(comprobantesCuenta.esTranferencia())
+                    transferenciaPorCodigo.remove(comprobantesCuenta.getIdentificador());
+                // Si no es una transferencia, eliminar la transacción del HashMap correspondiente
+                else
+                    transaccionPorCodigo.remove(comprobantesCuenta.getIdentificador());
+            }
+
+            propietarioCuenta.eliminarCuenta(cuentaEliminar);
+            cuentaPorCodigo.remove(cuentaEliminar.getID());
+        }
+        
+    }
+
+
+
+
+
+    /**
+     * Elimina un cliente del sistema, junto con todas sus cuentas y transacciones asociadas.
+     *
+     * @param identificadorCliente El identificador del cliente que se desea eliminar.
+     */
+    public static void eliminarCliente(int identificadorCliente)
+    {
+        // Obtener el objeto Cliente a partir del identificador
+        Cliente clienteEliminar = clientePorCodigo.get(identificadorCliente);
+
+        // Iterar sobre las cuentas del cliente
+        for(Cuenta cuenta : clienteEliminar.getCuentas())
+        {
+            // Verificar si la cuenta tiene deuda
+            if(cuenta.tieneDeuda())
+                System.out.println("El cliente debe abonar la deuda de la cuenta: " + cuenta.toShortString() + " para eliminar");
+            else
+            {
+                // Iterar sobre los comprobantes de la cuenta
+                for(Comprobante comprobantesCuenta : cuenta.getComprobantes())
+                {
+                    // Verificar si el comprobante es una transferencia y eliminarla del HashMap correspondiente
+                    if(comprobantesCuenta.esTranferencia())
+                        transferenciaPorCodigo.remove(comprobantesCuenta.getIdentificador());
+                    // Si no es una transferencia, eliminar la transacción del HashMap correspondiente
+                    else
+                        transaccionPorCodigo.remove(comprobantesCuenta.getIdentificador());
+                }
+
+                // Eliminar la cuenta del HashMap de cuentas por su identificador
+                cuentaPorCodigo.remove(cuenta.getID());
+
+                // Llamar al método eliminar de la cuenta para realizar acciones específicas de eliminación
+                cuenta.eliminar();
+            }
+        }
+
+        // Eliminar al cliente del HashMap de clientes por su identificador
+        clientePorCodigo.remove(clienteEliminar.getID());
+    }
+
 }
+
