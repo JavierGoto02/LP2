@@ -14,7 +14,7 @@ public class Sistema
     // HashMaps para almacenar objetos por su código
     private static HashMap<Integer, Cuenta> cuentaPorCodigo = new HashMap<>();
     private static HashMap<Integer, Cliente> clientePorCodigo = new HashMap<>();
-    private static HashMap<Integer, Pago> transaccionPorCodigo = new HashMap<>();
+    private static HashMap<Integer, Transaccion> transaccionPorCodigo = new HashMap<>();
     private static HashMap<Integer, Transferencia> transferenciaPorCodigo = new HashMap<>();
 
 
@@ -23,7 +23,7 @@ public class Sistema
     public static ArrayList<Comprobante> obtenerListaComprobantes(int idCuenta)
     {
         ArrayList<Comprobante> listaComprobantes = new ArrayList<>();
-        for(Map.Entry<Integer, Pago> entry : transaccionPorCodigo.entrySet())
+        for(Map.Entry<Integer, Transaccion> entry : transaccionPorCodigo.entrySet())
         {
             if(entry.getValue().getIDCuenta() == idCuenta)
                 listaComprobantes.add(entry.getValue());
@@ -71,13 +71,13 @@ public class Sistema
         return transferenciaPorCodigo.get(idTransferencia);
     }
 
-    public static Pago obtenerObjetoPago(int idPago)
+    public static Transaccion obtenerObjetoPago(int idPago)
     {
         return transaccionPorCodigo.get(idPago);
     }
 
     // Método para generar un nuevo ID evitando duplicados
-    public static int generarID(Set<Integer> listaID) {
+    private static int generarID(Set<Integer> listaID) {
         int id = 1;
         while (listaID.contains(id)) {
             id++;
@@ -238,10 +238,67 @@ public class Sistema
     }
 
 
-    public static void realizarTransferencia()
-    {
 
+    public static void crearTransferencia(int idFuente, int idDestino, int monto)
+    {
+        int idTranferencia = generarIDTransferencia();
+        Transferencia nuevaTransferencia = new Transferencia(idFuente, idDestino, monto);
+        transferenciaPorCodigo.put(idTranferencia, nuevaTransferencia);
     }
+
+    public static void crearTransaccion(int pagador, String descripcionServicio, int monto, String metodoPago)
+    {
+        int idTransaccion = generarIDTransaccion();
+        Transaccion nuevaTransaccion = new Transaccion(pagador, descripcionServicio, monto, metodoPago);
+        transaccionPorCodigo.put(idTransaccion, nuevaTransaccion);
+    }
+
+    public static void realizarTransferencia(int idFuente, int idDestino, int monto)
+    {
+        Cuenta Fuente = obtenerObjetoCuenta(idFuente);
+        Cuenta Destino = obtenerObjetoCuenta(idDestino);
+        crearTransferencia(idFuente, idDestino, monto);
+        if(Fuente.tieneFondoSuficiente(monto))
+        {
+            Fuente.disminuirSaldo(monto);
+            Destino.aumentarSaldo(monto);
+        }
+        else
+            System.out.println("La cuenta " + Fuente.toShortString() + "no tiene fondo suficiente para realizar la transferencia");
+            
+    }
+
+
+
+    //TO-DO: IMPLEMENTAR PAGAR SERVICIO
+    //public static void pagarServicio()
+
+
+
+
+
+    public static void depositarEnCuenta(int idCuenta, int monto)
+    {
+        Cuenta cuenta = cuentaPorCodigo.get(idCuenta);
+        cuenta.aumentarSaldo(monto);
+    }
+
+
+    //Muy similar al metodo de transferencia, implementar otra forma?
+    public static void pagarTarjetaCredito(int idFuente, int idDestino, int monto)
+    {
+        Cuenta fuente = cuentaPorCodigo.get(idFuente);
+        Cuenta destino = cuentaPorCodigo.get(idDestino);
+        crearTransaccion(idFuente, "Pago Tarjeta de Credito", monto, "Tarjeta Debito");
+        if(fuente.tieneFondoSuficiente(monto))
+        {
+            destino.aumentarSaldo(monto);
+            fuente.disminuirSaldo(monto);
+        }
+        else
+            System.out.println("La cuenta " + fuente.toShortString() + "no tiene fondo suficiente para realizar la transferencia");
+    }
+
 
 }
 

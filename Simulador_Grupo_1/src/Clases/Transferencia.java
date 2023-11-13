@@ -22,8 +22,8 @@ public class Transferencia implements Comprobante{
     {
         Cuenta Fuente = Sistema.obtenerObjetoCuenta(idFuente);
         Cuenta Destino = Sistema.obtenerObjetoCuenta(idDestino);
-        return "**************COMPROBANTE TRANSFERENCIA**************\n" + "Fuente: " + Fuente.toShortString()
-                + "\nDestino: " + Destino.toShortString() + "\n";
+        return "**************COMPROBANTE TRANSFERENCIA**************\n" + "Transferencia Nro: " + idTransferencia + "\nFuente: " + Fuente.toShortString()
+                + "\nDestino: " + Destino.toShortString() + "\nMonto: " + monto;
     }
 
     @Override
@@ -43,13 +43,4 @@ public class Transferencia implements Comprobante{
     public int getIDCuenta() {
         return idFuente;
     }
-
-    public int getMonto() {
-        return monto;
-    }
-
-    public void setMonto(int monto) {
-        this.monto = monto;
-    }
-
 }

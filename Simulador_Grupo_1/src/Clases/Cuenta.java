@@ -49,28 +49,23 @@ public class Cuenta
         this.pinTransaccion = pinTransaccion;
     }
 
-    //El sistema se encargará de obtener los datos del destinatario y validar datos
-    public boolean realizarTransferencia(Cuenta destinatario, int monto) 
+    public void aumentarSaldo(int monto)
     {
-        if (tarjeta.consultarSaldo() >= monto) 
-        {
-            destinatario.tarjeta.abonarSaldo(monto);
-            tarjeta.realizarPago(monto);
-            return true; //Realizado con exito
-        }
-
-        return false; //Realizado sin exito
+        tarjeta.abonarSaldo(monto);
     }
 
-    public boolean realizarPagoServicio(int monto, String descripcionServicio) 
+    public boolean tieneFondoSuficiente(int monto)
     {
-        if (tarjeta.consultarSaldo() >= monto) 
-        {
-            tarjeta.realizarPago(monto);
+        if(tarjeta.consultarSaldo() >= monto)
             return true;
-        }
         return false;
     }
+
+    public void disminuirSaldo(int monto)
+    {
+        tarjeta.realizarPago(monto);
+    }
+
 
     public boolean tieneDeuda()
     {

@@ -5,16 +5,16 @@ package Clases;
  *
  * @author Grupo 1
  */
-public class Pago implements Comprobante{
+public class Transaccion implements Comprobante{
 
     private int idTransaccion;
     private int idPagador;
     private String descripcionServicio;
     private int monto;
-    private Tarjeta metodoPago;
+    private String metodoPago;
 
 
-    public Pago(int pagador, String descripcionServicio, int monto, Tarjeta metodoPago) {
+    public Transaccion(int pagador, String descripcionServicio, int monto, String metodoPago) {
         this.idPagador = pagador;
         this.descripcionServicio = descripcionServicio;
         this.monto = monto;
@@ -40,39 +40,11 @@ public class Pago implements Comprobante{
         return idTransaccion;
     }
 
-    public int getIdTransaccion() {
-        return idTransaccion;
-    }
-
-    public String getDescripcionServicio() {
-        return descripcionServicio;
-    }
-
-    public void setDescripcionServicio(String descripcionServicio) {
-        this.descripcionServicio = descripcionServicio;
-    }
-
-    public int getMonto() {
-        return monto;
-    }
-
-    public void setMonto(int monto) {
-        this.monto = monto;
-    }
-
-    public Tarjeta getMetodoPago() {
-        return metodoPago;
-    }
-
-    public void setMetodoPago(Tarjeta metodoPago) {
-        this.metodoPago = metodoPago;
-    }
-
     @Override
     public String emitirComprobante() 
     {
         Cuenta pagador = Sistema.obtenerObjetoCuenta(idPagador);
-        return "**************COMPROBANTE PAGO**************\n" + "Transaccion Nro: " + idTransaccion + "\nPagador: "
+        return "**************COMPROBANTE TRANSACCION**************\n" + "Transaccion Nro: " + idTransaccion + "\nPagador: "
                 + pagador.toShortString() +
                 "\nDescripcion Servicio: " + descripcionServicio + "\nMonto a pagar: " + monto + "Metodo de pago: "
                 + metodoPago + "\n";

@@ -20,10 +20,9 @@ public abstract class TarjetaCredito extends Tarjeta
 
 
 
-    public TarjetaCredito(int nroTarjeta, Date fechaVencimiento, int cVC, int idCuenta, int saldoPendiente,
-            int pagoMinimo, int limiteCredito, float interes) {
+    public TarjetaCredito(int nroTarjeta, Date fechaVencimiento, int cVC, int idCuenta, int pagoMinimo, int limiteCredito, float interes) {
         super(nroTarjeta, fechaVencimiento, cVC, idCuenta);
-        this.saldoPendiente = saldoPendiente;
+        this.saldoPendiente = 0;
         this.pagoMinimo = pagoMinimo;
         this.limiteCredito = limiteCredito;
         this.interes = interes;
@@ -64,8 +63,9 @@ public abstract class TarjetaCredito extends Tarjeta
     @Override
     public void abonarSaldo(int monto) 
     {
-        saldoPendiente -= monto;
-        
+        //TO DO: Hacer funcional el interes
+        if(monto >= pagoMinimo)
+            saldoPendiente -= monto; 
     }
 
     
