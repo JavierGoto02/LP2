@@ -1,5 +1,13 @@
 package Clases.Interfaz;
 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
+
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -11,11 +19,12 @@ package Clases.Interfaz;
  */
 public class VentanaAcercaDelSistema extends javax.swing.JFrame {
 
-    /**
+    /** 
      * Creates new form AcercaDelSistema
      */
     public VentanaAcercaDelSistema() {
         initComponents();
+        initNombres();
     }
 
     /**
@@ -27,46 +36,51 @@ public class VentanaAcercaDelSistema extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        botonVerDocumentación = new javax.swing.JButton();
+        jLabelGrupo = new javax.swing.JLabel();
+        jLabelNombre1 = new javax.swing.JLabel();
+        jLabelNombre2 = new javax.swing.JLabel();
+        jLabelNombre3 = new javax.swing.JLabel();
+        jLabelNombre4 = new javax.swing.JLabel();
+        jLabelExamen = new javax.swing.JLabel();
+        jLabelTitulo = new javax.swing.JLabel();
+        jLabelMateria = new javax.swing.JLabel();
+        jLabelFacultad = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setBackground(new java.awt.Color(250, 230, 150));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jButton1.setText("Ver Documentación");
+        botonVerDocumentación.setBackground(new java.awt.Color(250, 230, 150));
+        botonVerDocumentación.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        botonVerDocumentación.setText("Ver Documentación");
+        botonVerDocumentación.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonVerDocumentaciónActionPerformed(evt);
+            }
+        });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel1.setText("Grupo Nº 1");
+        jLabelGrupo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabelGrupo.setText("Grupo Nº 1");
 
-        jLabel2.setText("Martín Ferrer Canese");
+        jLabelNombre1.setText("---------------------");
 
-        jLabel3.setText("Javier Toshifumi Goto Dominguez");
+        jLabelNombre2.setText("---------------------");
 
-        jLabel4.setText("Samuel Yamashita Yamagami");
+        jLabelNombre3.setText("---------------------");
 
-        jLabel5.setText("Fabrizio Daisuke Kawabata Miyamoto");
+        jLabelNombre4.setText("---------------------");
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 255));
-        jLabel6.setText("Examen LP2 -  FPUNA 2023");
+        jLabelExamen.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
+        jLabelExamen.setForeground(new java.awt.Color(0, 0, 255));
+        jLabelExamen.setText("Examen LP2 -  FPUNA 2023");
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        jLabel7.setText("SISTEMA DE GESTION BANCARIA");
+        jLabelTitulo.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabelTitulo.setText("SISTEMA DE GESTION BANCARIA");
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
-        jLabel8.setText("Lenguajes de Programacíon II");
+        jLabelMateria.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        jLabelMateria.setText("Lenguajes de Programacíon II");
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
-        jLabel9.setText("Facultad Politécnica - Universidad Nacional de Asunción");
+        jLabelFacultad.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        jLabelFacultad.setText("Facultad Politécnica - Universidad Nacional de Asunción");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -75,60 +89,102 @@ public class VentanaAcercaDelSistema extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel8))
+                    .addComponent(jLabelFacultad)
+                    .addComponent(jLabelMateria))
                 .addGap(67, 67, 67))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botonVerDocumentación, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(51, 51, 51))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(100, 100, 100)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1)))
+                            .addComponent(jLabelNombre4)
+                            .addComponent(jLabelNombre3)
+                            .addComponent(jLabelNombre2)
+                            .addComponent(jLabelNombre1)
+                            .addComponent(jLabelGrupo)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(14, 14, 14)
-                        .addComponent(jLabel6))
+                        .addComponent(jLabelExamen))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(31, 31, 31)
-                        .addComponent(jLabel7)))
+                        .addComponent(jLabelTitulo)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(12, 12, 12)
-                .addComponent(jLabel7)
+                .addComponent(jLabelTitulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel6)
+                .addComponent(jLabelExamen)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel9)
+                .addComponent(jLabelFacultad)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel8)
+                .addComponent(jLabelMateria)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botonVerDocumentación, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel1)
+                .addComponent(jLabelGrupo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
+                .addComponent(jLabelNombre1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
+                .addComponent(jLabelNombre2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
+                .addComponent(jLabelNombre3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
+                .addComponent(jLabelNombre4)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    // Abrir la documentacion en un nuevo hilo
+    private void botonVerDocumentaciónActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerDocumentaciónActionPerformed
+        new Thread(() -> {
+            abrirDocumentacion();
+        }).start();
+    }//GEN-LAST:event_botonVerDocumentaciónActionPerformed
+
+    private void abrirDocumentacion() {
+        // Obtener ruta del camino de ejecucion y concatenarlo con el nombre del archivo de documentacion. 
+        String rutaArchivo = System.getProperty("user.dir") + File.separator + "documentacion.pdf";
+        try {
+            File archivo = new File(rutaArchivo);
+            if (archivo.exists()) {
+                Desktop.getDesktop().open(archivo);
+            } else {
+                JOptionPane.showMessageDialog(this, "Archivo de documentacion no encontrado.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, "Error abriendo documentacion: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    // Inicializar los nombres de los integrantes de los miembros del grupo en un hilo con delay
+    private void initNombres() {
+        // Crear el nuevo hilo
+        new Thread(() -> {
+            // Agregar delay entre la aparicion de cada nombre. 
+            try {
+                Thread.sleep(750);
+                jLabelNombre1.setText("Martín Ferrer Canese");
+                Thread.sleep(250);
+                jLabelNombre2.setText("Javier Toshifumi Goto Dominguez");
+                Thread.sleep(250);
+                jLabelNombre3.setText("Samuel Yamashita Yamagami");
+                Thread.sleep(250);
+                jLabelNombre4.setText("Fabrizio Daisuke Kawabata Miyamoto");
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }  
+        }).start();
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -166,15 +222,15 @@ public class VentanaAcercaDelSistema extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JButton botonVerDocumentación;
+    private javax.swing.JLabel jLabelExamen;
+    private javax.swing.JLabel jLabelFacultad;
+    private javax.swing.JLabel jLabelGrupo;
+    private javax.swing.JLabel jLabelMateria;
+    private javax.swing.JLabel jLabelNombre1;
+    private javax.swing.JLabel jLabelNombre2;
+    private javax.swing.JLabel jLabelNombre3;
+    private javax.swing.JLabel jLabelNombre4;
+    private javax.swing.JLabel jLabelTitulo;
     // End of variables declaration//GEN-END:variables
 }

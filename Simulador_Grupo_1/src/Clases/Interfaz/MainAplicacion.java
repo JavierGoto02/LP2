@@ -23,6 +23,9 @@ public class MainAplicacion extends javax.swing.JFrame {
     
     private JMenuBar menuBar;
     private JButton inicioBoton;
+    private VentanaAcercaDelSistema ventanaAcercaDelSistema; // Campo para guardar referencia a la ventana de acerca del sistema que funciona en otro hilo.
+    
+
 
     /**
      * Creates new form MainAplicacion
@@ -100,9 +103,21 @@ public class MainAplicacion extends javax.swing.JFrame {
         SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
             @Override
             protected Void doInBackground() throws Exception {
-                VentanaAcercaDelSistema frameAcercaDelSistema = new VentanaAcercaDelSistema();
-                frameAcercaDelSistema.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                frameAcercaDelSistema.setVisible(true);
+                if (ventanaAcercaDelSistema == null || !ventanaAcercaDelSistema.isVisible()) {
+                    // Crear una nueva ventana solo si no esta abierta
+                    ventanaAcercaDelSistema = new VentanaAcercaDelSistema();
+                    ventanaAcercaDelSistema.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    ventanaAcercaDelSistema.setVisible(true);
+                    ventanaAcercaDelSistema.setLocationRelativeTo(MainAplicacion.this);
+                } else {
+                    // Si la ventana ya esta abierta, traerla al frente y enfocarla.
+                    if (ventanaAcercaDelSistema.getState() == JFrame.ICONIFIED) {
+                        // Si la ventana esta minimizada, maximizarla
+                        ventanaAcercaDelSistema.setLocationRelativeTo(MainAplicacion.this);
+                        ventanaAcercaDelSistema.setExtendedState(JFrame.NORMAL);
+                    }
+                    ventanaAcercaDelSistema.toFront();
+                }
                 return null;
             }
         };
