@@ -5,6 +5,7 @@
 package Clases.Interfaz;
 import Clases.Cuenta;
 import Clases.Sistema;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -35,16 +36,16 @@ public class VentanaLogin extends javax.swing.JPanel {
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
-        jLabel4 = new javax.swing.JLabel();
-        clave = new javax.swing.JPasswordField();
-        Identificador = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        btnCrearCuenta = new javax.swing.JButton();
-        btnIngresar = new javax.swing.JButton();
-        metodoIngreso = new javax.swing.JComboBox<>();
-        jLabel5 = new javax.swing.JLabel();
+        labelSolicitudRecuperación = new javax.swing.JLabel();
+        campoClave = new javax.swing.JPasswordField();
+        campoIdentificador = new javax.swing.JTextField();
+        labelIdentificador = new javax.swing.JLabel();
+        labelClave = new javax.swing.JLabel();
+        labelTitulo = new javax.swing.JLabel();
+        botonCrearCuenta = new javax.swing.JButton();
+        botonIngresar = new javax.swing.JButton();
+        comboBoxMetodoIngreso = new javax.swing.JComboBox<>();
+        labelMetodoDeIngreso = new javax.swing.JLabel();
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -58,47 +59,50 @@ public class VentanaLogin extends javax.swing.JPanel {
         jMenu4.setText("jMenu4");
         jMenuBar1.add(jMenu4);
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 2, 10)); // NOI18N
-        jLabel4.setText("Solicitá recuperar tu Clave de Acceso");
+        labelSolicitudRecuperación.setFont(new java.awt.Font("Segoe UI", 2, 10)); // NOI18N
+        labelSolicitudRecuperación.setText("Solicitá recuperar tu Clave de Acceso");
 
-        clave.setText("jPasswordField1");
-
-        Identificador.setText("ID");
-        Identificador.addActionListener(new java.awt.event.ActionListener() {
+        campoClave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                IdentificadorActionPerformed(evt);
+                campoClaveActionPerformed(evt);
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel1.setText("Identificador");
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel2.setText("Clave");
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        jLabel3.setText("Inicio de Sesion");
-
-        btnCrearCuenta.setText("Crear Cuenta");
-        btnCrearCuenta.addActionListener(new java.awt.event.ActionListener() {
+        campoIdentificador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCrearCuentaActionPerformed(evt);
+                campoIdentificadorActionPerformed(evt);
             }
         });
 
-        btnIngresar.setBackground(new java.awt.Color(250, 230, 150));
-        btnIngresar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnIngresar.setText("Ingresar");
-        btnIngresar.addActionListener(new java.awt.event.ActionListener() {
+        labelIdentificador.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        labelIdentificador.setText("Identificador");
+
+        labelClave.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        labelClave.setText("Clave");
+
+        labelTitulo.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        labelTitulo.setText("Inicio de Sesion");
+
+        botonCrearCuenta.setText("Crear Cuenta");
+        botonCrearCuenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIngresarActionPerformed(evt);
+                botonCrearCuentaActionPerformed(evt);
             }
         });
 
-        metodoIngreso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cuenta", "Documento", "Tarjeta de Crédito" }));
+        botonIngresar.setBackground(new java.awt.Color(250, 230, 150));
+        botonIngresar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        botonIngresar.setText("Ingresar");
+        botonIngresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonIngresarActionPerformed(evt);
+            }
+        });
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel5.setText("Metodo de Ingreso");
+        comboBoxMetodoIngreso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cuenta", "Tarjeta" }));
+
+        labelMetodoDeIngreso.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        labelMetodoDeIngreso.setText("Metodo de Ingreso");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -106,103 +110,113 @@ public class VentanaLogin extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel3)
+                .addComponent(labelTitulo)
                 .addGap(125, 125, 125))
             .addGroup(layout.createSequentialGroup()
                 .addGap(7, 7, 7)
-                .addComponent(jLabel4)
+                .addComponent(labelSolicitudRecuperación)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnCrearCuenta)
+                .addComponent(botonCrearCuenta)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(27, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
+                    .addComponent(labelMetodoDeIngreso)
+                    .addComponent(labelIdentificador)
+                    .addComponent(labelClave))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Identificador)
-                    .addComponent(metodoIngreso, 0, 187, Short.MAX_VALUE)
-                    .addComponent(clave)
+                    .addComponent(campoIdentificador)
+                    .addComponent(comboBoxMetodoIngreso, 0, 187, Short.MAX_VALUE)
+                    .addComponent(campoClave)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(22, 22, 22)
-                        .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(botonIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(41, 41, 41))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(jLabel3)
+                .addComponent(labelTitulo)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(metodoIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(labelMetodoDeIngreso)
+                    .addComponent(comboBoxMetodoIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Identificador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(campoIdentificador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelIdentificador))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(clave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(labelClave)
+                    .addComponent(campoClave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botonIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(btnCrearCuenta))
+                    .addComponent(labelSolicitudRecuperación)
+                    .addComponent(botonCrearCuenta))
                 .addGap(11, 11, 11))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void IdentificadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IdentificadorActionPerformed
+    private void campoIdentificadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoIdentificadorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_IdentificadorActionPerformed
+    }//GEN-LAST:event_campoIdentificadorActionPerformed
 
-    private void btnCrearCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearCuentaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCrearCuentaActionPerformed
-
-    private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-        boolean cond = false;    
-        if (Identificador.getText().matches("-?\\d+")){
-                Integer id = Integer.parseInt(Identificador.getText());
-                Cuenta ctaTemp = Sistema.obtenerObjetoCuenta(id);
-                if (ctaTemp != null){
-                    if (ctaTemp.getPinTransaccion() == Integer.parseInt(new String(clave.getPassword()))){
-                        mainFrame.setCuenta(ctaTemp);
-                        this.setVisible(false);
-                        MensajeExitoOperacion ex = new MensajeExitoOperacion(mainFrame, true);
-                        ex.setVisible(true);
-                        mainFrame.setVisible(true);
-                        cond = true;
-                    }
+    private void botonCrearCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearCuentaActionPerformed
+        mainFrame.cambiarAVentana("CrearCuenta");
+        mainFrame.mostrarInicioMenu(true);
+    }//GEN-LAST:event_botonCrearCuentaActionPerformed
+    private void botonIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIngresarActionPerformed
+        boolean error = true;    
+        if (campoIdentificador.getText().matches("-?\\d+")){
+            Integer id = Integer.valueOf(campoIdentificador.getText());
+            Cuenta cuentaTemp = null;
+            switch ((String)comboBoxMetodoIngreso.getSelectedItem()) {
+                case "Cuenta":
+                    cuentaTemp = Sistema.obtenerObjetoCuenta(id);
+                    break;
+                case "Tarjeta":
+                    cuentaTemp = Sistema.obtenerObjetoCuentaPorTarjeta(id);
+                    break;
+            }
+            if (cuentaTemp != null){
+                if (cuentaTemp.getPinTransaccion() == Integer.parseInt(new String(campoClave.getPassword()))){
+                    mainFrame.setCuenta(cuentaTemp);
+                    mainFrame.cambiarAMenuPrincipal();
+                    error = false;
                 }
             }
-        if (cond == false){
-            MensajeFracasoOperacion fr = new MensajeFracasoOperacion(mainFrame, true);
-            fr.setVisible(true);
         }
-    }//GEN-LAST:event_btnIngresarActionPerformed
+        if (error){
+            JOptionPane.showMessageDialog(this, 
+                    "¡Datos incorrectos, intente nuevamente!", 
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_botonIngresarActionPerformed
+
+    private void campoClaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoClaveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoClaveActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField Identificador;
-    private javax.swing.JButton btnCrearCuenta;
-    private javax.swing.JButton btnIngresar;
-    private javax.swing.JPasswordField clave;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JButton botonCrearCuenta;
+    private javax.swing.JButton botonIngresar;
+    private javax.swing.JPasswordField campoClave;
+    private javax.swing.JTextField campoIdentificador;
+    private javax.swing.JComboBox<String> comboBoxMetodoIngreso;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JComboBox<String> metodoIngreso;
+    private javax.swing.JLabel labelClave;
+    private javax.swing.JLabel labelIdentificador;
+    private javax.swing.JLabel labelMetodoDeIngreso;
+    private javax.swing.JLabel labelSolicitudRecuperación;
+    private javax.swing.JLabel labelTitulo;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,4 +1,6 @@
 package Clases.Interfaz;
+import Clases.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -26,8 +28,7 @@ public class PagoTC extends javax.swing.JPanel {
     private void initComponents() {
 
         botonSiguiente = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        montoAbonar = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -35,6 +36,7 @@ public class PagoTC extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        idCuentaCredito = new javax.swing.JTextField();
 
         botonSiguiente.setBackground(new java.awt.Color(250, 230, 150));
         botonSiguiente.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -46,20 +48,12 @@ public class PagoTC extends javax.swing.JPanel {
             }
         });
 
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField1.setText("---.---.---.--");
-        jTextField1.setToolTipText("");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        montoAbonar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        montoAbonar.setText("---.---.---.--");
+        montoAbonar.setToolTipText("");
+        montoAbonar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-
-        jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tarjeta1" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                montoAbonarActionPerformed(evt);
             }
         });
 
@@ -67,7 +61,7 @@ public class PagoTC extends javax.swing.JPanel {
         jLabel3.setText("Pago de Tarjeta de Credito");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1.setText("Tarjeta");
+        jLabel1.setText("idTarjetaCredito");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Monto a Abonar (Gs.)");
@@ -86,31 +80,36 @@ public class PagoTC extends javax.swing.JPanel {
         jLabel7.setText("---.---.-- Gs.");
         jLabel7.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
+        idCuentaCredito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idCuentaCreditoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(70, 70, 70))
             .addGroup(layout.createSequentialGroup()
-                .addGap(65, 65, 65)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel2)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(idCuentaCredito, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonSiguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
-                        .addComponent(jTextField1))
+                        .addComponent(montoAbonar))
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(92, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(70, 70, 70))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -119,8 +118,8 @@ public class PagoTC extends javax.swing.JPanel {
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(jLabel1)
+                    .addComponent(idCuentaCredito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -131,30 +130,62 @@ public class PagoTC extends javax.swing.JPanel {
                     .addComponent(jLabel7))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(montoAbonar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
                 .addComponent(botonSiguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void montoAbonarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_montoAbonarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_montoAbonarActionPerformed
 
     private void botonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSiguienteActionPerformed
-        mainFrame.mostrarSolicitudDePinDeTransaccion();
+        if(montoAbonar.getText().matches("-?\\d+") && idCuentaCredito.getText().matches("-?\\d+"))
+        {
+            Integer monto = Integer.parseInt(montoAbonar.getText());
+            Integer idCuenta = Integer.parseInt(idCuentaCredito.getText());
+            if(monto > 0 && Sistema.obtenerObjetoCuenta(idCuenta) != null)
+            {
+                Cuenta cuenta = Sistema.obtenerObjetoCuenta(idCuenta);
+                if(cuenta.getTarjeta() instanceof TarjetaCredito)
+                {
+                    mainFrame.mostrarSolicitudDePinDeTransaccion();
+                    Sistema.pagarTarjetaCredito(mainFrame.getCuenta().getID(), idCuenta, monto);
+                }
+                else
+                    JOptionPane.showMessageDialog(mainFrame, "Esta cuenta no es de credito", "Error",  JOptionPane.ERROR_MESSAGE);
+               
+            }
+        else
+        {
+            MensajeFracasoOperacion fr = new MensajeFracasoOperacion(mainFrame, true);
+            fr.setVisible(true);       
+        }
+               
+        }
     }//GEN-LAST:event_botonSiguienteActionPerformed
+
+    private void idCuentaCreditoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idCuentaCreditoActionPerformed
+        if(idCuentaCredito.getText().matches("-?\\d+"))
+        {
+            Integer idCuenta = Integer.parseInt(idCuentaCredito.getText());
+            Cuenta cuenta = Sistema.obtenerObjetoCuenta(idCuenta);
+            if(cuenta.getTarjeta() instanceof TarjetaCredito)
+            {
+                TarjetaCredito tarjeta = (TarjetaCredito) cuenta.getTarjeta();
+                jLabel4.setText(String.valueOf(tarjeta.getSaldoPendiente()));
+                jLabel7.setText(String.valueOf(tarjeta.getPagoMinimo()));
+            }  
+        }
+    }//GEN-LAST:event_idCuentaCreditoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonSiguiente;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JTextField idCuentaCredito;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -162,6 +193,6 @@ public class PagoTC extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField montoAbonar;
     // End of variables declaration//GEN-END:variables
 }

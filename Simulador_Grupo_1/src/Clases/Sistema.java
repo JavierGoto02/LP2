@@ -79,6 +79,23 @@ public class Sistema
     {
         return cuentaPorCodigo.get(idCuenta);
     }
+    
+    /**
+     * Retorna un objeto Cuenta a partir de su Tarjeta asociada.
+     * 
+     * @param nroTarjeta El numero de tarjeta que tiene la cuenta.
+     * @return El objeto Cuenta asociado a la Tarjeta. Retorna null si no existe cuenta.
+     */
+    public static Cuenta obtenerObjetoCuentaPorTarjeta(int nroTarjeta)
+    {
+        for(Map.Entry<Integer, Cuenta> entry : cuentaPorCodigo.entrySet())
+        {
+            if(entry.getValue().getTarjeta().getNroTarjeta() == nroTarjeta)
+                return entry.getValue();
+    
+        }
+        return null;
+    }
 
     /**
      * Retorna un objeto Cliente a partir de su identificador.

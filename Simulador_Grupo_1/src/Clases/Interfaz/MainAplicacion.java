@@ -36,6 +36,7 @@ public final class MainAplicacion extends javax.swing.JFrame {
     // Componentes de la barra de menú
     private JMenuBar menuBar;
     private JButton inicioBoton;
+    private MenuPrincipal menuPrincipal; // Campo para guardar el panel de menu principal
     private VentanaAcercaDelSistema ventanaAcercaDelSistema; // Campo para guardar referencia a la ventana de acerca del sistema que funciona en otro hilo.
 
     /**
@@ -57,26 +58,31 @@ public final class MainAplicacion extends javax.swing.JFrame {
         getContentPane().setLayout(cardLayout);
 
         // Agregar JPanels al CardLayout
-        getContentPane().add("MenuPrincipal", new MenuPrincipal(this));
+        menuPrincipal = new MenuPrincipal(this);
+        getContentPane().add("MenuPrincipal", menuPrincipal);
         getContentPane().add("Transferencias", new Transferencias(this));
         getContentPane().add("PagoServicios", new PagoServicios(this));
         getContentPane().add("PagoTC", new PagoTC(this));
         getContentPane().add("VentanaLogin", new VentanaLogin(this));
+        getContentPane().add("CrearCuenta", new CrearCuenta(this));
+        getContentPane().add("CrearTarjeta", new CrearTarjeta(this));
+        // Leer los datos del sistema desde un archivo a modo de simular una base de datos. 
         recuperarDatosSistema();
 
         //Dato de prueba
-        Sistema.crearCuenta(1, new TarjetaDebito(1, new Date(), 1, 1, 10000), 2023);
-        Sistema.crearCuenta(2, new TarjetaCredito(2, new Date(), 1, 2, 10000, 20000, (float)0.12, (float)0.06, new Date()), 1234);
+
+        Sistema.crearCuenta(1, new TarjetaDebito(4500, new Date(), 1, 1, 10000), 2023);
+        Sistema.crearCuenta(2, new TarjetaCredito(2711, new Date(), 1, 2, 10000, 20000, (float)0.12, (float)0.06, new Date()), 1234);
+        Sistema.crearCuenta(3, new TarjetaDebito(3, new Date(),1,  3, 15000), 345);
         Sistema.crearClientePersona("Fabrizio", "Kawabata", 7669776, "Calle Palma", "69");
         Sistema.crearClienteEmpresa("Fabri Ferretería", "6969420-69", "Mcal Estigarribia", "420");
         if (cuenta == null){
             cambiarAVentana("VentanaLogin");
         }
     }
-    
-    
+      
     /**
-     * Lee los datos del sistema, funciona como nuestro base de datos
+     * Lee los datos del sistema, funciona como nuestra base de datos.
      */
     public void recuperarDatosSistema() 
     {
@@ -129,7 +135,7 @@ public final class MainAplicacion extends javax.swing.JFrame {
         inicioBoton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                cambiarAVentana("MenuPrincipal");
+                cambiarAMenuPrincipal();
             }
         });
 
@@ -166,6 +172,19 @@ public final class MainAplicacion extends javax.swing.JFrame {
      */
     public void cambiarAVentana(String panelName) {
         cardLayout.show(getContentPane(), panelName);
+    }
+    
+     /**
+     * Método para cambiar al panel de menu principal. 
+     * Si la cuenta de sesión es nula va a la ventana de login. 
+     */
+    public void cambiarAMenuPrincipal() {
+        if (cuenta == null) {
+            cambiarAVentana("VentanaLogin");  
+        } else {
+            cambiarAVentana("MenuPrincipal");
+            menuPrincipal.actualizarDatosCuenta();
+        }
     }
     
     /**
@@ -223,6 +242,11 @@ public final class MainAplicacion extends javax.swing.JFrame {
         this.sistema = sistema;
     }
 
+    /**
+     * Retorna la cuenta de la sesión actual. 
+     * 
+     * @return la cuenta de la sesión actual. 
+     */
     public Cuenta getCuenta() {
         return cuenta;
     }
@@ -230,6 +254,14 @@ public final class MainAplicacion extends javax.swing.JFrame {
     public void setCuenta(Cuenta cuenta) {
         this.cuenta = cuenta;
     }
+    
+    /**
+     * Cierra la sesión del usuario y abre la ventana de login. 
+     */
+    public void cerrarSesion() {
+        cuenta = null;
+        cambiarAVentana("VentanaLogin");
+    }   
     
     public boolean validarPinTransaccion(String pin) {
         return Integer.toString(cuenta.getPinTransaccion()).equals(pin);
