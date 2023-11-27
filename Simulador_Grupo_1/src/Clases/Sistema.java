@@ -371,10 +371,9 @@ public class Sistema
         {
             cuenta.disminuirSaldo(monto);
             crearTransaccion(idCuenta, descripcionServicio, monto, metodeDePago);
-            JOptionPane.showMessageDialog( null, "Se ha realizado exitosamente el pago!");
         }
         else
-            JOptionPane.showMessageDialog( null, "La cuenta " + cuenta.toShortString() + " no tiene fondo suficiente para realizar el pago de servicio", "Error", JOptionPane.ERROR_MESSAGE);
+            System.out.println("La cuenta " + cuenta.toShortString() + "no tiene fondo suficiente para realizar el pago de servicio");
     }
 
     /**

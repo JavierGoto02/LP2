@@ -115,6 +115,8 @@ public class SolicitudPinDeTransaccion extends javax.swing.JDialog {
         String pin = String.valueOf(campoPassword.getPassword());
         
         if (mainFrame.validarPinTransaccion(pin)) {
+            MensajeExitoOperacion dialogoExito = new MensajeExitoOperacion(mainFrame, true);
+            dialogoExito.setLocationRelativeTo(this); // Centrar el diálogo en el marco principal
             this.setVisible(false);
         } else {
             MensajeFracasoOperacion dialogoFracaso = new MensajeFracasoOperacion(mainFrame, true);

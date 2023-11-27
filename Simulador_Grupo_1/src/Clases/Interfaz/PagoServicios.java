@@ -203,8 +203,8 @@ public class PagoServicios extends javax.swing.JPanel {
         boolean error = true;
         if (campoMontoAPagar.getText().matches("-?\\d+")){
             Integer monto = Integer.parseInt(campoMontoAPagar.getText());
-            if (monto > 0){
-                Cuenta cuenta = mainFrame.getCuenta();
+            Cuenta cuenta = mainFrame.getCuenta();
+            if (monto > 0 && cuenta != null && cuenta.tieneFondoSuficiente(monto)){
                 Tarjeta tarjeta = cuenta.getTarjeta();
                 String descripcion = String.valueOf(comboBoxServicios.getSelectedItem());
                 descripcion += ", " + LabelDato1.getText() + ": " + campoDato1.getText();
@@ -220,7 +220,6 @@ public class PagoServicios extends javax.swing.JPanel {
                         Sistema.pagarServicio(cuenta.getID(), monto, descripcion, "Tarjeta de Débito");
                     }
                     error = false;
-                    mainFrame.setCuenta(cuenta);
                 }
             }
         }

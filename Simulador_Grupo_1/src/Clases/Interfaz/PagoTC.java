@@ -182,8 +182,12 @@ public class PagoTC extends javax.swing.JPanel {
                 }
                 // Si no hay errores, solicitar el pin de transaccion y realizar el pago de tarjeta de credito
                 else {
-                    mainFrame.mostrarSolicitudDePinDeTransaccion();
-                    Sistema.pagarTarjetaCredito(mainFrame.getCuenta().getID(), idCuenta, monto);
+                    boolean cerradoForzado = mainFrame.mostrarSolicitudDePinDeTransaccion();
+                    if (!cerradoForzado){
+                        System.out.println("Pagando monto: " + monto);
+                        Sistema.pagarTarjetaCredito(mainFrame.getCuenta().getID(), idCuenta, monto);
+                        actualizarMontos();
+                    }      
                 }
             }
             else {

@@ -202,8 +202,10 @@ public class Transferencias extends javax.swing.JPanel {
                    JOptionPane.showMessageDialog(mainFrame, "La cuenta destinatario no existe", "Error",  JOptionPane.ERROR_MESSAGE);
             else
             {
-                mainFrame.mostrarSolicitudDePinDeTransaccion();
-                Sistema.realizarTransferencia(mainFrame.getCuenta().getID(), idCuentaDestinatario, monto);
+                boolean cerradoForzado = mainFrame.mostrarSolicitudDePinDeTransaccion();
+                if (!cerradoForzado){
+                    Sistema.realizarTransferencia(mainFrame.getCuenta().getID(), idCuentaDestinatario, monto);
+                }
             }
         }
        
