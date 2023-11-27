@@ -42,8 +42,8 @@ public class SolicitudPinDeTransaccion extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(220, 120));
         addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosed(java.awt.event.WindowEvent evt) {
-                formWindowClosed(evt);
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
             }
         });
 
@@ -52,7 +52,6 @@ public class SolicitudPinDeTransaccion extends javax.swing.JDialog {
 
         labelPin.setText("PIN");
 
-        campoPassword.setText("jPasswordField1");
         campoPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoPasswordActionPerformed(evt);
@@ -124,9 +123,9 @@ public class SolicitudPinDeTransaccion extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_botonIngresarActionPerformed
 
-    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         setCerradoForzado(true);
-    }//GEN-LAST:event_formWindowClosed
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments

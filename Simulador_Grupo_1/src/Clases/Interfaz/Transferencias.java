@@ -77,6 +77,11 @@ public class Transferencias extends javax.swing.JPanel {
         jLabel4.setText("Nº Cuenta Destinatario");
 
         nroCuentaDestinatario.setText("Numero");
+        nroCuentaDestinatario.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                nroCuentaDestinatarioFocusLost(evt);
+            }
+        });
         nroCuentaDestinatario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nroCuentaDestinatarioActionPerformed(evt);
@@ -169,17 +174,7 @@ public class Transferencias extends javax.swing.JPanel {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void nroCuentaDestinatarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nroCuentaDestinatarioActionPerformed
-        if(nroCuentaDestinatario.getText().matches("-?\\d+"))
-        {
-            Integer idCuentaDestinatario = Integer.parseInt(nroCuentaDestinatario.getText());
-            Cuenta cuentaDestinatario = Sistema.obtenerObjetoCuenta(idCuentaDestinatario);
-            if(cuentaDestinatario != null)
-            {
-                Cliente clienteDestino = Sistema.obtenerObjetoCliente(cuentaDestinatario.getIDPropietario());
-                nombreApellido.setText(clienteDestino.getEtiqueta());
-                documento.setText(clienteDestino.getDocumento());
-            }
-        }
+        actualizarDatosDestinatario();
     }//GEN-LAST:event_nroCuentaDestinatarioActionPerformed
 
     private void documentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_documentoActionPerformed
@@ -214,6 +209,44 @@ public class Transferencias extends javax.swing.JPanel {
        
     }//GEN-LAST:event_botonSiguienteActionPerformed
 
+    private void nroCuentaDestinatarioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nroCuentaDestinatarioFocusLost
+        actualizarDatosDestinatario();
+    }//GEN-LAST:event_nroCuentaDestinatarioFocusLost
+
+    /**
+     * Actualiza los datos del destinatario en base a su numero de cuenta en el sistema. 
+     */
+    public void actualizarDatosDestinatario() {
+        if(nroCuentaDestinatario.getText().matches("-?\\d+"))
+        {
+            Integer idCuentaDestinatario = Integer.parseInt(nroCuentaDestinatario.getText());
+            // Si la cuenta es la misma que la de la sesion actual tirar error, no podemos transferirnos a nosotros mismos
+            if (idCuentaDestinatario == mainFrame.getCuenta().getID()) {
+                nroCuentaDestinatario.setText("");
+                nombreApellido.setText("");
+                documento.setText("");
+                JOptionPane.showMessageDialog(this, 
+                        "¡No puedes transferirte a ti mismo!", "Error", JOptionPane.ERROR_MESSAGE);               
+                return; 
+            }
+            
+            Cuenta cuentaDestinatario = Sistema.obtenerObjetoCuenta(idCuentaDestinatario);
+            if(cuentaDestinatario != null)
+            {
+                Cliente clienteDestino = Sistema.obtenerObjetoCliente(cuentaDestinatario.getIDPropietario());
+                if (clienteDestino != null) {
+                    nombreApellido.setText(clienteDestino.getEtiqueta());
+                    documento.setText(clienteDestino.getDocumento());
+                } else {
+                  JOptionPane.showMessageDialog(this, 
+                        "¡Cliente destino no existente!", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                  JOptionPane.showMessageDialog(this, 
+                        "¡Cuenta de destinatario invalida!", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonSiguiente;

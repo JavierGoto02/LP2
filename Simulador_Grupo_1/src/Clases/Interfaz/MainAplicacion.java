@@ -65,17 +65,19 @@ public final class MainAplicacion extends javax.swing.JFrame {
         getContentPane().add("PagoTC", new PagoTC(this));
         getContentPane().add("VentanaLogin", new VentanaLogin(this));
         getContentPane().add("CrearCuenta", new CrearCuenta(this));
-        getContentPane().add("CrearTarjeta", new CrearTarjeta(this));
         // Leer los datos del sistema desde un archivo a modo de simular una base de datos. 
         recuperarDatosSistema();
 
         //Dato de prueba
 
         Sistema.crearCuenta(1, new TarjetaDebito(4500, new Date(), 1, 1, 10000), 2023);
-        Sistema.crearCuenta(2, new TarjetaCredito(2711, new Date(), 1, 2, 10000, 20000, (float)0.12, (float)0.06, new Date()), 1234);
+        Sistema.crearCuenta(2, new TarjetaCredito(2711, new Date(), 1, 2, 100, 20000, (float)0.12, (float)0.06, new Date()), 1234);
         Sistema.crearCuenta(3, new TarjetaDebito(3, new Date(),1,  3, 15000), 345);
         Sistema.crearClientePersona("Fabrizio", "Kawabata", 7669776, "Calle Palma", "69");
         Sistema.crearClienteEmpresa("Fabri Ferretería", "6969420-69", "Mcal Estigarribia", "420");
+        Sistema.realizarTransferencia(2, 1, 7500);
+        
+        // Abrir la ventana de login
         if (cuenta == null){
             cambiarAVentana("VentanaLogin");
         }
@@ -171,7 +173,9 @@ public final class MainAplicacion extends javax.swing.JFrame {
      * @param panelName Nombre del panel al que se quiere cambiar.
      */
     public void cambiarAVentana(String panelName) {
-        cardLayout.show(getContentPane(), panelName);
+        vaciarCamposDeTexto(getContentPane());
+        
+        cardLayout.show(getContentPane(), panelName);    
     }
     
      /**
@@ -184,6 +188,17 @@ public final class MainAplicacion extends javax.swing.JFrame {
         } else {
             cambiarAVentana("MenuPrincipal");
             menuPrincipal.actualizarDatosCuenta();
+        }
+    }
+    
+    // Metodo para vaciar campos de texto cuando se cambia de panel
+    private void vaciarCamposDeTexto(Container container) {
+        for (Component componente : container.getComponents()) {
+            if (componente instanceof JTextField) {
+                ((JTextField) componente).setText("");
+            } else if (componente instanceof Container) {
+                vaciarCamposDeTexto((Container) componente);
+            }
         }
     }
     

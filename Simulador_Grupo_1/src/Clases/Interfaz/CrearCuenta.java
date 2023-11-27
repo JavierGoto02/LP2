@@ -5,7 +5,11 @@
 package Clases.Interfaz;
 
 import static Clases.Sistema.crearClientePersona;
+import static Clases.Sistema.crearCuenta;
+import Clases.TarjetaCredito;
+import Clases.TarjetaDebito;
 import static java.lang.Integer.parseInt;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -42,14 +46,20 @@ public class CrearCuenta extends javax.swing.JPanel {
         txtApellido = new javax.swing.JTextField();
         txtClave = new javax.swing.JTextField();
         txtDocumento = new javax.swing.JTextField();
-        btnCredito = new javax.swing.JRadioButton();
-        BtnDebito = new javax.swing.JRadioButton();
-        jLabel6 = new javax.swing.JLabel();
         btnVolver = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         txtTelefono = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         txtDireccion = new javax.swing.JTextField();
+        btnCredito = new javax.swing.JRadioButton();
+        txtNroTarj = new javax.swing.JTextField();
+        BtnDebito = new javax.swing.JRadioButton();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        txtCVC = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        txtFechaVenc = new javax.swing.JFormattedTextField();
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel4.setText("Crear Cuenta");
@@ -70,16 +80,6 @@ public class CrearCuenta extends javax.swing.JPanel {
             }
         });
 
-        GrupoTipoTarjeta.add(btnCredito);
-        btnCredito.setText("Credito");
-        btnCredito.setActionCommand("Crédito");
-
-        GrupoTipoTarjeta.add(BtnDebito);
-        BtnDebito.setText("Debito");
-        BtnDebito.setActionCommand("Débito");
-
-        jLabel6.setText("Tarjeta:");
-
         btnVolver.setText("Volver");
         btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -90,6 +90,25 @@ public class CrearCuenta extends javax.swing.JPanel {
         jLabel7.setText("Teléfono:");
 
         jLabel8.setText("Dirección:");
+
+        GrupoTipoTarjeta.add(btnCredito);
+        btnCredito.setText("Credito");
+        btnCredito.setActionCommand("Crédito");
+
+        GrupoTipoTarjeta.add(BtnDebito);
+        BtnDebito.setText("Debito");
+        BtnDebito.setActionCommand("Débito");
+
+        jLabel9.setText("Nro. Tarjeta:");
+
+        jLabel10.setText("Tarjeta:");
+
+        jLabel11.setText("Fecha Vencimiento:");
+
+        jLabel12.setText("CVC:");
+
+        txtFechaVenc.setColumns(3);
+        txtFechaVenc.setToolTipText("DD/MM/AAAA");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -107,24 +126,10 @@ public class CrearCuenta extends javax.swing.JPanel {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel1)
                                     .addComponent(jLabel3))
+                                .addGap(37, 37, 37)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addGap(20, 20, 20)
-                                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addGap(37, 37, 37)
-                                        .addComponent(txtClave, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6)
-                                    .addComponent(btnVolver))
-                                .addGap(21, 21, 21)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnCredito)
-                                        .addGap(39, 39, 39)
-                                        .addComponent(BtnDebito))
-                                    .addComponent(BotonCrearCuenta, javax.swing.GroupLayout.Alignment.TRAILING)))
+                                    .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtClave, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -139,8 +144,37 @@ public class CrearCuenta extends javax.swing.JPanel {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtDocumento, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
                                     .addComponent(txtTelefono)
-                                    .addComponent(txtDireccion, javax.swing.GroupLayout.Alignment.TRAILING))))))
-                .addContainerGap(63, Short.MAX_VALUE))
+                                    .addComponent(txtDireccion, javax.swing.GroupLayout.Alignment.TRAILING)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(52, 52, 52)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel9)
+                                        .addComponent(jLabel12))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txtNroTarj, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtCVC, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(jLabel11)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txtFechaVenc, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(26, 26, 26)
+                                .addComponent(jLabel10)
+                                .addGap(21, 21, 21)
+                                .addComponent(btnCredito)
+                                .addGap(39, 39, 39)
+                                .addComponent(BtnDebito)))))
+                .addContainerGap(52, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnVolver)
+                .addGap(54, 54, 54)
+                .addComponent(BotonCrearCuenta)
+                .addGap(78, 78, 78))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,20 +200,32 @@ public class CrearCuenta extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCredito)
                     .addComponent(BtnDebito)
-                    .addComponent(jLabel6))
+                    .addComponent(jLabel10))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(txtNroTarj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(txtFechaVenc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(txtCVC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BotonCrearCuenta)
                     .addComponent(btnVolver))
-                .addGap(17, 17, 17))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -191,10 +237,33 @@ public class CrearCuenta extends javax.swing.JPanel {
             int Documento = parseInt(txtDocumento.getText());
             String Direccion = txtDireccion.getText();
             String Telefono = txtTelefono.getText();
-            String seleccion = GrupoTipoTarjeta.getSelection().getActionCommand();
+            
             crearClientePersona(Nombre, Apellido, Documento, Direccion, Telefono);
-            mainFrame.cambiarAVentana("CrearTarjeta");
-            //crearCuenta(Documento, seleccion, Clave);
+            
+            int NroTarj = parseInt(txtNroTarj.getText());
+            Date fechaVenc = new Date(txtFechaVenc.getText());
+            int cvc = parseInt(txtCVC.getText());
+            String tipotarj = GrupoTipoTarjeta.getSelection().getActionCommand();
+            if (tipotarj == "Crédito"){
+                TarjetaCredito tarjeta = new TarjetaCredito(NroTarj, fechaVenc, cvc, 0, 0, 0, 0, 0, fechaVenc);
+                crearCuenta(Documento, tarjeta, Clave);
+            }
+            if (tipotarj == "Débito"){
+                TarjetaDebito tarjeta = new TarjetaDebito(NroTarj, fechaVenc, cvc, 0, 1000);
+                crearCuenta(Documento, tarjeta, Clave);
+            }
+            txtNombre.setText("");
+            txtApellido.setText("");
+            txtClave.setText("");
+            txtDocumento.setText("");
+            txtDireccion.setText("");
+            txtTelefono.setText("");
+            txtNroTarj.setText("");
+            txtFechaVenc.setText("");
+            txtCVC.setText("");
+            GrupoTipoTarjeta.clearSelection();
+            JOptionPane.showMessageDialog(null, "La Cuenta fue creada Correctamente");
+            mainFrame.cambiarAVentana("VentanaLogin");
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(null, "Datos Incorrectos");
@@ -215,18 +284,24 @@ public class CrearCuenta extends javax.swing.JPanel {
     private javax.swing.JRadioButton btnCredito;
     private javax.swing.JButton btnVolver;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField txtApellido;
+    private javax.swing.JTextField txtCVC;
     private javax.swing.JTextField txtClave;
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtDocumento;
+    private javax.swing.JFormattedTextField txtFechaVenc;
     private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtNroTarj;
     private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 }
