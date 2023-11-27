@@ -62,14 +62,12 @@ public class VentanaLogin extends javax.swing.JPanel {
         labelSolicitudRecuperación.setFont(new java.awt.Font("Segoe UI", 2, 10)); // NOI18N
         labelSolicitudRecuperación.setText("Solicitá recuperar tu Clave de Acceso");
 
-        campoClave.setText("jPasswordField1");
         campoClave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoClaveActionPerformed(evt);
             }
         });
 
-        campoIdentificador.setText("ID");
         campoIdentificador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoIdentificadorActionPerformed(evt);
@@ -101,7 +99,7 @@ public class VentanaLogin extends javax.swing.JPanel {
             }
         });
 
-        comboBoxMetodoIngreso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cuenta", "Documento", "Tarjeta de Crédito" }));
+        comboBoxMetodoIngreso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cuenta", "Tarjeta" }));
 
         labelMetodoDeIngreso.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         labelMetodoDeIngreso.setText("Metodo de Ingreso");
@@ -174,11 +172,19 @@ public class VentanaLogin extends javax.swing.JPanel {
     private void botonIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIngresarActionPerformed
         boolean error = true;    
         if (campoIdentificador.getText().matches("-?\\d+")){
-            Integer id = Integer.parseInt(campoIdentificador.getText());
-            Cuenta ctaTemp = Sistema.obtenerObjetoCuenta(id);
-            if (ctaTemp != null){
-                if (ctaTemp.getPinTransaccion() == Integer.parseInt(new String(campoClave.getPassword()))){
-                    mainFrame.setCuenta(ctaTemp);
+            Integer id = Integer.valueOf(campoIdentificador.getText());
+            Cuenta cuentaTemp = null;
+            switch ((String)comboBoxMetodoIngreso.getSelectedItem()) {
+                case "Cuenta":
+                    cuentaTemp = Sistema.obtenerObjetoCuenta(id);
+                    break;
+                case "Tarjeta":
+                    cuentaTemp = Sistema.obtenerObjetoCuentaPorTarjeta(id);
+                    break;
+            }
+            if (cuentaTemp != null){
+                if (cuentaTemp.getPinTransaccion() == Integer.parseInt(new String(campoClave.getPassword()))){
+                    mainFrame.setCuenta(cuentaTemp);
                     mainFrame.cambiarAMenuPrincipal();
                     error = false;
                 }
@@ -186,7 +192,7 @@ public class VentanaLogin extends javax.swing.JPanel {
         }
         if (error){
             JOptionPane.showMessageDialog(this, 
-                    "¡Contraseña incorrecta, intente nuevamente!", 
+                    "¡Datos incorrectos, intente nuevamente!", 
                     "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_botonIngresarActionPerformed
