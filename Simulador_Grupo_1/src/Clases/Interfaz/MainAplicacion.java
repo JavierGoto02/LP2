@@ -64,6 +64,8 @@ public final class MainAplicacion extends javax.swing.JFrame {
         getContentPane().add("PagoServicios", new PagoServicios(this));
         getContentPane().add("PagoTC", new PagoTC(this));
         getContentPane().add("VentanaLogin", new VentanaLogin(this));
+        getContentPane().add("CrearCuenta", new CrearCuenta(this));
+        getContentPane().add("CrearTarjeta", new CrearTarjeta(this));
         recuperarDatosSistema();
 
         //Dato de prueba
