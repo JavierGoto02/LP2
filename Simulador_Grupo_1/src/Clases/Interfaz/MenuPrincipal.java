@@ -49,6 +49,7 @@ public class MenuPrincipal extends javax.swing.JPanel {
             labelNombre.setText(empresa.getRazonSocial());  
             labelIdCuenta.setText(empresa.getRuc());
         }   
+
     }
 
    
