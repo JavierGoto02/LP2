@@ -175,11 +175,16 @@ public final class MainAplicacion extends javax.swing.JFrame {
     }
     
      /**
-     * Método para cambiar al panel de menu principal.
+     * Método para cambiar al panel de menu principal. 
+     * Si la cuenta de sesión es nula va a la ventana de login. 
      */
     public void cambiarAMenuPrincipal() {
-        cambiarAVentana("MenuPrincipal");
-        menuPrincipal.actualizarDatosCuenta();
+        if (cuenta == null) {
+            cambiarAVentana("VentanaLogin");  
+        } else {
+            cambiarAVentana("MenuPrincipal");
+            menuPrincipal.actualizarDatosCuenta();
+        }
     }
     
     /**
