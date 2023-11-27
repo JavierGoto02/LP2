@@ -156,7 +156,7 @@
     <Component class="javax.swing.JLabel" name="jLabel6">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Clases/Interfaz/iconoPagoTC.png"/>
+          <Image iconType="3" name="/Recursos/iconoPagoTC.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="iconoPagoTarjetas"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -200,7 +200,7 @@
     <Component class="javax.swing.JLabel" name="jLabel10">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Clases/Interfaz/iconoPagoServicios.png"/>
+          <Image iconType="3" name="/Recursos/iconoPagoServicios.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="iconoPagoServicios"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">

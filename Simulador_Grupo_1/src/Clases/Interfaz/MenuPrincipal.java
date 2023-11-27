@@ -57,11 +57,11 @@ public class MenuPrincipal extends javax.swing.JPanel {
 
         jLabel2.setText("ID");
         add(jLabel2);
-        jLabel2.setBounds(90, 96, 15, 21);
+        jLabel2.setBounds(90, 96, 11, 16);
 
         jLabel3.setText("Tipo de Cuenta");
         add(jLabel3);
-        jLabel3.setBounds(21, 74, 101, 21);
+        jLabel3.setBounds(21, 74, 80, 16);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel4.setText("Saldo de Cuenta");
@@ -70,11 +70,11 @@ public class MenuPrincipal extends javax.swing.JPanel {
 
         jLabel5.setText("---.---.--");
         add(jLabel5);
-        jLabel5.setBounds(337, 74, 54, 21);
+        jLabel5.setBounds(337, 74, 46, 16);
 
         jLabel7.setText("Gs.");
         add(jLabel7);
-        jLabel7.setBounds(367, 96, 19, 21);
+        jLabel7.setBounds(367, 96, 16, 16);
 
         botonTransferencias.setBackground(new java.awt.Color(250, 230, 150));
         botonTransferencias.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -89,7 +89,7 @@ public class MenuPrincipal extends javax.swing.JPanel {
 
         jSeparator1.setForeground(new java.awt.Color(180, 180, 180));
         add(jSeparator1);
-        jSeparator1.setBounds(0, 65, 400, 4);
+        jSeparator1.setBounds(0, 65, 400, 3);
 
         botonPagoServicios.setBackground(new java.awt.Color(250, 230, 150));
         botonPagoServicios.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -100,7 +100,7 @@ public class MenuPrincipal extends javax.swing.JPanel {
             }
         });
         add(botonPagoServicios);
-        botonPagoServicios.setBounds(158, 174, 143, 32);
+        botonPagoServicios.setBounds(158, 174, 135, 32);
 
         botonPagoTarjetas.setBackground(new java.awt.Color(250, 230, 150));
         botonPagoTarjetas.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -113,7 +113,7 @@ public class MenuPrincipal extends javax.swing.JPanel {
         add(botonPagoTarjetas);
         botonPagoTarjetas.setBounds(158, 218, 135, 32);
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clases/Interfaz/iconoPagoTC.png"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/iconoPagoTC.png"))); // NOI18N
         jLabel6.setText("iconoPagoTarjetas");
         jLabel6.setMaximumSize(new java.awt.Dimension(20, 20));
         jLabel6.setMinimumSize(new java.awt.Dimension(20, 20));
@@ -129,7 +129,7 @@ public class MenuPrincipal extends javax.swing.JPanel {
         add(jLabel8);
         jLabel8.setBounds(114, 130, 32, 32);
 
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clases/Interfaz/iconoPagoServicios.png"))); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/iconoPagoServicios.png"))); // NOI18N
         jLabel10.setText("iconoPagoServicios");
         jLabel10.setMaximumSize(new java.awt.Dimension(20, 20));
         jLabel10.setMinimumSize(new java.awt.Dimension(20, 20));
@@ -149,15 +149,15 @@ public class MenuPrincipal extends javax.swing.JPanel {
             }
         });
         add(botonOpcionesCuenta);
-        botonOpcionesCuenta.setBounds(162, 6, 150, 29);
+        botonOpcionesCuenta.setBounds(162, 6, 121, 23);
 
         botonCerrarSesion.setText("Cerrar Sesion");
         add(botonCerrarSesion);
-        botonCerrarSesion.setBounds(289, 6, 125, 29);
+        botonCerrarSesion.setBounds(289, 6, 99, 23);
 
         jSeparator2.setForeground(new java.awt.Color(180, 180, 180));
         add(jSeparator2);
-        jSeparator2.setBounds(0, 38, 400, 4);
+        jSeparator2.setBounds(0, 38, 400, 3);
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonTransferenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonTransferenciasActionPerformed

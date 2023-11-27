@@ -3,6 +3,7 @@ import Clases.*;
 import java.awt.*;    
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -43,6 +44,10 @@ public final class MainAplicacion extends javax.swing.JFrame {
     public MainAplicacion() {
         initComponents();
         
+        // Agregar icono de aplicación
+        ImageIcon img = new ImageIcon(getClass().getResource("/Recursos/iconoBanco.png"));
+        this.setIconImage(img.getImage().getScaledInstance(32, 32, Image.SCALE_SMOOTH));
+
         // Configurar la barra de menú
         crearBarraDeMenu();
         
