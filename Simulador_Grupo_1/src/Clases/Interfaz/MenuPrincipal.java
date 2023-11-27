@@ -36,7 +36,7 @@ public class MenuPrincipal extends javax.swing.JPanel {
         DecimalFormat formatoDecimal = new DecimalFormat("###,###", symbols);
         String saldoFormateado = formatoDecimal.format(saldo);
         labelMontoCuenta.setText(saldoFormateado);
-
+        
         Cliente cliente = Sistema.obtenerObjetoCliente(cuenta.getIDPropietario());
         if (cliente instanceof Persona) {
             Persona persona = (Persona) cliente;
