@@ -6,6 +6,8 @@ package Clases.Interfaz;
  */
 public class SolicitudPinDeTransaccion extends javax.swing.JDialog {
 
+    private MainAplicacion mainFrame; // Referencia al frame main de la aplicación
+    
     /**
      * Creates new form SolicitudPinDeTransaccion
      */
@@ -23,23 +25,34 @@ public class SolicitudPinDeTransaccion extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
+        labelTitulo = new javax.swing.JLabel();
+        labelPin = new javax.swing.JLabel();
+        campoPassword = new javax.swing.JPasswordField();
+        botonIngresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(220, 120));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1.setText("Ingrese su PIN de Transacción");
+        labelTitulo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        labelTitulo.setText("Ingrese su PIN de Transacción");
 
-        jLabel2.setText("PIN");
+        labelPin.setText("PIN");
 
-        jPasswordField1.setText("jPasswordField1");
+        campoPassword.setText("jPasswordField1");
+        campoPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoPasswordActionPerformed(evt);
+            }
+        });
 
-        jButton1.setBackground(new java.awt.Color(250, 230, 150));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton1.setText("Ingresar");
+        botonIngresar.setBackground(new java.awt.Color(250, 230, 150));
+        botonIngresar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        botonIngresar.setText("Ingresar");
+        botonIngresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonIngresarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -49,35 +62,55 @@ public class SolicitudPinDeTransaccion extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel1))
+                        .addComponent(labelTitulo))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(23, 23, 23)
-                        .addComponent(jLabel2)
+                        .addComponent(labelPin)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(26, 26, 26)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(botonIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(campoPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(labelTitulo)
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(campoPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelPin))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botonIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void campoPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoPasswordActionPerformed
+
+    private void botonIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIngresarActionPerformed
+        MainAplicacion mainFrame = ((MainAplicacion)this.getParent());
+        String pin = String.valueOf(campoPassword.getPassword());
+        
+        if (mainFrame.validarPinTransaccion(pin)) {
+            MensajeExitoOperacion dialogoExito = new MensajeExitoOperacion(mainFrame, true);
+            dialogoExito.setLocationRelativeTo(this); // Centrar el diálogo en el marco principal
+            dialogoExito.setVisible(true);
+        } else {
+            MensajeFracasoOperacion dialogoFracaso = new MensajeFracasoOperacion(mainFrame, true);
+            dialogoFracaso.setLocationRelativeTo(this); // Centrar el diálogo en el marco principal
+            dialogoFracaso.setVisible(true);     
+        }
+    }//GEN-LAST:event_botonIngresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -122,9 +155,9 @@ public class SolicitudPinDeTransaccion extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JButton botonIngresar;
+    private javax.swing.JPasswordField campoPassword;
+    private javax.swing.JLabel labelPin;
+    private javax.swing.JLabel labelTitulo;
     // End of variables declaration//GEN-END:variables
 }

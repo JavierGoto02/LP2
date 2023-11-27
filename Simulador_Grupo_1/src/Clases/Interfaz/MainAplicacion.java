@@ -1,5 +1,5 @@
 package Clases.Interfaz;
-import Clases.Sistema;
+import Clases.*;
 import java.awt.*;    
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
+import java.util.Date;
 import javax.swing.*;
 
 /**
@@ -25,8 +26,11 @@ public final class MainAplicacion extends javax.swing.JFrame {
     // Utilizamos un CardLayout para cambiar entre las distintas ventanas de la aplicación.
     private CardLayout cardLayout;
     
-    //Atributo que contiene los datos del sistema
+    // Atributo que contiene los datos del sistema.
     private Sistema sistema;
+    
+    // Atributo que contiene la cuenta de la sesión actual.
+    private Cuenta cuenta; 
 
     // Componentes de la barra de menú
     private JMenuBar menuBar;
@@ -52,6 +56,8 @@ public final class MainAplicacion extends javax.swing.JFrame {
         getContentPane().add("PagoServicios", new PagoServicios(this));
         getContentPane().add("PagoTC", new PagoTC(this));
         recuperarDatosSistema();
+        
+        cuenta = new Cuenta(1, new TarjetaDebito(1, new Date(), 1, 1, 10000), 2023, 3);
     }
     
     
@@ -192,6 +198,10 @@ public final class MainAplicacion extends javax.swing.JFrame {
         };
 
         worker.execute();
+    }
+    
+    public boolean validarPinTransaccion(String pin) {
+        return Integer.toString(cuenta.getPinTransaccion()).equals(pin);
     }
     
     /**
