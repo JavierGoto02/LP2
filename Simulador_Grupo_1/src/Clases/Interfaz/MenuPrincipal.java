@@ -1,6 +1,7 @@
 package Clases.Interfaz;
+
 import Clases.*;
-import java.awt.*;    
+import java.awt.*;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
@@ -13,21 +14,21 @@ import javax.swing.JPanel;
 public class MenuPrincipal extends javax.swing.JPanel {
 
     private MainAplicacion mainFrame; // Referencia al frame main de la aplicación
-    
+
     /**
      * Crea el nuevo panel MenuPrincipal
      */
     public MenuPrincipal(MainAplicacion mainFrame) {
-        initComponents();  
+        initComponents();
         this.mainFrame = mainFrame;
         actualizarDatosCuenta();
     }
-    
+
     public void actualizarDatosCuenta() {
         Cuenta cuenta = mainFrame.getCuenta();
         if (cuenta == null)
             return;
-        
+
         // Formatear el saldo de cuenta con DecimalFormat con puntos como separador de miles (---.---)
         int saldo = cuenta.getTarjeta().consultarSaldo();
         DecimalFormatSymbols symbols = new DecimalFormatSymbols();
@@ -35,24 +36,22 @@ public class MenuPrincipal extends javax.swing.JPanel {
         DecimalFormat formatoDecimal = new DecimalFormat("###,###", symbols);
         String saldoFormateado = formatoDecimal.format(saldo);
         labelMontoCuenta.setText(saldoFormateado);
-        
+
         Cliente cliente = Sistema.obtenerObjetoCliente(cuenta.getIDPropietario());
         if (cliente instanceof Persona) {
-            Persona persona = (Persona)cliente;
+            Persona persona = (Persona) cliente;
             labelTipoDeCuenta.setText("Cuenta Personal");
             labelNombre.setText(persona.getNombre() + " " + persona.getApellido());
             labelIdCuenta.setText(Integer.toString(persona.getCI()));
-        }
-        else {
-            Empresa empresa = (Empresa)cliente;
+        } else {
+            Empresa empresa = (Empresa) cliente;
             labelTipoDeCuenta.setText("Cuenta Empresarial");
-            labelNombre.setText(empresa.getRazonSocial());  
+            labelNombre.setText(empresa.getRazonSocial());
             labelIdCuenta.setText(empresa.getRuc());
-        }   
+        }
 
     }
 
-   
     /**
      * Este método se llama desde el constructor para inicializar el formulario.
      * ADVERTENCIA: NO modifique este código. El contenido de este método siempre
@@ -164,7 +163,8 @@ public class MenuPrincipal extends javax.swing.JPanel {
         add(iconoTarjetas);
         iconoTarjetas.setBounds(114, 218, 32, 32);
 
-        iconoTransferencias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/iconoTransferencias.png"))); // NOI18N
+        iconoTransferencias
+                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/iconoTransferencias.png"))); // NOI18N
         iconoTransferencias.setText("iconoTransferencias");
         iconoTransferencias.setMaximumSize(new java.awt.Dimension(20, 20));
         iconoTransferencias.setMinimumSize(new java.awt.Dimension(20, 20));
@@ -225,7 +225,6 @@ public class MenuPrincipal extends javax.swing.JPanel {
     private void botonCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCerrarSesionActionPerformed
         mainFrame.cerrarSesion();
     }//GEN-LAST:event_botonCerrarSesionActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonCerrarSesion;
