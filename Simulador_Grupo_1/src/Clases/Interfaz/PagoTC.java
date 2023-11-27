@@ -2,6 +2,8 @@ package Clases.Interfaz;
 import Clases.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import javax.swing.JOptionPane;
 
 /**
@@ -218,8 +220,16 @@ public class PagoTC extends javax.swing.JPanel {
                 TarjetaCredito tarjeta = (TarjetaCredito) cuenta.getTarjeta();
                 int pagoMinimo = tarjeta.getSaldoPendiente() < tarjeta.getPagoMinimo() 
                                     ? tarjeta.getSaldoPendiente() : tarjeta.getPagoMinimo();
-                datoMontoAPagar.setText(String.valueOf(tarjeta.getSaldoPendiente()));
-                datoMontoPagoMinimo.setText(String.valueOf(pagoMinimo));
+                
+                // Formatear como moneda en guaranies. 
+                DecimalFormatSymbols symbols = new DecimalFormatSymbols();
+                symbols.setGroupingSeparator('.');
+                DecimalFormat formatoDecimal = new DecimalFormat("###,###", symbols);
+                
+                String montoAPagarFormateado = formatoDecimal.format(tarjeta.getSaldoPendiente());
+                String pagoMinimoFormateado = formatoDecimal.format(pagoMinimo);
+                datoMontoAPagar.setText(montoAPagarFormateado);
+                datoMontoPagoMinimo.setText(pagoMinimoFormateado);
             } 
             else {
                 datoMontoAPagar.setText("---.---.---.--");
