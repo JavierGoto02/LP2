@@ -29,14 +29,7 @@ public class Persona extends Cliente {
         this.apellido = apellido;
     }
 
-    /**
-     * Obtiene la cédula de identidad de la persona.
-     *
-     * @return La cédula de identidad de la persona.
-     */
-    public int getCI() {
-        return CI;
-    }
+   
 
     /**
      * Establece la cédula de identidad de la persona.
@@ -110,6 +103,12 @@ public class Persona extends Cliente {
         return  nombre + " " + apellido;
     }
     
+    
+     /**
+     * Obtiene la cédula de identidad de la persona.
+     *
+     * @return La cédula de identidad de la persona.
+     */
     @Override
     public String getDocumento()
     {

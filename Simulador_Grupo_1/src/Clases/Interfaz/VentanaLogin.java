@@ -169,6 +169,7 @@ public class VentanaLogin extends javax.swing.JPanel {
         mainFrame.cambiarAVentana("CrearCuenta");
         mainFrame.mostrarInicioMenu(true);
     }//GEN-LAST:event_botonCrearCuentaActionPerformed
+
     private void botonIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIngresarActionPerformed
         boolean error = true;    
         if (campoIdentificador.getText().matches("-?\\d+")){
