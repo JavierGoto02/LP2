@@ -4,8 +4,7 @@
  */
 package Clases.Interfaz;
 
-import static Clases.Sistema.crearClientePersona;
-import static Clases.Sistema.crearCuenta;
+import Clases.Sistema;
 import Clases.TarjetaCredito;
 import Clases.TarjetaDebito;
 import static java.lang.Integer.parseInt;
@@ -238,7 +237,7 @@ public class CrearCuenta extends javax.swing.JPanel {
             String Direccion = txtDireccion.getText();
             String Telefono = txtTelefono.getText();
             
-            crearClientePersona(Nombre, Apellido, Documento, Direccion, Telefono);
+            Sistema.crearClientePersona(Nombre, Apellido, Documento, Direccion, Telefono);
             
             int NroTarj = parseInt(txtNroTarj.getText());
             Date fechaVenc = new Date(txtFechaVenc.getText());
@@ -246,21 +245,12 @@ public class CrearCuenta extends javax.swing.JPanel {
             String tipotarj = GrupoTipoTarjeta.getSelection().getActionCommand();
             if (tipotarj == "Crédito"){
                 TarjetaCredito tarjeta = new TarjetaCredito(NroTarj, fechaVenc, cvc, 0, 0, 0, 0, 0, fechaVenc);
-                crearCuenta(Documento, tarjeta, Clave);
+                tarjeta.setIdCuenta(Sistema.crearCuenta(Documento, tarjeta, Clave));
             }
             if (tipotarj == "Débito"){
                 TarjetaDebito tarjeta = new TarjetaDebito(NroTarj, fechaVenc, cvc, 0, 1000);
-                crearCuenta(Documento, tarjeta, Clave);
+                tarjeta.setIdCuenta(Sistema.crearCuenta(Documento, tarjeta, Clave));
             }
-            txtNombre.setText("");
-            txtApellido.setText("");
-            txtClave.setText("");
-            txtDocumento.setText("");
-            txtDireccion.setText("");
-            txtTelefono.setText("");
-            txtNroTarj.setText("");
-            txtFechaVenc.setText("");
-            txtCVC.setText("");
             GrupoTipoTarjeta.clearSelection();
             JOptionPane.showMessageDialog(null, "La Cuenta fue creada Correctamente");
             mainFrame.cambiarAVentana("VentanaLogin");
@@ -268,8 +258,6 @@ public class CrearCuenta extends javax.swing.JPanel {
         catch(Exception e){
             JOptionPane.showMessageDialog(null, "Datos Incorrectos");
         }
-
-        
 
     }//GEN-LAST:event_BotonCrearCuentaActionPerformed
 

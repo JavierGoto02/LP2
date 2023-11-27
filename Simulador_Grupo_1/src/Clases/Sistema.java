@@ -205,7 +205,7 @@ public class Sistema
      * Crea un nuevo cliente empresa y lo agrega al sistema.
      *
      * @param razonSocial La razón social de la empresa.
-     * @param ruc         El Registro Único de Contribuyentes (RUC) de la empresa.
+     * @param ruc         El Registro Único de Contribuyentes (RUC) de la empresa.crear
      * @param direccion   La dirección de la empresa.
      * @param telefono    El número de teléfono de la empresa.
      */
@@ -228,8 +228,10 @@ public class Sistema
      * @param IDpropietarioCuenta El identificador del propietario de la cuenta.
      * @param tarjeta             La tarjeta asociada a la cuenta.
      * @param pinTransaccion      El PIN de transacción de la cuenta.
+     * 
+     * @return Retorna el identificador (Id) de la cuenta creada.
      */
-    public static void crearCuenta(int IDpropietarioCuenta, Tarjeta tarjeta, int pinTransaccion)
+    public static int crearCuenta(int IDpropietarioCuenta, Tarjeta tarjeta, int pinTransaccion)
     {
         // Generar un nuevo identificador único para la cuenta
         int identificadorCuenta = generarIDCuenta();
@@ -239,6 +241,8 @@ public class Sistema
         
         // Agregar al HashMap de cuentas por su identificador
         cuentaPorCodigo.put(identificadorCuenta, nuevaCuenta);
+        
+        return identificadorCuenta;
     }
 
     /**
