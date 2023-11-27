@@ -38,7 +38,7 @@ public class Transferencias extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Banco 1", "Financiera", "Cooperativa" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Banco Continental", "Itaú", "Banco GNB", "Sudameris Bank", "Banco Regional", "Banco Nacional de Fomento", "Banco Basa", "Banco Atlas", "Vision Banco", "Banco Familiar", "Financiera Paraguayo Japonés", "FIC SA de Finanzas", "Tu Financiera", "Financiera UENO", "Interfisa Banco" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);

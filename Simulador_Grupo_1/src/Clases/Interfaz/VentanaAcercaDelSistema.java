@@ -9,13 +9,19 @@ import java.io.IOException;
 
 
 /**
+ * Esta clase representa la ventana que muestra información acerca del sistema 
+ * y proporciona acceso a la documentación del sistema.
+ * Además, muestra los nombres de los miembros del grupo en la interfaz gráfica.
+ *  
+ * <p> Nota: La carpeta del javadoc debe estar en la misma ruta que el ejecutable
+ * para que funcione el botón de ver documentación </p>
  *
- * @author Grupo 1
+ * @author Grupo 1 
  */
 public class VentanaAcercaDelSistema extends javax.swing.JFrame {
-
+   
     /** 
-     * Creates new form AcercaDelSistema
+     * Crea una nueva instancia de la clase VentanaAcercaDelSistema.
      */
     public VentanaAcercaDelSistema() {
         initComponents();
@@ -144,13 +150,23 @@ public class VentanaAcercaDelSistema extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    // Abrir la documentacion en un nuevo hilo
+    /**
+     * Abre la documentación del sistema en un navegador web externo.
+     * Este método se ejecuta en un hilo separado para no bloquear la interfaz de usuario.
+     *
+     * @param evt El evento que desencadena la acción, en este caso, presionar un botón.
+     */
     private void botonVerDocumentaciónActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerDocumentaciónActionPerformed
         new Thread(() -> {
             abrirDocumentacion();
         }).start();
     }//GEN-LAST:event_botonVerDocumentaciónActionPerformed
 
+    
+    /**
+     * Abre el navegador web predeterminado con el archivo HTML de documentación del sistema.
+     * Si el archivo no se encuentra, muestra un mensaje de error. (La carpeta del javadoc debe estar en la misma ruta que el ejecutable) 
+     */
     private void abrirDocumentacion() {
         // Obtener la ruta del camino de ejecución y concatenarlo con el nombre del archivo de documentación HTML.
         String rutaArchivoHTML = System.getProperty("user.dir") + File.separator + "javadoc" + File.separator + "index.html";
@@ -168,7 +184,10 @@ public class VentanaAcercaDelSistema extends javax.swing.JFrame {
         }
     }
     
-    // Inicializar los nombres de los integrantes de los miembros del grupo en un hilo con delay
+    /**
+     * Inicializa los nombres de los miembros del grupo en la interfaz gráfica con un
+     * retraso entre cada nombre utilizando un nuevo hilo. 
+     */
     private void initNombres() {
         // Crear el nuevo hilo
         new Thread(() -> {
