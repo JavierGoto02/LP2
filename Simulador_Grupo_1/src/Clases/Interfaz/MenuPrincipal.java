@@ -42,7 +42,7 @@ public class MenuPrincipal extends javax.swing.JPanel {
             Persona persona = (Persona) cliente;
             labelTipoDeCuenta.setText("Cuenta Personal");
             labelNombre.setText(persona.getNombre() + " " + persona.getApellido());
-            labelIdCuenta.setText(Integer.toString(persona.getCI()));
+            labelIdCuenta.setText(persona.getDocumento());
         } else {
             Empresa empresa = (Empresa) cliente;
             labelTipoDeCuenta.setText("Cuenta Empresarial");
