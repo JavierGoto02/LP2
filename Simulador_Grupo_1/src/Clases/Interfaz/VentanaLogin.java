@@ -1,13 +1,8 @@
 package Clases.Interfaz;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-
 /**
  *
- * @author marti
+ * @author Grupo 1
  */
 public class VentanaLogin extends javax.swing.JFrame {
 
@@ -16,7 +11,10 @@ public class VentanaLogin extends javax.swing.JFrame {
      */
     public VentanaLogin() {
         initComponents();
+        
     }
+    
+   
 
     /**
      * This method is called from within the constructor to initialize the form.

@@ -1,12 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package Clases.Interfaz;
 
 /**
  *
- * @author marti
+ * @author Grupo 1
  */
 public class Transferencias extends javax.swing.JPanel {
 
