@@ -42,6 +42,7 @@ public final class MainAplicacion extends javax.swing.JFrame {
      * Constructor de la clase. Inicializa componentes y configura el CardLayout.
      */
     public MainAplicacion() {
+        cuenta = null;
         initComponents();
         
         // Agregar icono de aplicación
@@ -60,9 +61,11 @@ public final class MainAplicacion extends javax.swing.JFrame {
         getContentPane().add("Transferencias", new Transferencias(this));
         getContentPane().add("PagoServicios", new PagoServicios(this));
         getContentPane().add("PagoTC", new PagoTC(this));
+        getContentPane().add("VentanaLogin", new VentanaLogin(this));
         recuperarDatosSistema();
         
-        cuenta = new Cuenta(1, new TarjetaDebito(1, new Date(), 1, 1, 10000), 2023, 3);
+        if (cuenta == null){
+        }
     }
     
     
