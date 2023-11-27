@@ -5,6 +5,7 @@
 package Clases.Interfaz;
 
 import static java.lang.Integer.parseInt;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -127,10 +128,9 @@ public class CrearTarjeta extends javax.swing.JPanel {
     private void BotonCrearTarjetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCrearTarjetaActionPerformed
         try{
             int NroTarj = parseInt(txtNroTarj.getText());
-            date fechaVenc = txtFechVenc.getText();
+            Date fechaVenc = new Date(txtFechaVenc.getText());
             int cvc = parseInt(txtCVC.getText());
-            Tarjeta tarjeta = new Tarjeta(NroTarj, )
-            
+            //Tarjeta tarjeta = new Tarjeta(NroTarj, )
 
         }
         catch(Exception e){

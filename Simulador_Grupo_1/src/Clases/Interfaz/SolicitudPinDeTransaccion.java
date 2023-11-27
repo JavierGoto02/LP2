@@ -7,13 +7,22 @@ package Clases.Interfaz;
 public class SolicitudPinDeTransaccion extends javax.swing.JDialog {
 
     private MainAplicacion mainFrame; // Referencia al frame main de la aplicación
-    
+    private boolean cerradoForzado;
     /**
      * Creates new form SolicitudPinDeTransaccion
      */
     public SolicitudPinDeTransaccion(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        cerradoForzado = false;
         initComponents();
+    }
+
+    public boolean getCerradoForzado() {
+        return cerradoForzado;
+    }
+
+    public void setCerradoForzado(boolean cerradoForzado) {
+        this.cerradoForzado = cerradoForzado;
     }
 
     /**
@@ -32,6 +41,11 @@ public class SolicitudPinDeTransaccion extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(220, 120));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         labelTitulo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         labelTitulo.setText("Ingrese su PIN de Transacción");
@@ -102,15 +116,17 @@ public class SolicitudPinDeTransaccion extends javax.swing.JDialog {
         String pin = String.valueOf(campoPassword.getPassword());
         
         if (mainFrame.validarPinTransaccion(pin)) {
-            MensajeExitoOperacion dialogoExito = new MensajeExitoOperacion(mainFrame, true);
-            dialogoExito.setLocationRelativeTo(this); // Centrar el diálogo en el marco principal
-            dialogoExito.setVisible(true);
+            this.setVisible(false);
         } else {
             MensajeFracasoOperacion dialogoFracaso = new MensajeFracasoOperacion(mainFrame, true);
             dialogoFracaso.setLocationRelativeTo(this); // Centrar el diálogo en el marco principal
             dialogoFracaso.setVisible(true);     
         }
     }//GEN-LAST:event_botonIngresarActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        setCerradoForzado(true);
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments

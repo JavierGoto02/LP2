@@ -175,20 +175,26 @@ public final class MainAplicacion extends javax.swing.JFrame {
     }
     
      /**
-     * Método para cambiar al panel de menu principal.
+     * Método para cambiar al panel de menu principal. 
+     * Si la cuenta de sesión es nula va a la ventana de login. 
      */
     public void cambiarAMenuPrincipal() {
-        cambiarAVentana("MenuPrincipal");
-        menuPrincipal.actualizarDatosCuenta();
+        if (cuenta == null) {
+            cambiarAVentana("VentanaLogin");  
+        } else {
+            cambiarAVentana("MenuPrincipal");
+            menuPrincipal.actualizarDatosCuenta();
+        }
     }
     
     /**
      * Método para mostrar un cuadro de diálogo solicitando un PIN de transacción.
      */
-    public void mostrarSolicitudDePinDeTransaccion() {
+    public boolean mostrarSolicitudDePinDeTransaccion() {
         SolicitudPinDeTransaccion dialogoPin = new SolicitudPinDeTransaccion(this, true);
         dialogoPin.setLocationRelativeTo(this); // Centrar el diálogo en el marco principal
         dialogoPin.setVisible(true);
+        return dialogoPin.getCerradoForzado();
     }
        
     /**

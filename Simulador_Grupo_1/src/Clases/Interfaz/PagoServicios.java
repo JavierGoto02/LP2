@@ -1,5 +1,5 @@
 package Clases.Interfaz;
-
+import Clases.*;
 import java.util.HashMap;
 
 /**
@@ -200,7 +200,36 @@ public class PagoServicios extends javax.swing.JPanel {
     }//GEN-LAST:event_campoDato2ActionPerformed
 
     private void botonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSiguienteActionPerformed
-        mainFrame.mostrarSolicitudDePinDeTransaccion();
+        boolean error = true;
+        if (campoMontoAPagar.getText().matches("-?\\d+")){
+            Integer monto = Integer.parseInt(campoMontoAPagar.getText());
+            if (monto > 0){
+                Cuenta cuenta = mainFrame.getCuenta();
+                Tarjeta tarjeta = cuenta.getTarjeta();
+                String descripcion = String.valueOf(comboBoxServicios.getSelectedItem());
+                descripcion += ", " + LabelDato1.getText() + ": " + campoDato1.getText();
+                if (LabelDato2.isVisible()){
+                    descripcion += ", " + LabelDato2.getText() + ": " + campoDato2.getText() + "  ";
+                }
+                boolean cerradoForzado = mainFrame.mostrarSolicitudDePinDeTransaccion();
+                System.out.println(cerradoForzado);
+                if (!cerradoForzado){
+                    if (tarjeta.getClass().isInstance(TarjetaCredito.class)){
+                        Sistema.pagarServicio(cuenta.getID(), monto, descripcion, "Tarjeta de Crédito");
+                    }                
+                    else{
+                        Sistema.pagarServicio(cuenta.getID(), monto, descripcion, "Tarjeta de Débito");
+                    }
+                    error = false;
+                    mainFrame.setCuenta(cuenta);
+                }
+            }
+        }
+        if (error){
+            MensajeFracasoOperacion dialogoFracaso = new MensajeFracasoOperacion(mainFrame, true);
+            dialogoFracaso.setLocationRelativeTo(this); // Centrar el diálogo en el marco principal
+            dialogoFracaso.setVisible(true);     
+        }
     }//GEN-LAST:event_botonSiguienteActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
