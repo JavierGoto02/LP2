@@ -6,20 +6,31 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- *
+ * El sistema central de la aplicación bancaria que gestiona clientes, cuentas y transacciones.
+ * 
+ * <p>Mantiene HashMaps para almacenar objetos por su código, como cuentas, clientes, transacciones y transferencias.
+ * Se usan estos como una alternativa a implementar una base de datos real para el propósito de la simulación de sistema.</p>
+ * 
+ * <p>Proporciona métodos para obtener listas de comprobantes, cuentas y objetos por su código,
+ * así como métodos para generar nuevos IDs y crear clientes, cuentas, transferencias y transacciones.</p>
+ * 
+ * <p>Además, incluye métodos para eliminar cuentas y clientes del sistema.</p>
+ * 
  * @author Grupo 1
  */
 public class Sistema 
 {
-    // HashMaps para almacenar objetos por su código
     private static HashMap<Integer, Cuenta> cuentaPorCodigo = new HashMap<>();
     private static HashMap<Integer, Cliente> clientePorCodigo = new HashMap<>();
     private static HashMap<Integer, Transaccion> transaccionPorCodigo = new HashMap<>();
     private static HashMap<Integer, Transferencia> transferenciaPorCodigo = new HashMap<>();
 
-
-
-    //Retorna una lista de comprobantes correspondiente a una cuenta en especifico
+    /**
+     * Retorna una lista de comprobantes correspondientes a una cuenta específica.
+     * 
+     * @param idCuenta El identificador de la cuenta.
+     * @return Una lista de comprobantes asociados a la cuenta.
+     */
     public static ArrayList<Comprobante> obtenerListaComprobantes(int idCuenta)
     {
         ArrayList<Comprobante> listaComprobantes = new ArrayList<>();
@@ -37,8 +48,12 @@ public class Sistema
         return listaComprobantes;
     }
 
-
-    //Retorna una lista de cuentas correspondiente a un cliente
+    /**
+     * Retorna una lista de cuentas correspondientes a un cliente.
+     * 
+     * @param idCliente El identificador del cliente.
+     * @return Una lista de cuentas asociadas al cliente.
+     */
     public static ArrayList<Cuenta> obtenerListaCuentas(int idCliente)
     {
         ArrayList<Cuenta> listaCuentas = new ArrayList<>();
@@ -51,32 +66,58 @@ public class Sistema
         }
 
         return listaCuentas;
-
     }
 
-
-    // Métodos para obtener objetos por su código
+    /**
+     * Retorna un objeto Cuenta a partir de su identificador.
+     * 
+     * @param idCuenta El identificador de la cuenta.
+     * @return El objeto Cuenta asociado al identificador.
+     */
     public static Cuenta obtenerObjetoCuenta(int idCuenta)
     {
         return cuentaPorCodigo.get(idCuenta);
     }
 
+    /**
+     * Retorna un objeto Cliente a partir de su identificador.
+     * 
+     * @param idCliente El identificador del cliente.
+     * @return El objeto Cliente asociado al identificador.
+     */
     public static Cliente obtenerObjetoCliente(int idCliente)
     {
         return clientePorCodigo.get(idCliente);
     }
 
+    /**
+     * Retorna un objeto Transferencia a partir de su identificador.
+     * 
+     * @param idTransferencia El identificador de la transferencia.
+     * @return El objeto Transferencia asociado al identificador.
+     */
     public static Transferencia obtenerObjetoTransferencia(int idTransferencia)
     {
         return transferenciaPorCodigo.get(idTransferencia);
     }
 
-    public static Transaccion obtenerObjetoPago(int idPago)
+    /**
+     * Retorna un objeto Transaccion a partir de su identificador.
+     * 
+     * @param idTransaccion El identificador de la transacción.
+     * @return El objeto Transaccion asociado al identificador.
+     */
+    public static Transaccion obtenerObjetoTransaccion(int idTransaccion)
     {
-        return transaccionPorCodigo.get(idPago);
+        return transaccionPorCodigo.get(idTransaccion);
     }
 
-    // Método para generar un nuevo ID evitando duplicados
+    /**
+     * Genera un nuevo identificador único evitando duplicados.
+     * 
+     * @param listaID El conjunto de identificadores existentes.
+     * @return Un nuevo identificador único.
+     */
     private static int generarID(Set<Integer> listaID) {
         int id = 1;
         while (listaID.contains(id)) {
@@ -85,19 +126,38 @@ public class Sistema
         return id;
     }
 
-    // Métodos para generar nuevos IDs específicos para cada tipo de objeto
+    /**
+     * Genera un nuevo identificador único para cuentas.
+     * 
+     * @return Un nuevo identificador único para cuentas.
+     */
     public static int generarIDCuenta() {
         return generarID(cuentaPorCodigo.keySet());
     }
 
+    /**
+     * Genera un nuevo identificador único para clientes.
+     * 
+     * @return Un nuevo identificador único para clientes.
+     */
     public static int generarIDCliente() {
         return generarID(clientePorCodigo.keySet());
     }
 
+    /**
+     * Genera un nuevo identificador único para transacciones.
+     * 
+     * @return Un nuevo identificador único para transacciones.
+     */
     public static int generarIDTransaccion() {
         return generarID(transaccionPorCodigo.keySet());
     }
 
+    /**
+     * Genera un nuevo identificador único para transferencias.
+     * 
+     * @return Un nuevo identificador único para transferencias.
+     */
     public static int generarIDTransferencia() {
         return generarID(transferenciaPorCodigo.keySet());
     }
@@ -115,16 +175,13 @@ public class Sistema
     {
         // Generar un nuevo identificador único para el cliente persona
         int identificadorPersona = generarIDCliente();
-
+        
         // Crear un nuevo objeto Persona con la información proporcionada
         Persona nuevaPersona = new Persona(identificadorPersona, direccion, telefono, CI, nombre, apellido);
-
+        
         // Agregar el cliente persona al HashMap de clientes por su identificador
         clientePorCodigo.put(identificadorPersona, nuevaPersona);
     }
-
-
-
 
     /**
      * Crea un nuevo cliente empresa y lo agrega al sistema.
@@ -138,17 +195,13 @@ public class Sistema
     {
         // Generar un nuevo identificador único para el cliente empresa
         int identificadorEmpresa = generarIDCliente();
-
+        
         // Crear un nuevo objeto Empresa con la información proporcionada
         Empresa nuevaEmpresa = new Empresa(identificadorEmpresa, direccion, telefono, razonSocial, ruc);
-
+        
         // Agregar el cliente empresa al HashMap de clientes por su identificador
         clientePorCodigo.put(identificadorEmpresa, nuevaEmpresa);
     }
-
-
-
-
 
     /**
      * Crea una nueva cuenta y la asocia a un cliente existente en el sistema.
@@ -162,15 +215,19 @@ public class Sistema
     {
         // Generar un nuevo identificador único para la cuenta
         int identificadorCuenta = generarIDCuenta();
-
+        
         // Crear un nuevo objeto Cuenta con la información proporcionada
         Cuenta nuevaCuenta = new Cuenta(IDpropietarioCuenta, tarjeta, pinTransaccion, identificadorCuenta);
-
+        
         // Agregar al HashMap de cuentas por su identificador
         cuentaPorCodigo.put(identificadorCuenta, nuevaCuenta);
     }
 
-
+    /**
+     * Elimina una cuenta del sistema.
+     * 
+     * @param idCuenta El identificador de la cuenta a eliminar.
+     */
     public static void eliminarCuenta(int idCuenta)
     {
         Cuenta cuentaEliminar = cuentaPorCodigo.get(idCuenta);
@@ -189,13 +246,8 @@ public class Sistema
                     transaccionPorCodigo.remove(comprobantesCuenta.getIdentificador());
             }
             cuentaPorCodigo.remove(cuentaEliminar.getID());
-        }
-        
+        }   
     }
-
-
-
-
 
     /**
      * Elimina un cliente del sistema, junto con todas sus cuentas y transacciones asociadas.
@@ -206,15 +258,14 @@ public class Sistema
     {
         // Obtener el objeto Cliente a partir del identificador
         Cliente clienteEliminar = clientePorCodigo.get(identificadorCliente);
-
+        
         // Iterar sobre las cuentas del cliente
         for(Cuenta cuenta : clienteEliminar.getCuentas())
         {
             // Verificar si la cuenta tiene deuda
-            if(cuenta.tieneDeuda())
+            if(cuenta.tieneDeuda()) {
                 System.out.println("El cliente debe abonar la deuda de la cuenta: " + cuenta.toShortString() + " para eliminar");
-            else
-            {
+            } else {
                 // Iterar sobre los comprobantes de la cuenta
                 for(Comprobante comprobantesCuenta : cuenta.getComprobantes())
                 {
@@ -225,20 +276,23 @@ public class Sistema
                     else
                         transaccionPorCodigo.remove(comprobantesCuenta.getIdentificador());
                 }
-
+                
                 // Eliminar la cuenta del HashMap de cuentas por su identificador
                 cuentaPorCodigo.remove(cuenta.getID());
-
-                // Llamar al método eliminar de la cuenta para realizar acciones específicas de eliminación
             }
         }
-
+        
         // Eliminar al cliente del HashMap de clientes por su identificador
         clientePorCodigo.remove(clienteEliminar.getID());
     }
 
-
-
+    /**
+     * Crea una nueva transferencia y la agrega al sistema.
+     * 
+     * @param idFuente  El identificador de la cuenta de origen.
+     * @param idDestino El identificador de la cuenta de destino.
+     * @param monto     El monto de la transferencia.
+     */
     public static void crearTransferencia(int idFuente, int idDestino, int monto)
     {
         int idTranferencia = generarIDTransferencia();
@@ -246,6 +300,14 @@ public class Sistema
         transferenciaPorCodigo.put(idTranferencia, nuevaTransferencia);
     }
 
+    /**
+     * Crea una nueva transacción y la agrega al sistema.
+     * 
+     * @param pagador            El identificador de la cuenta del pagador.
+     * @param descripcionServicio La descripción del servicio.
+     * @param monto              El monto de la transacción.
+     * @param metodoPago         El método de pago utilizado.
+     */
     public static void crearTransaccion(int pagador, String descripcionServicio, int monto, String metodoPago)
     {
         int idTransaccion = generarIDTransaccion();
@@ -253,6 +315,14 @@ public class Sistema
         transaccionPorCodigo.put(idTransaccion, nuevaTransaccion);
     }
 
+    /**
+     * Realiza una transferencia entre dos cuentas, disminuyendo el saldo de la cuenta de origen
+     * y aumentando el saldo de la cuenta de destino. Además, crea una nueva transferencia y la agrega al sistema.
+     *
+     * @param idFuente  El identificador de la cuenta de origen.
+     * @param idDestino El identificador de la cuenta de destino.
+     * @param monto     El monto a transferir.
+     */
     public static void realizarTransferencia(int idFuente, int idDestino, int monto)
     {
         Cuenta Fuente = obtenerObjetoCuenta(idFuente);
@@ -268,23 +338,46 @@ public class Sistema
             
     }
 
+    /**
+     * Realiza el pago de un servicio desde una cuenta, disminuyendo el saldo de la cuenta y creando una nueva transacción.
+     *
+     * @param idCuenta              El identificador de la cuenta desde la cual se realiza el pago.
+     * @param monto                 El monto a pagar por el servicio.
+     * @param descripcionServicio   La descripción del servicio a pagar.
+     * @param metodeDePago          El método de pago utilizado.
+     */
+    public void pagarServicio(int idCuenta, int monto, String descripcionServicio, String metodeDePago)
+    {
+        Cuenta cuenta = obtenerObjetoCuenta(idCuenta);
+        if(cuenta.tieneFondoSuficiente(monto))
+        {
+            cuenta.disminuirSaldo(monto);
+            crearTransaccion(monto, descripcionServicio, monto, metodeDePago);
+        }
+        else
+            System.out.println("La cuenta " + cuenta.toShortString() + "no tiene fondo suficiente para realizar el pago de servicio");
+    }
 
-
-    //TO-DO: IMPLEMENTAR PAGAR SERVICIO
-    //public static void pagarServicio()
-
-
-
-
-
+    /**
+     * Deposita un monto en una cuenta, aumentando su saldo.
+     *
+     * @param idCuenta El identificador de la cuenta en la que se deposita el monto.
+     * @param monto    El monto a depositar.
+     */
     public static void depositarEnCuenta(int idCuenta, int monto)
     {
         Cuenta cuenta = cuentaPorCodigo.get(idCuenta);
         cuenta.aumentarSaldo(monto);
     }
 
-
-    //Muy similar al metodo de transferencia, implementar otra forma?
+    /**
+     * Realiza el pago de una tarjeta de crédito desde una cuenta, disminuyendo el saldo de la cuenta de origen
+     * y aumentando el saldo de la cuenta de destino. Además, crea una nueva transacción y la agrega al sistema.
+     *
+     * @param idFuente   El identificador de la cuenta de origen.
+     * @param idDestino  El identificador de la cuenta de destino (tarjeta de crédito).
+     * @param monto      El monto a pagar.
+     */
     public static void pagarTarjetaCredito(int idFuente, int idDestino, int monto)
     {
         Cuenta fuente = cuentaPorCodigo.get(idFuente);
@@ -298,7 +391,5 @@ public class Sistema
         else
             System.out.println("La cuenta " + fuente.toShortString() + "no tiene fondo suficiente para realizar la transferencia");
     }
-
-
 }
 
