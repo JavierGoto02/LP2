@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
  *
  * @author Grupo 1
  */
-public abstract class TarjetaCredito extends Tarjeta {
+public class TarjetaCredito extends Tarjeta {
 
     private int saldoPendiente; // Saldo pendiente en la tarjeta de crédito
 

@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package Clases.Interfaz;
+import Clases.Cuenta;
+import Clases.Sistema;
 
 /**
  *
@@ -87,6 +89,11 @@ public class VentanaLogin extends javax.swing.JPanel {
         btnIngresar.setBackground(new java.awt.Color(250, 230, 150));
         btnIngresar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnIngresar.setText("Ingresar");
+        btnIngresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngresarActionPerformed(evt);
+            }
+        });
 
         metodoIngreso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cuenta", "Documento", "Tarjeta de Crédito" }));
 
@@ -157,6 +164,28 @@ public class VentanaLogin extends javax.swing.JPanel {
     private void btnCrearCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearCuentaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCrearCuentaActionPerformed
+
+    private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
+        boolean cond = false;    
+        if (Identificador.getText().matches("-?\\d+")){
+                Integer id = Integer.parseInt(Identificador.getText());
+                Cuenta ctaTemp = Sistema.obtenerObjetoCuenta(id);
+                if (ctaTemp != null){
+                    if (ctaTemp.getPinTransaccion() == Integer.parseInt(new String(clave.getPassword()))){
+                        mainFrame.setCuenta(ctaTemp);
+                        this.setVisible(false);
+                        MensajeExitoOperacion ex = new MensajeExitoOperacion(mainFrame, true);
+                        ex.setVisible(true);
+                        mainFrame.setVisible(true);
+                        cond = true;
+                    }
+                }
+            }
+        if (cond == false){
+            MensajeFracasoOperacion fr = new MensajeFracasoOperacion(mainFrame, true);
+            fr.setVisible(true);
+        }
+    }//GEN-LAST:event_btnIngresarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -63,8 +63,14 @@ public final class MainAplicacion extends javax.swing.JFrame {
         getContentPane().add("PagoTC", new PagoTC(this));
         getContentPane().add("VentanaLogin", new VentanaLogin(this));
         recuperarDatosSistema();
-        
+
+        //Dato de prueba
+        Sistema.crearCuenta(1, new TarjetaDebito(1, new Date(), 1, 1, 10000), 2023);
+        Sistema.crearCuenta(2, new TarjetaCredito(2, new Date(), 1, 2, 10000, 20000, (float)0.12, (float)0.06, new Date()), 1234);
+        Sistema.crearClientePersona("Fabrizio", "Kawabata", 7669776, "Calle Palma", "69");
+        Sistema.crearClienteEmpresa("Fabri Ferretería", "6969420-69", "Mcal Estigarribia", "420");
         if (cuenta == null){
+            cambiarAVentana("VentanaLogin");
         }
     }
     
@@ -206,6 +212,22 @@ public final class MainAplicacion extends javax.swing.JFrame {
         };
 
         worker.execute();
+    }
+
+    public Sistema getSistema() {
+        return sistema;
+    }
+
+    public void setSistema(Sistema sistema) {
+        this.sistema = sistema;
+    }
+
+    public Cuenta getCuenta() {
+        return cuenta;
+    }
+
+    public void setCuenta(Cuenta cuenta) {
+        this.cuenta = cuenta;
     }
     
     public boolean validarPinTransaccion(String pin) {
