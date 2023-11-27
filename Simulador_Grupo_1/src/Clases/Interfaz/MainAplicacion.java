@@ -66,6 +66,7 @@ public final class MainAplicacion extends javax.swing.JFrame {
         getContentPane().add("VentanaLogin", new VentanaLogin(this));
         getContentPane().add("CrearCuenta", new CrearCuenta(this));
         getContentPane().add("CrearTarjeta", new CrearTarjeta(this));
+        // Leer los datos del sistema desde un archivo a modo de simular una base de datos. 
         recuperarDatosSistema();
 
         //Dato de prueba
@@ -79,7 +80,7 @@ public final class MainAplicacion extends javax.swing.JFrame {
     }
       
     /**
-     * Lee los datos del sistema, funciona como nuestro base de datos
+     * Lee los datos del sistema, funciona como nuestra base de datos.
      */
     public void recuperarDatosSistema() 
     {
