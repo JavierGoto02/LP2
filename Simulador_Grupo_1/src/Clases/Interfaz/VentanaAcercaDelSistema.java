@@ -152,14 +152,16 @@ public class VentanaAcercaDelSistema extends javax.swing.JFrame {
     }//GEN-LAST:event_botonVerDocumentaciónActionPerformed
 
     private void abrirDocumentacion() {
-        // Obtener ruta del camino de ejecucion y concatenarlo con el nombre del archivo de documentacion. 
-        String rutaArchivo = System.getProperty("user.dir") + File.separator + "documentacion.pdf";
+        // Obtener la ruta del camino de ejecución y concatenarlo con el nombre del archivo de documentación HTML.
+        String rutaArchivoHTML = System.getProperty("user.dir") + File.separator + "javadoc" + File.separator + "index.html";
+
         try {
-            File archivo = new File(rutaArchivo);
-            if (archivo.exists()) {
-                Desktop.getDesktop().open(archivo);
+            File archivoHTML = new File(rutaArchivoHTML);
+            if (archivoHTML.exists()) {
+                // Abrir el navegador web con el archivo HTML específico
+                Desktop.getDesktop().browse(archivoHTML.toURI());
             } else {
-                JOptionPane.showMessageDialog(this, "Archivo de documentacion no encontrado.", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Archivo de documentación no encontrado.", "Error", JOptionPane.ERROR_MESSAGE);
             }
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(this, "Error abriendo documentacion: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
