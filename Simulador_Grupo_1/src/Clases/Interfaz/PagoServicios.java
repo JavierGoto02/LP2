@@ -212,7 +212,6 @@ public class PagoServicios extends javax.swing.JPanel {
                     descripcion += ", " + LabelDato2.getText() + ": " + campoDato2.getText() + "  ";
                 }
                 boolean cerradoForzado = mainFrame.mostrarSolicitudDePinDeTransaccion();
-                System.out.println(cerradoForzado);
                 if (!cerradoForzado){
                     if (tarjeta.getClass().isInstance(TarjetaCredito.class)){
                         Sistema.pagarServicio(cuenta.getID(), monto, descripcion, "Tarjeta de Crédito");
