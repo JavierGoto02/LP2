@@ -64,7 +64,8 @@ public final class MainAplicacion extends javax.swing.JFrame {
         getContentPane().add("PagoServicios", new PagoServicios(this));
         getContentPane().add("PagoTC", new PagoTC(this));
         getContentPane().add("VentanaLogin", new VentanaLogin(this));
-        
+        getContentPane().add("CrearCuenta", new CrearCuenta(this));
+        getContentPane().add("CrearTarjeta", new CrearTarjeta(this));
         // Leer los datos del sistema desde un archivo a modo de simular una base de datos. 
         recuperarDatosSistema();
 
