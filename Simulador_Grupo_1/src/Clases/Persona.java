@@ -103,4 +103,16 @@ public class Persona extends Cliente {
     public String toShortString() {
         return super.toShortString() + ", Nombre=" + nombre + ", Apellido=" + apellido + "}\n";
     }
+    
+    @Override
+    public String getEtiqueta()
+    {
+        return  nombre + " " + apellido;
+    }
+    
+    @Override
+    public String getDocumento()
+    {
+        return String.valueOf(CI);
+    }
 }

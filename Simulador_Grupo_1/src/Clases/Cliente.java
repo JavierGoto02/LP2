@@ -91,7 +91,10 @@ public abstract class Cliente {
     public String toString() {
         return "Identificador: " + ID + "\n" + "Direccion: " + direccion + "\n" + "Telefono: " + telefono + "\n";
     }
-
+    
+    public abstract String getEtiqueta();
+    public abstract String getDocumento();
+            
     /**
      * Devuelve una representación de cadena breve del cliente, incluyendo solo su identificador y teléfono.
      *
