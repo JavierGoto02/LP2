@@ -165,15 +165,15 @@ public class VentanaLogin extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_campoIdentificadorActionPerformed
 
-<<<<<<< Updated upstream
+
     private void botonCrearCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearCuentaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_botonCrearCuentaActionPerformed
-=======
+
     private void btnCrearCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearCuentaActionPerformed
         mainFrame.cambiarAVentana("CrearCuenta");
     }//GEN-LAST:event_btnCrearCuentaActionPerformed
->>>>>>> Stashed changes
+
 
     private void botonIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIngresarActionPerformed
         boolean error = true;    

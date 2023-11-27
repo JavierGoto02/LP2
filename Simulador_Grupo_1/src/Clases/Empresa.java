@@ -82,4 +82,14 @@ public class Empresa extends Cliente {
     public String toShortString() {
         return super.toShortString() + ", Ruc=" + ruc + "}\n";
     }
+    
+    public String getEtiqueta()
+    {
+        return  razonSocial;
+    }
+    
+    public  String getDocumento()
+    {
+        return ruc;
+    }
 }
