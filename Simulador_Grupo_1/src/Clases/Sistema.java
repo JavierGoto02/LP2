@@ -346,7 +346,7 @@ public class Sistema
      * @param descripcionServicio   La descripción del servicio a pagar.
      * @param metodeDePago          El método de pago utilizado.
      */
-    public void pagarServicio(int idCuenta, int monto, String descripcionServicio, String metodeDePago)
+    public static void pagarServicio(int idCuenta, int monto, String descripcionServicio, String metodeDePago)
     {
         Cuenta cuenta = obtenerObjetoCuenta(idCuenta);
         if(cuenta.tieneFondoSuficiente(monto))

@@ -36,6 +36,7 @@ public final class MainAplicacion extends javax.swing.JFrame {
     // Componentes de la barra de menú
     private JMenuBar menuBar;
     private JButton inicioBoton;
+    private MenuPrincipal menuPrincipal; // Campo para guardar el panel de menu principal
     private VentanaAcercaDelSistema ventanaAcercaDelSistema; // Campo para guardar referencia a la ventana de acerca del sistema que funciona en otro hilo.
 
     /**
@@ -57,7 +58,8 @@ public final class MainAplicacion extends javax.swing.JFrame {
         getContentPane().setLayout(cardLayout);
 
         // Agregar JPanels al CardLayout
-        getContentPane().add("MenuPrincipal", new MenuPrincipal(this));
+        menuPrincipal = new MenuPrincipal(this);
+        getContentPane().add("MenuPrincipal", menuPrincipal);
         getContentPane().add("Transferencias", new Transferencias(this));
         getContentPane().add("PagoServicios", new PagoServicios(this));
         getContentPane().add("PagoTC", new PagoTC(this));
@@ -73,8 +75,7 @@ public final class MainAplicacion extends javax.swing.JFrame {
             cambiarAVentana("VentanaLogin");
         }
     }
-    
-    
+      
     /**
      * Lee los datos del sistema, funciona como nuestro base de datos
      */
@@ -129,7 +130,7 @@ public final class MainAplicacion extends javax.swing.JFrame {
         inicioBoton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                cambiarAVentana("MenuPrincipal");
+                cambiarAMenuPrincipal();
             }
         });
 
@@ -166,6 +167,14 @@ public final class MainAplicacion extends javax.swing.JFrame {
      */
     public void cambiarAVentana(String panelName) {
         cardLayout.show(getContentPane(), panelName);
+    }
+    
+     /**
+     * Método para cambiar al panel de menu principal.
+     */
+    public void cambiarAMenuPrincipal() {
+        cambiarAVentana("MenuPrincipal");
+        menuPrincipal.actualizarDatosCuenta();
     }
     
     /**
@@ -222,6 +231,11 @@ public final class MainAplicacion extends javax.swing.JFrame {
         this.sistema = sistema;
     }
 
+    /**
+     * Retorna la cuenta de la sesión actual. 
+     * 
+     * @return la cuenta de la sesión actual. 
+     */
     public Cuenta getCuenta() {
         return cuenta;
     }
@@ -229,6 +243,14 @@ public final class MainAplicacion extends javax.swing.JFrame {
     public void setCuenta(Cuenta cuenta) {
         this.cuenta = cuenta;
     }
+    
+    /**
+     * Cierra la sesión del usuario y abre la ventana de login. 
+     */
+    public void cerrarSesion() {
+        cuenta = null;
+        cambiarAVentana("VentanaLogin");
+    }   
     
     public boolean validarPinTransaccion(String pin) {
         return Integer.toString(cuenta.getPinTransaccion()).equals(pin);
