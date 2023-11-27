@@ -69,7 +69,6 @@ public final class MainAplicacion extends javax.swing.JFrame {
         recuperarDatosSistema();
 
         //Dato de prueba
-
         Sistema.crearCuenta(1, new TarjetaDebito(4500, new Date(), 1, 1, 10000), 2023);
         Sistema.crearCuenta(2, new TarjetaCredito(2711, new Date(), 1, 2, 100, 20000, (float)0.12, (float)0.06, new Date()), 1234);
         Sistema.crearCuenta(3, new TarjetaDebito(3, new Date(),1,  3, 15000), 345);

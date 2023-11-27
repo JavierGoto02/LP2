@@ -1,6 +1,7 @@
 package Clases.Interfaz;
 import Clases.*;
 import java.util.HashMap;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -204,7 +205,18 @@ public class PagoServicios extends javax.swing.JPanel {
         if (campoMontoAPagar.getText().matches("-?\\d+")){
             Integer monto = Integer.parseInt(campoMontoAPagar.getText());
             Cuenta cuenta = mainFrame.getCuenta();
-            if (monto > 0 && cuenta != null && cuenta.tieneFondoSuficiente(monto)){
+            
+            // Verificar que el monto a transferir sea valido. 
+            if (monto <= 0 ) {
+                JOptionPane.showMessageDialog(mainFrame, 
+                            "El monto de pago debe ser mayor a 0!", "Error",  JOptionPane.ERROR_MESSAGE);
+            }
+            else if (!cuenta.tieneFondoSuficiente(monto))  {
+                JOptionPane.showMessageDialog(mainFrame, 
+                   "La cuenta no tiene fondos suficientes para el pago del servicio!", "Error",  JOptionPane.ERROR_MESSAGE);      
+            }
+            // Si no hay errores intentar realizar la transferencia
+            else {
                 Tarjeta tarjeta = cuenta.getTarjeta();
                 String descripcion = String.valueOf(comboBoxServicios.getSelectedItem());
                 descripcion += ", " + LabelDato1.getText() + ": " + campoDato1.getText();

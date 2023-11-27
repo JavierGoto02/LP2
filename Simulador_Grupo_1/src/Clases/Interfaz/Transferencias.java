@@ -186,20 +186,24 @@ public class Transferencias extends javax.swing.JPanel {
     }//GEN-LAST:event_nombreApellidoActionPerformed
 
     private void botonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSiguienteActionPerformed
-
+        // Validar los datos de la transferencia
         if(!jTextField1.getText().matches("-?\\d+") || Integer.parseInt(jTextField1.getText()) <= 0)
-            JOptionPane.showMessageDialog(mainFrame, "El monto no es valido", "Error",  JOptionPane.ERROR_MESSAGE);
-            
+            JOptionPane.showMessageDialog(mainFrame, "El monto de transferencia no es valido!", "Error",  JOptionPane.ERROR_MESSAGE);   
         else if(!nroCuentaDestinatario.getText().matches("-?\\d+"))
-            JOptionPane.showMessageDialog(mainFrame, "La entrada del numero de cuenta destinatario\n\t no es valido", "Error",  JOptionPane.ERROR_MESSAGE);
-        
+            JOptionPane.showMessageDialog(mainFrame, "La entrada del numero de cuenta destinatario\n\t no es valido!", "Error",  JOptionPane.ERROR_MESSAGE);
+        // Si no hay errores intentar realizar la  transferencia
         else
         {
             Integer monto = Integer.parseInt(jTextField1.getText());
+            if (!mainFrame.getCuenta().tieneFondoSuficiente(monto)) {
+                JOptionPane.showMessageDialog(mainFrame, 
+                   "La cuenta no tiene fondos suficientes para la transferencia", "Error",  JOptionPane.ERROR_MESSAGE);
+                return; 
+            }         
             Integer idCuentaDestinatario = Integer.parseInt(nroCuentaDestinatario.getText());
             Cuenta cuentaDestinatario = Sistema.obtenerObjetoCuenta(idCuentaDestinatario);
             if(cuentaDestinatario == null)
-                   JOptionPane.showMessageDialog(mainFrame, "La cuenta destinatario no existe", "Error",  JOptionPane.ERROR_MESSAGE);
+                   JOptionPane.showMessageDialog(mainFrame, "La cuenta destinatario no existe!", "Error",  JOptionPane.ERROR_MESSAGE);
             else
             {
                 boolean cerradoForzado = mainFrame.mostrarSolicitudDePinDeTransaccion();
