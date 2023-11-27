@@ -84,10 +84,22 @@
     <Component class="javax.swing.JComboBox" name="jComboBox1">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="3">
-            <StringItem index="0" value="Banco 1"/>
-            <StringItem index="1" value="Financiera"/>
-            <StringItem index="2" value="Cooperativa"/>
+          <StringArray count="15">
+            <StringItem index="0" value="Banco Continental"/>
+            <StringItem index="1" value="Ita&#xfa;"/>
+            <StringItem index="2" value="Banco GNB"/>
+            <StringItem index="3" value="Sudameris Bank"/>
+            <StringItem index="4" value="Banco Regional"/>
+            <StringItem index="5" value="Banco Nacional de Fomento"/>
+            <StringItem index="6" value="Banco Basa"/>
+            <StringItem index="7" value="Banco Atlas"/>
+            <StringItem index="8" value="Vision Banco"/>
+            <StringItem index="9" value="Banco Familiar"/>
+            <StringItem index="10" value="Financiera Paraguayo Japon&#xe9;s"/>
+            <StringItem index="11" value="FIC SA de Finanzas"/>
+            <StringItem index="12" value="Tu Financiera"/>
+            <StringItem index="13" value="Financiera UENO"/>
+            <StringItem index="14" value="Interfisa Banco"/>
           </StringArray>
         </Property>
       </Properties>
