@@ -75,7 +75,6 @@ public class MenuPrincipal extends javax.swing.JPanel {
         iconoTarjetas = new javax.swing.JLabel();
         iconoTransferencias = new javax.swing.JLabel();
         iconoServicios = new javax.swing.JLabel();
-        botonOpcionesCuenta = new javax.swing.JButton();
         botonCerrarSesion = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
 
@@ -116,7 +115,7 @@ public class MenuPrincipal extends javax.swing.JPanel {
         labelNombre.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         labelNombre.setText("Nombre Propietario");
         add(labelNombre);
-        labelNombre.setBounds(14, 6, 137, 20);
+        labelNombre.setBounds(14, 6, 200, 20);
 
         botonTransferencias.setBackground(new java.awt.Color(250, 230, 150));
         botonTransferencias.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -163,8 +162,7 @@ public class MenuPrincipal extends javax.swing.JPanel {
         add(iconoTarjetas);
         iconoTarjetas.setBounds(114, 218, 32, 32);
 
-        iconoTransferencias
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/iconoTransferencias.png"))); // NOI18N
+        iconoTransferencias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/iconoTransferencias.png"))); // NOI18N
         iconoTransferencias.setText("iconoTransferencias");
         iconoTransferencias.setMaximumSize(new java.awt.Dimension(20, 20));
         iconoTransferencias.setMinimumSize(new java.awt.Dimension(20, 20));
@@ -180,15 +178,6 @@ public class MenuPrincipal extends javax.swing.JPanel {
         add(iconoServicios);
         iconoServicios.setBounds(114, 174, 32, 32);
 
-        botonOpcionesCuenta.setText("Opciones Cuenta");
-        botonOpcionesCuenta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonOpcionesCuentaActionPerformed(evt);
-            }
-        });
-        add(botonOpcionesCuenta);
-        botonOpcionesCuenta.setBounds(162, 6, 121, 23);
-
         botonCerrarSesion.setText("Cerrar Sesion");
         botonCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -196,7 +185,7 @@ public class MenuPrincipal extends javax.swing.JPanel {
             }
         });
         add(botonCerrarSesion);
-        botonCerrarSesion.setBounds(289, 6, 99, 23);
+        botonCerrarSesion.setBounds(228, 6, 160, 23);
 
         jSeparator2.setForeground(new java.awt.Color(180, 180, 180));
         add(jSeparator2);
@@ -218,17 +207,12 @@ public class MenuPrincipal extends javax.swing.JPanel {
         mainFrame.mostrarInicioMenu(true);
     }//GEN-LAST:event_botonPagoTarjetasActionPerformed
 
-    private void botonOpcionesCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOpcionesCuentaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_botonOpcionesCuentaActionPerformed
-
     private void botonCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCerrarSesionActionPerformed
         mainFrame.cerrarSesion();
     }//GEN-LAST:event_botonCerrarSesionActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonCerrarSesion;
-    private javax.swing.JButton botonOpcionesCuenta;
     private javax.swing.JButton botonPagoServicios;
     private javax.swing.JButton botonPagoTarjetas;
     private javax.swing.JButton botonTransferencias;
