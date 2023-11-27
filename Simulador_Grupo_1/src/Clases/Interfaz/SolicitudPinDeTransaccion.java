@@ -52,7 +52,6 @@ public class SolicitudPinDeTransaccion extends javax.swing.JDialog {
 
         labelPin.setText("PIN");
 
-        campoPassword.setText("jPasswordField1");
         campoPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoPasswordActionPerformed(evt);

@@ -1,5 +1,7 @@
 package Clases.Interfaz;
 import Clases.*;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,6 +18,15 @@ public class PagoTC extends javax.swing.JPanel {
     public PagoTC(MainAplicacion mainFrame) {
         initComponents();  
         this.mainFrame = mainFrame;
+        
+        // Agregar un listener de componentes para detectar cuando se muestra el panel
+        addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentShown(ComponentEvent e) {
+                // Llamar a actualizarMontos cuando se muestra el panel
+                actualizarMontos();
+            }
+        });
     }
 
     /**
@@ -28,15 +39,15 @@ public class PagoTC extends javax.swing.JPanel {
     private void initComponents() {
 
         botonSiguiente = new javax.swing.JButton();
-        montoAbonar = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        idCuentaCredito = new javax.swing.JTextField();
+        campoMontoAbonar = new javax.swing.JTextField();
+        labelTitulo = new javax.swing.JLabel();
+        labelTarjeta = new javax.swing.JLabel();
+        labelMontoAbonar = new javax.swing.JLabel();
+        labelTotalAPagar = new javax.swing.JLabel();
+        datoMontoAPagar = new javax.swing.JLabel();
+        labelPagoMinimo = new javax.swing.JLabel();
+        datoMontoPagoMinimo = new javax.swing.JLabel();
+        campolNroCuenta = new javax.swing.JTextField();
 
         botonSiguiente.setBackground(new java.awt.Color(250, 230, 150));
         botonSiguiente.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -48,41 +59,45 @@ public class PagoTC extends javax.swing.JPanel {
             }
         });
 
-        montoAbonar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        montoAbonar.setText("---.---.---.--");
-        montoAbonar.setToolTipText("");
-        montoAbonar.addActionListener(new java.awt.event.ActionListener() {
+        campoMontoAbonar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        campoMontoAbonar.setToolTipText("");
+        campoMontoAbonar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                montoAbonarActionPerformed(evt);
+                campoMontoAbonarActionPerformed(evt);
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        jLabel3.setText("Pago de Tarjeta de Credito");
+        labelTitulo.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        labelTitulo.setText("Pago de Tarjeta de Credito");
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1.setText("idTarjetaCredito");
+        labelTarjeta.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        labelTarjeta.setText("Nº de Cuenta");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setText("Monto a Abonar (Gs.)");
+        labelMontoAbonar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        labelMontoAbonar.setText("Monto a Abonar (Gs.)");
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel6.setText("Total a Pagar");
+        labelTotalAPagar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        labelTotalAPagar.setText("Total a Pagar");
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel4.setText("---.---.---.-- Gs.");
-        jLabel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        datoMontoAPagar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        datoMontoAPagar.setForeground(new java.awt.Color(255, 0, 0));
+        datoMontoAPagar.setText("---.---.---.-- Gs.");
+        datoMontoAPagar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel5.setText("Pago Minimo");
+        labelPagoMinimo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        labelPagoMinimo.setText("Pago Minimo");
 
-        jLabel7.setText("---.---.-- Gs.");
-        jLabel7.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        datoMontoPagoMinimo.setText("---.---.-- Gs.");
+        datoMontoPagoMinimo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        idCuentaCredito.addActionListener(new java.awt.event.ActionListener() {
+        campolNroCuenta.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                campolNroCuentaFocusLost(evt);
+            }
+        });
+        campolNroCuenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                idCuentaCreditoActionPerformed(evt);
+                campolNroCuentaActionPerformed(evt);
             }
         });
 
@@ -93,106 +108,136 @@ public class PagoTC extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(labelPagoMinimo, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(labelTotalAPagar, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(labelMontoAbonar, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(labelTarjeta, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(idCuentaCredito, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campolNroCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonSiguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
-                        .addComponent(montoAbonar))
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(datoMontoAPagar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                        .addComponent(campoMontoAbonar))
+                    .addComponent(datoMontoPagoMinimo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(92, Short.MAX_VALUE)
-                .addComponent(jLabel3)
+                .addComponent(labelTitulo)
                 .addGap(70, 70, 70))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(jLabel3)
+                .addComponent(labelTitulo)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(idCuentaCredito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(labelTarjeta)
+                    .addComponent(campolNroCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel4))
+                    .addComponent(labelTotalAPagar)
+                    .addComponent(datoMontoAPagar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel7))
+                    .addComponent(labelPagoMinimo)
+                    .addComponent(datoMontoPagoMinimo))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(montoAbonar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(campoMontoAbonar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelMontoAbonar))
                 .addGap(18, 18, 18)
                 .addComponent(botonSiguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(31, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void montoAbonarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_montoAbonarActionPerformed
+    private void campoMontoAbonarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoMontoAbonarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_montoAbonarActionPerformed
+    }//GEN-LAST:event_campoMontoAbonarActionPerformed
 
     private void botonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSiguienteActionPerformed
-        if(montoAbonar.getText().matches("-?\\d+") && idCuentaCredito.getText().matches("-?\\d+"))
+        if(campoMontoAbonar.getText().matches("-?\\d+") && campolNroCuenta.getText().matches("-?\\d+"))
         {
-            Integer monto = Integer.parseInt(montoAbonar.getText());
-            Integer idCuenta = Integer.parseInt(idCuentaCredito.getText());
+            Integer monto = Integer.valueOf(campoMontoAbonar.getText());
+            Integer idCuenta = Integer.valueOf(campolNroCuenta.getText());
             if(monto > 0 && Sistema.obtenerObjetoCuenta(idCuenta) != null)
             {
                 Cuenta cuenta = Sistema.obtenerObjetoCuenta(idCuenta);
-                if(cuenta.getTarjeta() instanceof TarjetaCredito)
+                if(!(cuenta.getTarjeta() instanceof TarjetaCredito))
                 {
+                    JOptionPane.showMessageDialog(mainFrame, "Esta cuenta no es de credito!", "Error",  JOptionPane.ERROR_MESSAGE);
+                }
+                TarjetaCredito tarjeta = (TarjetaCredito)cuenta.getTarjeta();
+                int pagoMinimo = tarjeta.getSaldoPendiente() < tarjeta.getPagoMinimo() 
+                                    ? tarjeta.getSaldoPendiente() : tarjeta.getPagoMinimo();
+                if (monto < pagoMinimo) {
+                    JOptionPane.showMessageDialog(mainFrame, 
+                            "Debes abonar por lo menos el pago minimo!", "Error",  JOptionPane.ERROR_MESSAGE);
+                }
+                else if (tarjeta.getSaldoPendiente() - monto < 0) {
+                    JOptionPane.showMessageDialog(mainFrame, 
+                            "No puedes pagar mas del total a pagar requerido!", "Error",  JOptionPane.ERROR_MESSAGE);
+                }
+                // Si no hay errores, solicitar el pin de transaccion y realizar el pago de tarjeta de credito
+                else {
                     mainFrame.mostrarSolicitudDePinDeTransaccion();
                     Sistema.pagarTarjetaCredito(mainFrame.getCuenta().getID(), idCuenta, monto);
                 }
-                else
-                    JOptionPane.showMessageDialog(mainFrame, "Esta cuenta no es de credito", "Error",  JOptionPane.ERROR_MESSAGE);
-               
             }
-        else
-        {
-            MensajeFracasoOperacion fr = new MensajeFracasoOperacion(mainFrame, true);
-            fr.setVisible(true);       
-        }
-               
+            else {
+                MensajeFracasoOperacion fr = new MensajeFracasoOperacion(mainFrame, true);
+                fr.setVisible(true);       
+            }         
         }
     }//GEN-LAST:event_botonSiguienteActionPerformed
 
-    private void idCuentaCreditoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idCuentaCreditoActionPerformed
-        if(idCuentaCredito.getText().matches("-?\\d+"))
+    private void campolNroCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campolNroCuentaActionPerformed
+        actualizarMontos();
+    }//GEN-LAST:event_campolNroCuentaActionPerformed
+
+    private void campolNroCuentaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campolNroCuentaFocusLost
+        actualizarMontos();
+    }//GEN-LAST:event_campolNroCuentaFocusLost
+
+    private void actualizarMontos() {
+        if(campolNroCuenta.getText().matches("-?\\d+"))
         {
-            Integer idCuenta = Integer.parseInt(idCuentaCredito.getText());
-            Cuenta cuenta = Sistema.obtenerObjetoCuenta(idCuenta);
-            if(cuenta.getTarjeta() instanceof TarjetaCredito)
+            Integer idCuenta = Integer.valueOf(campolNroCuenta.getText());
+            Cuenta cuenta = Sistema.obtenerObjetoCuenta(idCuenta);          
+            if(cuenta != null && cuenta.getTarjeta() instanceof TarjetaCredito)
             {
                 TarjetaCredito tarjeta = (TarjetaCredito) cuenta.getTarjeta();
-                jLabel4.setText(String.valueOf(tarjeta.getSaldoPendiente()));
-                jLabel7.setText(String.valueOf(tarjeta.getPagoMinimo()));
-            }  
+                int pagoMinimo = tarjeta.getSaldoPendiente() < tarjeta.getPagoMinimo() 
+                                    ? tarjeta.getSaldoPendiente() : tarjeta.getPagoMinimo();
+                datoMontoAPagar.setText(String.valueOf(tarjeta.getSaldoPendiente()));
+                datoMontoPagoMinimo.setText(String.valueOf(pagoMinimo));
+            } 
+            else {
+                datoMontoAPagar.setText("---.---.---.--");
+                datoMontoPagoMinimo.setText("---.---.--");
+                JOptionPane.showMessageDialog(this, 
+                        "Numero de Cuenta de Tarjeta Invalido!", "Error", JOptionPane.ERROR_MESSAGE);
+            }
         }
-    }//GEN-LAST:event_idCuentaCreditoActionPerformed
-
+        else {
+            datoMontoAPagar.setText("---.---.---.--");
+            datoMontoPagoMinimo.setText("---.---.--");
+        }
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonSiguiente;
-    private javax.swing.JTextField idCuentaCredito;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JTextField montoAbonar;
+    private javax.swing.JTextField campoMontoAbonar;
+    private javax.swing.JTextField campolNroCuenta;
+    private javax.swing.JLabel datoMontoAPagar;
+    private javax.swing.JLabel datoMontoPagoMinimo;
+    private javax.swing.JLabel labelMontoAbonar;
+    private javax.swing.JLabel labelPagoMinimo;
+    private javax.swing.JLabel labelTarjeta;
+    private javax.swing.JLabel labelTitulo;
+    private javax.swing.JLabel labelTotalAPagar;
     // End of variables declaration//GEN-END:variables
 }
