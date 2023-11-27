@@ -200,7 +200,10 @@ public class PagoTC extends javax.swing.JPanel {
     private void campolNroCuentaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campolNroCuentaFocusLost
         actualizarMontos();
     }//GEN-LAST:event_campolNroCuentaFocusLost
-
+    
+    /**
+     * Actualiza los montos a pagar y el pago minimo de la tarjeta de credito asociada a la cuenta. 
+     */
     private void actualizarMontos() {
         if(campolNroCuenta.getText().matches("-?\\d+"))
         {
