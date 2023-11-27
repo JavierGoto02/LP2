@@ -171,10 +171,11 @@ public final class MainAplicacion extends javax.swing.JFrame {
     /**
      * Método para mostrar un cuadro de diálogo solicitando un PIN de transacción.
      */
-    public void mostrarSolicitudDePinDeTransaccion() {
+    public boolean mostrarSolicitudDePinDeTransaccion() {
         SolicitudPinDeTransaccion dialogoPin = new SolicitudPinDeTransaccion(this, true);
         dialogoPin.setLocationRelativeTo(this); // Centrar el diálogo en el marco principal
         dialogoPin.setVisible(true);
+        return dialogoPin.getCerradoForzado();
     }
        
     /**

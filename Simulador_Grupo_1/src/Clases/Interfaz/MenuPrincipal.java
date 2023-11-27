@@ -1,4 +1,5 @@
 package Clases.Interfaz;
+import Clases.*;
 import java.awt.*;    
 import javax.swing.JPanel;
 
@@ -16,6 +17,7 @@ public class MenuPrincipal extends javax.swing.JPanel {
     public MenuPrincipal(MainAplicacion mainFrame) {
         initComponents();  
         this.mainFrame = mainFrame;
+        
     }
 
    

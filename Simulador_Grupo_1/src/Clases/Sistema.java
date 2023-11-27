@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import javax.swing.JOptionPane;
 
 /**
  * El sistema central de la aplicación bancaria que gestiona clientes, cuentas y transacciones.
@@ -346,16 +347,17 @@ public class Sistema
      * @param descripcionServicio   La descripción del servicio a pagar.
      * @param metodeDePago          El método de pago utilizado.
      */
-    public void pagarServicio(int idCuenta, int monto, String descripcionServicio, String metodeDePago)
+    public static void pagarServicio(int idCuenta, int monto, String descripcionServicio, String metodeDePago)
     {
         Cuenta cuenta = obtenerObjetoCuenta(idCuenta);
         if(cuenta.tieneFondoSuficiente(monto))
         {
             cuenta.disminuirSaldo(monto);
-            crearTransaccion(monto, descripcionServicio, monto, metodeDePago);
+            crearTransaccion(idCuenta, descripcionServicio, monto, metodeDePago);
+            JOptionPane.showMessageDialog( null, "Se ha realizado exitosamente el pago!");
         }
         else
-            System.out.println("La cuenta " + cuenta.toShortString() + "no tiene fondo suficiente para realizar el pago de servicio");
+            JOptionPane.showMessageDialog( null, "La cuenta " + cuenta.toShortString() + " no tiene fondo suficiente para realizar el pago de servicio", "Error", JOptionPane.ERROR_MESSAGE);
     }
 
     /**
