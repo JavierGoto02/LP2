@@ -121,7 +121,7 @@ public class MenuPrincipal extends javax.swing.JPanel {
         add(jLabel6);
         jLabel6.setBounds(114, 218, 32, 32);
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Clases/Interfaz/iconoTransferencias.png"))); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/iconoTransferencias.png"))); // NOI18N
         jLabel8.setText("iconoTransferencias");
         jLabel8.setMaximumSize(new java.awt.Dimension(20, 20));
         jLabel8.setMinimumSize(new java.awt.Dimension(20, 20));
