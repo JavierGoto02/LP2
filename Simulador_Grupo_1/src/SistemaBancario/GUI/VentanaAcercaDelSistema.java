@@ -26,7 +26,7 @@ public class VentanaAcercaDelSistema extends javax.swing.JFrame {
         initComponents();
         
         // Agregar icono de aplicación
-        ImageIcon img = new ImageIcon(getClass().getResource("/Recursos/iconoBanco.png"));
+        ImageIcon img = new ImageIcon(getClass().getResource("/SistemaBancario/Recursos/iconoBanco.png"));
         this.setIconImage(img.getImage().getScaledInstance(32, 32, Image.SCALE_SMOOTH));
         
         // Inicializar los nombres en otro hilo

@@ -50,9 +50,12 @@ public final class MainAplicacion extends javax.swing.JFrame {
     public MainAplicacion() {
         cuenta = null;
         initComponents();
-        
+//        String rutaArchivo = MainAplicacion.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+//        System.out.println("La aplicación se está ejecutando desde: " + rutaArchivo);
+//        System.out.println(getClass().getResource("SistemaBancario/Recursos/iconoBanco.png"));
+
         // Agregar icono de aplicación
-        ImageIcon img = new ImageIcon(getClass().getResource("/Recursos/iconoBanco.png"));
+        ImageIcon img = new ImageIcon(getClass().getResource("/SistemaBancario/Recursos/iconoBanco.png"));
         this.setIconImage(img.getImage().getScaledInstance(32, 32, Image.SCALE_SMOOTH));
         
 
@@ -78,9 +81,12 @@ public final class MainAplicacion extends javax.swing.JFrame {
         Sistema.crearCuenta(1, new TarjetaDebito(4500, LocalDate.now(), 1, 1, 10000), 2023);
         Sistema.crearCuenta(2, new TarjetaCredito(2711, LocalDate.now(), 1, 2, 100, 20000, (float)0.12, (float)0.06, LocalDate.of(2023, 11, 24)), 1234);
         Sistema.crearCuenta(3, new TarjetaDebito(3, LocalDate.now(),1,  3, 15000), 345);
-        Sistema.crearClientePersona("Fabrizio", "Kawabata", 7669776, "Calle Palma", "69");
-        Sistema.crearClienteEmpresa("Fabri Ferretería", "6969420-69", "Mcal Estigarribia", "420");
-        Sistema.realizarTransferencia(2, 1, 7500);
+        Sistema.crearCuenta(4, new TarjetaDebito(4500, LocalDate.now(), 1, 1, 25400), 2222);
+        Sistema.crearClientePersona("Fabrizio", "Kawabata", 7669776, "Calle Palma", "0923478963");
+        Sistema.crearClienteEmpresa("Fabri Ferretería", "6969420-69", "Mcal Estigarribia", "093784578");
+        Sistema.crearClientePersona("Martin", "Ferrer", 5879689, "Mcal Lopez", "094356789");
+        Sistema.crearClientePersona("Javier", "Goto", 5406655, "Calle Septima", "0972399578");
+        Sistema.realizarTransferencia(2, 1, 10000);
         
         // Abrir la ventana de login
         if (cuenta == null){

@@ -101,12 +101,12 @@ public class MenuPrincipal extends javax.swing.JPanel {
         labelIdCuenta.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         labelIdCuenta.setText("ID");
         add(labelIdCuenta);
-        labelIdCuenta.setBounds(20, 96, 240, 16);
+        labelIdCuenta.setBounds(20, 96, 240, 21);
 
         labelTipoDeCuenta.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         labelTipoDeCuenta.setText("Tipo de Cuenta");
         add(labelTipoDeCuenta);
-        labelTipoDeCuenta.setBounds(21, 74, 220, 16);
+        labelTipoDeCuenta.setBounds(21, 74, 220, 21);
 
         labelSaldo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         labelSaldo.setText("Saldo de Cuenta");
@@ -117,7 +117,7 @@ public class MenuPrincipal extends javax.swing.JPanel {
         labelMontoCuenta.setText("---.---.---");
         labelMontoCuenta.setToolTipText("");
         add(labelMontoCuenta);
-        labelMontoCuenta.setBounds(293, 74, 90, 16);
+        labelMontoCuenta.setBounds(293, 74, 90, 21);
 
         labelGuaranies.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         labelGuaranies.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -143,7 +143,7 @@ public class MenuPrincipal extends javax.swing.JPanel {
 
         jSeparator1.setForeground(new java.awt.Color(180, 180, 180));
         add(jSeparator1);
-        jSeparator1.setBounds(0, 65, 400, 3);
+        jSeparator1.setBounds(0, 65, 400, 4);
 
         botonPagoServicios.setBackground(new java.awt.Color(250, 230, 150));
         botonPagoServicios.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -154,7 +154,7 @@ public class MenuPrincipal extends javax.swing.JPanel {
             }
         });
         add(botonPagoServicios);
-        botonPagoServicios.setBounds(158, 174, 135, 32);
+        botonPagoServicios.setBounds(158, 174, 143, 32);
 
         botonPagoTarjetas.setBackground(new java.awt.Color(250, 230, 150));
         botonPagoTarjetas.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -167,7 +167,7 @@ public class MenuPrincipal extends javax.swing.JPanel {
         add(botonPagoTarjetas);
         botonPagoTarjetas.setBounds(158, 218, 135, 32);
 
-        iconoTarjetas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/iconoPagoTC.png"))); // NOI18N
+        iconoTarjetas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/SistemaBancario/Recursos/iconoPagoTC.png"))); // NOI18N
         iconoTarjetas.setText("iconoPagoTarjetas");
         iconoTarjetas.setMaximumSize(new java.awt.Dimension(20, 20));
         iconoTarjetas.setMinimumSize(new java.awt.Dimension(20, 20));
@@ -175,7 +175,7 @@ public class MenuPrincipal extends javax.swing.JPanel {
         add(iconoTarjetas);
         iconoTarjetas.setBounds(114, 218, 32, 32);
 
-        iconoTransferencias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/iconoTransferencias.png"))); // NOI18N
+        iconoTransferencias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/SistemaBancario/Recursos/iconoTransferencias.png"))); // NOI18N
         iconoTransferencias.setText("iconoTransferencias");
         iconoTransferencias.setMaximumSize(new java.awt.Dimension(20, 20));
         iconoTransferencias.setMinimumSize(new java.awt.Dimension(20, 20));
@@ -183,7 +183,7 @@ public class MenuPrincipal extends javax.swing.JPanel {
         add(iconoTransferencias);
         iconoTransferencias.setBounds(114, 130, 32, 32);
 
-        iconoServicios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/iconoPagoServicios.png"))); // NOI18N
+        iconoServicios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/SistemaBancario/Recursos/iconoPagoServicios.png"))); // NOI18N
         iconoServicios.setText("iconoPagoServicios");
         iconoServicios.setMaximumSize(new java.awt.Dimension(20, 20));
         iconoServicios.setMinimumSize(new java.awt.Dimension(20, 20));
@@ -198,11 +198,11 @@ public class MenuPrincipal extends javax.swing.JPanel {
             }
         });
         add(botonCerrarSesion);
-        botonCerrarSesion.setBounds(228, 6, 160, 23);
+        botonCerrarSesion.setBounds(228, 6, 160, 29);
 
         jSeparator2.setForeground(new java.awt.Color(180, 180, 180));
         add(jSeparator2);
-        jSeparator2.setBounds(0, 38, 400, 3);
+        jSeparator2.setBounds(0, 38, 400, 4);
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonTransferenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonTransferenciasActionPerformed
