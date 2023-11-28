@@ -1,5 +1,7 @@
-package Clases.Interfaz;
-import Clases.*;
+package SistemaBancario.GUI;
+import SistemaBancario.Entidades.TarjetaCredito;
+import SistemaBancario.Entidades.Sistema;
+import SistemaBancario.Entidades.Cuenta;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.text.DecimalFormat;
@@ -7,6 +9,8 @@ import java.text.DecimalFormatSymbols;
 import javax.swing.JOptionPane;
 
 /**
+ * Panel para realizar pagos de tarjeta de crédito en la interfaz gráfica de la aplicación bancaria.
+ * Permite a los usuarios realizar pagos de tarjetas de crédito utilizando su cuenta.
  *
  * @author Grupo 1
  */

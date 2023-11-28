@@ -1,4 +1,4 @@
-package Clases;
+package SistemaBancario.Entidades;
 
 /**
  * La clase Empresa representa una entidad comercial en la aplicación bancaria.

@@ -1,4 +1,4 @@
-package Clases;
+package SistemaBancario.Entidades;
 
 /**
  * La clase Persona representa a un individuo en la aplicación bancaria.

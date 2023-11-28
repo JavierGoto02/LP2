@@ -1,6 +1,11 @@
-package Clases.Interfaz;
+package SistemaBancario.GUI;
 
-import Clases.*;
+import SistemaBancario.Entidades.Cliente;
+import SistemaBancario.Entidades.TarjetaCredito;
+import SistemaBancario.Entidades.Sistema;
+import SistemaBancario.Entidades.Empresa;
+import SistemaBancario.Entidades.Cuenta;
+import SistemaBancario.Entidades.Persona;
 import java.awt.*;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
@@ -8,6 +13,8 @@ import java.text.NumberFormat;
 import javax.swing.JPanel;
 
 /**
+ * Panel del menú principal en la interfaz gráfica de la aplicación bancaria.
+ * Proporciona opciones de navegación y acceso a diversas funcionalidades de la aplicación.
  *
  * @author Grupo 1
  */
@@ -23,7 +30,11 @@ public class MenuPrincipal extends javax.swing.JPanel {
         this.mainFrame = mainFrame;
         actualizarDatosCuenta();
     }
-
+    
+    
+    /**
+     * Actualiza los datos visualizados en el panel con la información de la cuenta de la sesión actual.
+     */
     public void actualizarDatosCuenta() {
         Cuenta cuenta = mainFrame.getCuenta();
         if (cuenta == null)

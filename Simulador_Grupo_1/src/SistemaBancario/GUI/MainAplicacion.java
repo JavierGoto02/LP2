@@ -1,5 +1,8 @@
-package Clases.Interfaz;
-import Clases.*;
+package SistemaBancario.GUI;
+import SistemaBancario.Entidades.TarjetaCredito;
+import SistemaBancario.Entidades.Sistema;
+import SistemaBancario.Entidades.Cuenta;
+import SistemaBancario.Entidades.TarjetaDebito;
 import java.awt.*;    
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -42,7 +45,7 @@ public final class MainAplicacion extends javax.swing.JFrame {
     private VentanaAcercaDelSistema ventanaAcercaDelSistema; // Campo para guardar referencia a la ventana de acerca del sistema que funciona en otro hilo.
 
     /**
-     * Constructor de la clase. Inicializa componentes y configura el CardLayout.
+     * Constructor de la clase. Inicializa componentes y configura el CardLayout. Ademas recupera los datos del sistema desde el archivo guardado. 
      */
     public MainAplicacion() {
         cuenta = null;
@@ -162,6 +165,9 @@ public final class MainAplicacion extends javax.swing.JFrame {
         mostrarInicioMenu(false);
     }
     
+    /**
+     * Establece las dimensiones predeterminadas de la ventana de la aplicación.
+     */
     public void establecerDimensionesPredeterminadas() {
         this.setBounds(this.getX(), this.getY(), 450, 400);
     }
@@ -198,7 +204,11 @@ public final class MainAplicacion extends javax.swing.JFrame {
         mostrarInicioMenu(false);
     }
     
-    // Metodo para vaciar campos de texto cuando se cambia de panel
+    /**
+     * Método para vaciar campos de texto de un contenedor, utilizado cuando se cambia de panel.
+     * 
+     * @param container Contenedor que contiene los campos de texto.
+     */
     private void vaciarCamposDeTexto(Container container) {
         for (Component componente : container.getComponents()) {
             if (componente instanceof JTextField) {
@@ -256,23 +266,38 @@ public final class MainAplicacion extends javax.swing.JFrame {
         worker.execute();
     }
 
+    /**
+     * Retorna el sistema asociado a la aplicación.
+     *
+     * @return el sistema asociado.
+     */
     public Sistema getSistema() {
         return sistema;
     }
 
+    /**
+     * Establece el sistema asociado a la aplicación.
+     *
+     * @param sistema El sistema a establecer.
+     */
     public void setSistema(Sistema sistema) {
         this.sistema = sistema;
     }
 
     /**
-     * Retorna la cuenta de la sesión actual. 
-     * 
-     * @return la cuenta de la sesión actual. 
+     * Retorna la cuenta de la sesión actual.
+     *
+     * @return la cuenta de la sesión actual.
      */
     public Cuenta getCuenta() {
         return cuenta;
     }
 
+    /**
+     * Establece la cuenta de la sesión actual.
+     *
+     * @param cuenta La cuenta a establecer.
+     */
     public void setCuenta(Cuenta cuenta) {
         this.cuenta = cuenta;
     }
@@ -284,7 +309,13 @@ public final class MainAplicacion extends javax.swing.JFrame {
         cuenta = null;
         cambiarAVentana("VentanaLogin");
     }   
-    
+ 
+    /**
+     * Valida el PIN de transacción ingresado con el PIN de la cuenta de la sesión actual.
+     *
+     * @param pin El PIN de transacción ingresado.
+     * @return true si el PIN es válido, false de lo contrario.
+     */
     public boolean validarPinTransaccion(String pin) {
         return Integer.toString(cuenta.getPinTransaccion()).equals(pin);
     }

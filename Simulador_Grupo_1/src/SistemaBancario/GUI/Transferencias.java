@@ -1,7 +1,10 @@
-package Clases.Interfaz;
-import Clases.*;
+package SistemaBancario.GUI;
+import SistemaBancario.Entidades.*;
 import javax.swing.JOptionPane;
+
 /**
+ * Panel para realizar transferencias entre cuentas en la interfaz gráfica de la aplicación bancaria.
+ * Permite a los usuarios transferir fondos entre sus cuentas y a otras cuentas.
  *
  * @author Grupo 1
  */

@@ -2,24 +2,26 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package Clases.Interfaz;
+package SistemaBancario.GUI;
 
-import Clases.Sistema;
-import Clases.TarjetaCredito;
-import Clases.TarjetaDebito;
+import SistemaBancario.Entidades.Sistema;
+import SistemaBancario.Entidades.TarjetaCredito;
+import SistemaBancario.Entidades.TarjetaDebito;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.time.LocalDate;
 import javax.swing.JOptionPane;
 
 /**
+ * Panel para la creación de una nueva cuenta en la interfaz gráfica de la aplicación bancaria.
+ * Permite a los usuarios ingresar la información necesaria para crear una cuenta.
  *
- * @author hiros
+ * @author Grupo 1
  */
 public class CrearCuenta extends javax.swing.JPanel {
     private MainAplicacion mainFrame;
     /**
-     * Creates new form CrearCuenta
+     * Crea un nuevo panel de CrearCuenta
      */
     public CrearCuenta(MainAplicacion mainFrame) {
         initComponents();

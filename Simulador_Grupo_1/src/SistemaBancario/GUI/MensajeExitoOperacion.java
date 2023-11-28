@@ -1,15 +1,17 @@
-package Clases.Interfaz;
+package SistemaBancario.GUI;
 
 /**
+ * Diálogo que muestra un mensaje de éxito para operaciones en la interfaz gráfica de la aplicación bancaria.
+ * Se utiliza para informar al usuario sobre operaciones exitosas.
  *
  * @author Grupo 1
  */
-public class MensajeFracasoOperacion extends javax.swing.JDialog {
+public class MensajeExitoOperacion extends javax.swing.JDialog {
 
     /**
      * Creates new form SolicitudPinDeTransaccion
      */
-    public MensajeFracasoOperacion(java.awt.Frame parent, boolean modal) {
+    public MensajeExitoOperacion(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
@@ -28,23 +30,23 @@ public class MensajeFracasoOperacion extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(180, 50, 50));
-        jLabel1.setText("<html>¡La operación <br> fue un <b>Fracaso</b>! </br></html>");
+        jLabel1.setForeground(new java.awt.Color(100, 180, 100));
+        jLabel1.setText("<html>¡La operación fue <b>Exitosa</b>!</html>");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(17, 17, 17)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -68,23 +70,21 @@ public class MensajeFracasoOperacion extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MensajeFracasoOperacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MensajeExitoOperacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MensajeFracasoOperacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MensajeExitoOperacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MensajeFracasoOperacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MensajeExitoOperacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MensajeFracasoOperacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MensajeExitoOperacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                MensajeFracasoOperacion dialog = new MensajeFracasoOperacion(new javax.swing.JFrame(), true);
+                MensajeExitoOperacion dialog = new MensajeExitoOperacion(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
