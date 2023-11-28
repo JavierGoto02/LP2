@@ -1,7 +1,5 @@
 package SistemaBancario.GUI;
-import SistemaBancario.Entidades.Cliente;
-import SistemaBancario.Entidades.Sistema;
-import SistemaBancario.Entidades.Cuenta;
+import SistemaBancario.Entidades.*;
 import javax.swing.JOptionPane;
 
 /**
