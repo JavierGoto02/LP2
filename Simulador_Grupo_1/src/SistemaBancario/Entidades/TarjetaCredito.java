@@ -1,5 +1,7 @@
 package SistemaBancario.Entidades;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -19,7 +21,7 @@ public class TarjetaCredito extends Tarjeta {
     private int lineaCredito; // Línea de crédito disponible
     private float interes; // Tasa de interés por uso de la tarjeta de crédito
     private float interesPenalizacion; // Tasa de interés por pagos atrasados
-    private Date fechaLimitePago; // Fecha límite para realizar el pago mínimo
+    private LocalDate fechaLimitePago; // Fecha límite para realizar el pago mínimo
 
     /**
      * Constructor que inicializa una instancia de la clase TarjetaCredito.
@@ -34,8 +36,8 @@ public class TarjetaCredito extends Tarjeta {
      * @param interesPenalizacion Tasa de interés por pagos atrasados.
      * @param fechaLimitePago Fecha límite para realizar el pago mínimo.
      */
-    public TarjetaCredito(int nroTarjeta, Date fechaVencimiento, int CVC, int idCuenta, int pagoMinimo,
-            int lineaCredito, float interes, float interesPenalizacion, Date fechaLimitePago) {
+    public TarjetaCredito(int nroTarjeta, LocalDate fechaVencimiento, int CVC, int idCuenta, int pagoMinimo,
+            int lineaCredito, float interes, float interesPenalizacion, LocalDate fechaLimitePago) {
         super(nroTarjeta, fechaVencimiento, CVC, idCuenta);
         this.saldoPendiente = 0;
         this.pagoMinimo = pagoMinimo;
@@ -113,7 +115,7 @@ public class TarjetaCredito extends Tarjeta {
      *
      * @return La fecha límite para realizar el pago mínimo.
      */
-    public Date getFechaLimitePago() {
+    public LocalDate getFechaLimitePago() {
         return fechaLimitePago;
     }
 
@@ -122,7 +124,7 @@ public class TarjetaCredito extends Tarjeta {
      *
      * @param fechaLimitePago La nueva fecha límite para realizar el pago mínimo.
      */
-    public void setFechaLimitePago(Date fechaLimitePago) {
+    public void setFechaLimitePago(LocalDate fechaLimitePago) {
         this.fechaLimitePago = fechaLimitePago;
     }
 
@@ -155,19 +157,18 @@ public class TarjetaCredito extends Tarjeta {
     public void abonarSaldo(int monto) {
         if (monto >= pagoMinimo) {
             // Se define la fecha actual como la fecha de pago
-            Date fechaPago = new Date();
+            LocalDate fechaPago = LocalDate.now();
             // Si se pagó a los días posteriores a la fecha límite, se aplicará un interés diario de penalización
-            if (fechaLimitePago.compareTo(fechaPago) < 0) {
-                long diferenciaTiempo = fechaPago.getTime() - fechaLimitePago.getTime();
-                long diferenciaDia = TimeUnit.DAYS.convert(diferenciaTiempo, TimeUnit.MILLISECONDS);
+            if (fechaLimitePago.isBefore(fechaPago)) {
+                long diferenciaDia = ChronoUnit.DAYS.between(fechaLimitePago, fechaPago);
                 for (int i = 0; i < diferenciaDia; i++) {
-                    saldoPendiente += saldoPendiente + saldoPendiente * interesPenalizacion;
+                    saldoPendiente +=  saldoPendiente * interesPenalizacion;
                 }
             }
             saldoPendiente -= monto;
             // El resto del importe a pagar genera interés
-            saldoPendiente += saldoPendiente + saldoPendiente * interes;
-            fechaLimitePago.setMonth(fechaLimitePago.getMonth() + 1);
+            saldoPendiente += saldoPendiente * interes;
+            fechaLimitePago = fechaLimitePago.plusMonths(1);
         }
     }
 }
