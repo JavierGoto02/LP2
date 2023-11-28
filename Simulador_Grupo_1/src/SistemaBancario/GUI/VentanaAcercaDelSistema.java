@@ -6,6 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 
 /**
@@ -159,24 +161,18 @@ public class VentanaAcercaDelSistema extends javax.swing.JFrame {
         }).start();
     }//GEN-LAST:event_botonVerDocumentaciónActionPerformed
 
-    
     /**
      * Abre el navegador web predeterminado con el archivo HTML de documentación del sistema.
-     * Si el archivo no se encuentra, muestra un mensaje de error. (La carpeta del javadoc debe estar en la misma ruta que el ejecutable) 
+     * Si el archivo no se encuentra por algún motivo, muestra un mensaje de error. 
      */
     private void abrirDocumentacion() {
-        // Obtener la ruta del camino de ejecución y concatenarlo con el nombre del archivo de documentación HTML.
-        String rutaArchivoHTML = System.getProperty("user.dir") + File.separator + "javadoc" + File.separator + "index.html";
-
         try {
-            File archivoHTML = new File(rutaArchivoHTML);
-            if (archivoHTML.exists()) {
-                // Abrir el navegador web con el archivo HTML específico
-                Desktop.getDesktop().browse(archivoHTML.toURI());
-            } else {
-                JOptionPane.showMessageDialog(this, "Archivo de documentación no encontrado.", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        } catch (IOException ex) {
+            // Enlace archivo HTML del javadoc en pagina de hosteo publico
+            String enlaceJavadoc = "https://javiergoto02.github.io/LP2";
+
+            // Abrir el navegador web con el enlace de vista previa
+            Desktop.getDesktop().browse(new URI(enlaceJavadoc));
+        } catch (IOException | URISyntaxException ex) {
             JOptionPane.showMessageDialog(this, "Error abriendo documentacion: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
