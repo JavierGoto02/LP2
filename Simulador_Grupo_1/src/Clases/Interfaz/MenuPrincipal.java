@@ -36,16 +36,18 @@ public class MenuPrincipal extends javax.swing.JPanel {
         DecimalFormat formatoDecimal = new DecimalFormat("###,###", symbols);
         String saldoFormateado = formatoDecimal.format(saldo);
         labelMontoCuenta.setText(saldoFormateado);
-
+        
         Cliente cliente = Sistema.obtenerObjetoCliente(cuenta.getIDPropietario());
+        boolean esCuentaDeTarjetaCredito = cuenta.getTarjeta() instanceof TarjetaCredito;
+        String tipoTarjeta = esCuentaDeTarjetaCredito ? "Crédito" : "Débito"; 
         if (cliente instanceof Persona) {
             Persona persona = (Persona) cliente;
-            labelTipoDeCuenta.setText("Cuenta Personal");
+            labelTipoDeCuenta.setText("Cuenta Personal - Tarjeta " + tipoTarjeta);
             labelNombre.setText(persona.getNombre() + " " + persona.getApellido());
             labelIdCuenta.setText(persona.getDocumento());
         } else {
             Empresa empresa = (Empresa) cliente;
-            labelTipoDeCuenta.setText("Cuenta Empresarial");
+            labelTipoDeCuenta.setText("Cuenta Empresarial - Tarjeta " + tipoTarjeta);
             labelNombre.setText(empresa.getRazonSocial());
             labelIdCuenta.setText(empresa.getRuc());
         }

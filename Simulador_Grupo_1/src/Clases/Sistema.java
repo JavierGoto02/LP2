@@ -104,7 +104,7 @@ public class Sistema
      * @return El objeto Cliente asociado al identificador.
      */
     public static Cliente obtenerObjetoCliente(int idCliente)
-    {
+    {   
         return clientePorCodigo.get(idCliente);
     }
 
@@ -188,8 +188,10 @@ public class Sistema
      * @param CI         El número de cédula de identidad del cliente persona.
      * @param direccion  La dirección del cliente persona.
      * @param telefono   El número de teléfono del cliente persona.
+     * 
+     * @return Retorna el identificador (Id) del cliente personal creado.
      */
-    public static void crearClientePersona(String nombre, String apellido, int CI, String direccion, String telefono)
+    public static int crearClientePersona(String nombre, String apellido, int CI, String direccion, String telefono)
     {
         // Generar un nuevo identificador único para el cliente persona
         int identificadorPersona = generarIDCliente();
@@ -199,6 +201,8 @@ public class Sistema
         
         // Agregar el cliente persona al HashMap de clientes por su identificador
         clientePorCodigo.put(identificadorPersona, nuevaPersona);
+        
+        return identificadorPersona;
     }
 
     /**
@@ -208,8 +212,10 @@ public class Sistema
      * @param ruc         El Registro Único de Contribuyentes (RUC) de la empresa.crear
      * @param direccion   La dirección de la empresa.
      * @param telefono    El número de teléfono de la empresa.
+     * 
+     * @return Retorna el identificador (Id) del cliente empresarial creado.
      */
-    public static void crearClienteEmpresa(String razonSocial, String ruc, String direccion, String telefono)
+    public static int crearClienteEmpresa(String razonSocial, String ruc, String direccion, String telefono)
     {
         // Generar un nuevo identificador único para el cliente empresa
         int identificadorEmpresa = generarIDCliente();
@@ -219,6 +225,8 @@ public class Sistema
         
         // Agregar el cliente empresa al HashMap de clientes por su identificador
         clientePorCodigo.put(identificadorEmpresa, nuevaEmpresa);
+        
+        return identificadorEmpresa;
     }
 
     /**

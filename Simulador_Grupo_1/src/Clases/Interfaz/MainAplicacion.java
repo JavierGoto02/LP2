@@ -51,6 +51,7 @@ public final class MainAplicacion extends javax.swing.JFrame {
         // Agregar icono de aplicación
         ImageIcon img = new ImageIcon(getClass().getResource("/Recursos/iconoBanco.png"));
         this.setIconImage(img.getImage().getScaledInstance(32, 32, Image.SCALE_SMOOTH));
+        
 
         // Configurar la barra de menú
         crearBarraDeMenu();
@@ -161,6 +162,10 @@ public final class MainAplicacion extends javax.swing.JFrame {
         mostrarInicioMenu(false);
     }
     
+    public void establecerDimensionesPredeterminadas() {
+        this.setBounds(this.getX(), this.getY(), 450, 400);
+    }
+    
     /**
      * Método para obtener el CardLayout.
      * @return CardLayout
@@ -190,6 +195,7 @@ public final class MainAplicacion extends javax.swing.JFrame {
             cambiarAVentana("MenuPrincipal");
             menuPrincipal.actualizarDatosCuenta();
         }
+        mostrarInicioMenu(false);
     }
     
     // Metodo para vaciar campos de texto cuando se cambia de panel

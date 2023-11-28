@@ -7,7 +7,8 @@ package Clases.Interfaz;
 import Clases.Sistema;
 import Clases.TarjetaCredito;
 import Clases.TarjetaDebito;
-import static java.lang.Integer.parseInt;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.util.Date;
 import javax.swing.JOptionPane;
 
@@ -23,6 +24,20 @@ public class CrearCuenta extends javax.swing.JPanel {
     public CrearCuenta(MainAplicacion mainFrame) {
         initComponents();
         this.mainFrame = mainFrame;
+        
+        // Agregar listener de componentes para detectar cuando se muestra y oculta el panel
+        addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentShown(ComponentEvent e) {
+                // Aumentar el tamaño de ventana para crear cuenta
+                mainFrame.setBounds(mainFrame.getX(), mainFrame.getY(), 400, 500);
+            }
+            @Override
+            public void componentHidden(ComponentEvent e) {
+                // Disminuir el tamaño de ventana al predeterminado para otras ventanas
+                mainFrame.establecerDimensionesPredeterminadas();
+            }
+        });     
     }
 
     /**
@@ -58,6 +73,9 @@ public class CrearCuenta extends javax.swing.JPanel {
         jLabel12 = new javax.swing.JLabel();
         txtFechaVenc = new javax.swing.JFormattedTextField();
         txtClave = new javax.swing.JPasswordField();
+
+        setToolTipText("");
+        setMinimumSize(new java.awt.Dimension(373, 406));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel4.setText("Crear Cuenta");
@@ -219,28 +237,29 @@ public class CrearCuenta extends javax.swing.JPanel {
         try{
             String Nombre = txtNombre.getText();
             String Apellido = txtApellido.getText();
-            int Clave = parseInt(txtClave.getText());
-            int Documento = parseInt(txtDocumento.getText());
+            int Clave = Integer.parseInt(txtClave.getText());
+            int Documento = Integer.parseInt(txtDocumento.getText());
             String Direccion = txtDireccion.getText();
             String Telefono = txtTelefono.getText();
             
-            Sistema.crearClientePersona(Nombre, Apellido, Documento, Direccion, Telefono);
+            int idCliente = Sistema.crearClientePersona(Nombre, Apellido, Documento, Direccion, Telefono);
             
-            int NroTarj = parseInt(txtNroTarj.getText());
-            Date fechaVenc = new Date(txtFechaVenc.getText());
-            int cvc = parseInt(txtCVC.getText());
-            String tipotarj = GrupoTipoTarjeta.getSelection().getActionCommand();
-            if (tipotarj == "Crédito"){
-                TarjetaCredito tarjeta = new TarjetaCredito(NroTarj, fechaVenc, cvc, 0, 0, 0, 0, 0, fechaVenc);
-                int idcuenta = Sistema.crearCuenta(Documento, tarjeta, Clave);
-                tarjeta.setIdCuenta(idcuenta);
-                JOptionPane.showMessageDialog(null, "El ID cuenta es:" + idcuenta);
+            int NroTarjeta = Integer.parseInt(txtNroTarj.getText());
+            Date fechaVencimiento = new Date(txtFechaVenc.getText());
+            int cvc = Integer.parseInt(txtCVC.getText());
+            String tipoTarjeta = GrupoTipoTarjeta.getSelection().getActionCommand();
+            if (tipoTarjeta == "Crédito"){
+                TarjetaCredito tarjeta = new TarjetaCredito(
+                        NroTarjeta, fechaVencimiento, cvc, 0, 0, 0, 0, 0, fechaVencimiento);
+                int idCuenta = Sistema.crearCuenta(idCliente, tarjeta, Clave);
+                tarjeta.setIdCuenta(idCuenta);
+                JOptionPane.showMessageDialog(null, "El ID cuenta es:" + idCuenta);
             }
-            if (tipotarj == "Débito"){
-                TarjetaDebito tarjeta = new TarjetaDebito(NroTarj, fechaVenc, cvc, 0, 1000);
-                int idcuenta = Sistema.crearCuenta(Documento, tarjeta, Clave);
-                tarjeta.setIdCuenta(idcuenta);
-                JOptionPane.showMessageDialog(null, "El ID cuenta es:" + idcuenta);
+            if (tipoTarjeta == "Débito"){
+                TarjetaDebito tarjeta = new TarjetaDebito(NroTarjeta, fechaVencimiento, cvc, 0, 0);
+                int idCuenta = Sistema.crearCuenta(idCliente, tarjeta, Clave);
+                tarjeta.setIdCuenta(idCuenta);
+                JOptionPane.showMessageDialog(null, "El ID cuenta es:" + idCuenta);
             }
             GrupoTipoTarjeta.clearSelection();
             JOptionPane.showMessageDialog(null, "La Cuenta fue creada Correctamente");
@@ -248,7 +267,7 @@ public class CrearCuenta extends javax.swing.JPanel {
             mainFrame.cambiarAVentana("VentanaLogin");
         }
         catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Datos Incorrectos");
+            JOptionPane.showMessageDialog(null, "Datos Incorrectos, Intente nuevamente!");
         }
 
     }//GEN-LAST:event_BotonCrearCuentaActionPerformed
