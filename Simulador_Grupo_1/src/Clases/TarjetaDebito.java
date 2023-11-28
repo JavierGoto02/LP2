@@ -1,5 +1,6 @@
 package Clases;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -23,7 +24,7 @@ public class TarjetaDebito extends Tarjeta {
      * @param idCuenta Identificador de la cuenta asociada a la tarjeta.
      * @param saldo Saldo inicial de la tarjeta de débito.
      */
-    public TarjetaDebito(int nroTarjeta, Date fechaVencimiento, int CVC, int idCuenta, int saldo) {
+    public TarjetaDebito(int nroTarjeta, LocalDate fechaVencimiento, int CVC, int idCuenta, int saldo) {
         super(nroTarjeta, fechaVencimiento, CVC, idCuenta);
         this.saldo = saldo;
     }

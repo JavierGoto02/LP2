@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.Date;
 import javax.swing.*;
 
@@ -69,9 +71,9 @@ public final class MainAplicacion extends javax.swing.JFrame {
         recuperarDatosSistema();
 
         //Dato de prueba
-        Sistema.crearCuenta(1, new TarjetaDebito(4500, new Date(), 1, 1, 10000), 2023);
-        Sistema.crearCuenta(2, new TarjetaCredito(2711, new Date(), 1, 2, 100, 20000, (float)0.12, (float)0.06, new Date()), 1234);
-        Sistema.crearCuenta(3, new TarjetaDebito(3, new Date(),1,  3, 15000), 345);
+        Sistema.crearCuenta(1, new TarjetaDebito(4500, LocalDate.now(), 1, 1, 10000), 2023);
+        Sistema.crearCuenta(2, new TarjetaCredito(2711, LocalDate.now(), 1, 2, 100, 20000, (float)0.12, (float)0.06, LocalDate.of(2023, 11, 24)), 1234);
+        Sistema.crearCuenta(3, new TarjetaDebito(3, LocalDate.now(),1,  3, 15000), 345);
         Sistema.crearClientePersona("Fabrizio", "Kawabata", 7669776, "Calle Palma", "69");
         Sistema.crearClienteEmpresa("Fabri Ferretería", "6969420-69", "Mcal Estigarribia", "420");
         Sistema.realizarTransferencia(2, 1, 7500);

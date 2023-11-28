@@ -168,9 +168,8 @@ public class PagoTC extends javax.swing.JPanel {
             {
                 Cuenta cuenta = Sistema.obtenerObjetoCuenta(idCuenta);
                 if(!(cuenta.getTarjeta() instanceof TarjetaCredito))
-                {
                     JOptionPane.showMessageDialog(mainFrame, "Esta cuenta no es de credito!", "Error",  JOptionPane.ERROR_MESSAGE);
-                }
+                
                 TarjetaCredito tarjeta = (TarjetaCredito)cuenta.getTarjeta();
                 int pagoMinimo = tarjeta.getSaldoPendiente() < tarjeta.getPagoMinimo() 
                                     ? tarjeta.getSaldoPendiente() : tarjeta.getPagoMinimo();
@@ -227,6 +226,8 @@ public class PagoTC extends javax.swing.JPanel {
                 DecimalFormat formatoDecimal = new DecimalFormat("###,###", symbols);
                 
                 String montoAPagarFormateado = formatoDecimal.format(tarjeta.getSaldoPendiente());
+                System.out.println(tarjeta.getSaldoPendiente());
+                System.out.println(montoAPagarFormateado);
                 String pagoMinimoFormateado = formatoDecimal.format(pagoMinimo);
                 datoMontoAPagar.setText(montoAPagarFormateado);
                 datoMontoPagoMinimo.setText(pagoMinimoFormateado);

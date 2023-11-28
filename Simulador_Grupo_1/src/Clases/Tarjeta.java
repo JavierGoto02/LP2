@@ -1,5 +1,6 @@
 package Clases;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -13,7 +14,7 @@ import java.util.Date;
 public abstract class Tarjeta {
 
     private int nroTarjeta; // Número de la tarjeta
-    private Date fechaVencimiento; // Fecha de vencimiento de la tarjeta
+    private LocalDate fechaVencimiento; // Fecha de vencimiento de la tarjeta
     private int CVC; // Código de Verificación de la tarjeta
     private int idCuenta; // Identificador de la cuenta asociada a la tarjeta
 
@@ -25,7 +26,7 @@ public abstract class Tarjeta {
      * @param CVC Código de Verificación de la tarjeta.
      * @param idCuenta Identificador de la cuenta asociada a la tarjeta.
      */
-    public Tarjeta(int nroTarjeta, Date fechaVencimiento, int CVC, int idCuenta) {
+    public Tarjeta(int nroTarjeta, LocalDate fechaVencimiento, int CVC, int idCuenta) {
         this.nroTarjeta = nroTarjeta;
         this.fechaVencimiento = fechaVencimiento;
         this.CVC = CVC;
@@ -55,7 +56,7 @@ public abstract class Tarjeta {
      *
      * @return La fecha de vencimiento de la tarjeta.
      */
-    public Date getFechaVencimiento() {
+    public LocalDate getFechaVencimiento() {
         return fechaVencimiento;
     }
 
@@ -64,7 +65,7 @@ public abstract class Tarjeta {
      *
      * @param fechaVencimiento La nueva fecha de vencimiento de la tarjeta.
      */
-    public void setFechaVencimiento(Date fechaVencimiento) {
+    public void setFechaVencimiento(LocalDate fechaVencimiento) {
         this.fechaVencimiento = fechaVencimiento;
     }
 

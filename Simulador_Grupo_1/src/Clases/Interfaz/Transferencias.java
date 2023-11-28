@@ -174,6 +174,7 @@ public class Transferencias extends javax.swing.JPanel {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void nroCuentaDestinatarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nroCuentaDestinatarioActionPerformed
+
         actualizarDatosDestinatario();
     }//GEN-LAST:event_nroCuentaDestinatarioActionPerformed
 
@@ -204,6 +205,8 @@ public class Transferencias extends javax.swing.JPanel {
             Cuenta cuentaDestinatario = Sistema.obtenerObjetoCuenta(idCuentaDestinatario);
             if(cuentaDestinatario == null)
                    JOptionPane.showMessageDialog(mainFrame, "La cuenta destinatario no existe!", "Error",  JOptionPane.ERROR_MESSAGE);
+            else if(cuentaDestinatario.getTarjeta() instanceof TarjetaCredito)
+                    JOptionPane.showMessageDialog(mainFrame, "No se puede realizar transferencias a cuentas de credito!", "Error",  JOptionPane.ERROR_MESSAGE);
             else
             {
                 boolean cerradoForzado = mainFrame.mostrarSolicitudDePinDeTransaccion();
@@ -216,6 +219,7 @@ public class Transferencias extends javax.swing.JPanel {
     }//GEN-LAST:event_botonSiguienteActionPerformed
 
     private void nroCuentaDestinatarioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nroCuentaDestinatarioFocusLost
+
         actualizarDatosDestinatario();
     }//GEN-LAST:event_nroCuentaDestinatarioFocusLost
 
@@ -239,14 +243,18 @@ public class Transferencias extends javax.swing.JPanel {
             Cuenta cuentaDestinatario = Sistema.obtenerObjetoCuenta(idCuentaDestinatario);
             if(cuentaDestinatario != null)
             {
-                Cliente clienteDestino = Sistema.obtenerObjetoCliente(cuentaDestinatario.getIDPropietario());
-                if (clienteDestino != null) {
-                    nombreApellido.setText(clienteDestino.getEtiqueta());
-                    documento.setText(clienteDestino.getDocumento());
-                } else {
-                  JOptionPane.showMessageDialog(this, 
-                        "¡Cliente destino no existente!", "Error", JOptionPane.ERROR_MESSAGE);
-                }
+                
+               Cliente clienteDestino = Sistema.obtenerObjetoCliente(cuentaDestinatario.getIDPropietario());
+                    if (clienteDestino != null) {
+                        nombreApellido.setText(clienteDestino.getEtiqueta());
+                        documento.setText(clienteDestino.getDocumento());
+                    } else {
+                      JOptionPane.showMessageDialog(this, 
+                            "¡Cliente destino no existente!", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                    
+                
+                   
             } else {
                   JOptionPane.showMessageDialog(this, 
                         "¡Cuenta de destinatario invalida!", "Error", JOptionPane.ERROR_MESSAGE);
