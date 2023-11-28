@@ -119,7 +119,7 @@ public class CrearCuenta extends javax.swing.JPanel {
         jLabel12.setText("CVC:");
 
         txtFechaVenc.setColumns(3);
-        txtFechaVenc.setToolTipText("DD/MM/AAAA");
+        txtFechaVenc.setToolTipText("AAAA-MM-DD");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -143,7 +143,7 @@ public class CrearCuenta extends javax.swing.JPanel {
                                     .addComponent(txtClave)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                                 .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
