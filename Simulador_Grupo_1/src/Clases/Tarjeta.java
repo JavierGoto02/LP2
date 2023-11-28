@@ -1,7 +1,7 @@
 package Clases;
 
 import java.time.LocalDate;
-import java.util.Date;
+
 
 /**
  * La clase Tarjeta es una clase abstracta que representa una tarjeta asociada a una cuenta bancaria.

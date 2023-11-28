@@ -48,7 +48,7 @@
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="37" max="32767" attributes="0"/>
+                              <EmptySpace pref="39" max="32767" attributes="0"/>
                               <Component id="txtApellido" min="-2" pref="159" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">

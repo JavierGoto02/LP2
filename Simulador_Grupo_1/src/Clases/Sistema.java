@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
-import javax.swing.JOptionPane;
 
 /**
  * El sistema central de la aplicación bancaria que gestiona clientes, cuentas y transacciones.

@@ -9,7 +9,7 @@ import Clases.TarjetaCredito;
 import Clases.TarjetaDebito;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
-import java.util.Date;
+import java.time.LocalDate;
 import javax.swing.JOptionPane;
 
 /**
@@ -245,7 +245,7 @@ public class CrearCuenta extends javax.swing.JPanel {
             int idCliente = Sistema.crearClientePersona(Nombre, Apellido, Documento, Direccion, Telefono);
             
             int NroTarjeta = Integer.parseInt(txtNroTarj.getText());
-            Date fechaVencimiento = new Date(txtFechaVenc.getText());
+            LocalDate fechaVencimiento = LocalDate.parse(txtFechaVenc.getText());
             int cvc = Integer.parseInt(txtCVC.getText());
             String tipoTarjeta = GrupoTipoTarjeta.getSelection().getActionCommand();
             if (tipoTarjeta == "Crédito"){

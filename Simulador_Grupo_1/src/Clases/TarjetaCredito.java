@@ -2,8 +2,7 @@ package Clases;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
-import java.util.Date;
-import java.util.concurrent.TimeUnit;
+
 
 /**
  * La clase TarjetaCredito representa una tarjeta de crédito asociada a una cuenta bancaria.
