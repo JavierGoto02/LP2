@@ -1,4 +1,4 @@
-package Clases;
+package SistemaBancario.Entidades;
 
 /**
  * Representa una transferencia entre cuentas bancarias.

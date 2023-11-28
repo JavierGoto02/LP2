@@ -1,9 +1,14 @@
-package Clases.Interfaz;
-import Clases.*;
+package SistemaBancario.GUI;
+import SistemaBancario.Entidades.TarjetaCredito;
+import SistemaBancario.Entidades.Sistema;
+import SistemaBancario.Entidades.Cuenta;
+import SistemaBancario.Entidades.Tarjeta;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
 
 /**
+ * Panel para realizar pagos de servicios en la interfaz gráfica de la aplicación bancaria.
+ * Permite a los usuarios realizar pagos de servicios utilizando sus cuentas bancarias.
  *
  * @author Grupo 1
  */
@@ -23,6 +28,9 @@ public class PagoServicios extends javax.swing.JPanel {
         actualizarCampos();
     }
 
+    /**
+     * Agregar servicios predeterminados a las opciones.
+     */
     private void initServicios() {
         // Agregar información de servicios
         agregarServicio("ANDE", "Número de Cliente ANDE", null);
@@ -42,6 +50,9 @@ public class PagoServicios extends javax.swing.JPanel {
         comboBoxServicios.addItem(nombre);
     }
 
+    /**
+     * Actualiza los campos visibles en el Panel según el servicio seleccionado.
+     */
     private void actualizarCampos() {
         String nombreServicioSeleccionado = (String) comboBoxServicios.getSelectedItem();
         if (nombreServicioSeleccionado != null) {

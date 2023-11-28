@@ -1,6 +1,8 @@
-package Clases.Interfaz;
+package SistemaBancario.GUI;
 
 /**
+ * Diálogo que solicita el PIN de transacción de un usuario antes de realizar una operación en la interfaz gráfica
+ * de la aplicación bancaria que requieren mayor seguridad.
  *
  * @author Grupo 1
  */
@@ -41,7 +43,6 @@ public class SolicitudPinDeTransaccion extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(240, 180));
-        setPreferredSize(new java.awt.Dimension(220, 120));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);

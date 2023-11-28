@@ -1,4 +1,4 @@
-package Clases;
+package SistemaBancario.Entidades;
 
 /**
  * La interfaz Comprobante define la estructura básica para emitir comprobantes en la aplicación bancaria.

@@ -1,4 +1,4 @@
-package Clases.Interfaz;
+package SistemaBancario.GUI;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,9 +13,6 @@ import java.io.IOException;
  * y proporciona acceso a la documentación del sistema.
  * Además, muestra los nombres de los miembros del grupo en la interfaz gráfica.
  *  
- * <p> Nota: La carpeta del javadoc debe estar en la misma ruta que el ejecutable
- * para que funcione el botón de ver documentación </p>
- *
  * @author Grupo 1 
  */
 public class VentanaAcercaDelSistema extends javax.swing.JFrame {

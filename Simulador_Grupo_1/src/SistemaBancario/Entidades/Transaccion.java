@@ -1,4 +1,4 @@
-package Clases;
+package SistemaBancario.Entidades;
 
 /**
  * Representa una transacción realizada por un usuario en la aplicación bancaria.

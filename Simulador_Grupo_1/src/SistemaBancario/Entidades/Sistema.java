@@ -1,4 +1,4 @@
-package Clases;
+package SistemaBancario.Entidades;
 
 import java.util.ArrayList;
 import java.util.HashMap;

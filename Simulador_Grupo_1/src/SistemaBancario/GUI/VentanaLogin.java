@@ -2,14 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package Clases.Interfaz;
-import Clases.Cuenta;
-import Clases.Sistema;
+package SistemaBancario.GUI;
+import SistemaBancario.Entidades.Cuenta;
+import SistemaBancario.Entidades.Sistema;
 import javax.swing.JOptionPane;
 
 /**
+ * Panel de la ventana de inicio de sesión en la interfaz gráfica de la aplicación bancaria.
+ * Permite a los usuarios ingresar sus credenciales para acceder a la aplicación.
  *
- * @author fabri
+ * @author Grupo 1
  */
 public class VentanaLogin extends javax.swing.JPanel {
 
